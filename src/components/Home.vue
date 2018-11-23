@@ -12,5 +12,10 @@
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'home',
+  data() {
+    return {}
+  }
+}
 </script>
