@@ -50,9 +50,13 @@
   }
   #bvl-logo {
     background-color: white;
-    border-radius: 70px 0 0 0 ;
-    margin-left: 68%;
-    margin-top: 37%;
+    border-radius: 75px 0 0 0 ;
+    margin-left: 60%;
+    margin-top: 38%;
+    
+  }
+  .v-align-items {
+    margin-top: 10%;
   }
   #bvl-png {
     width: 110px;
