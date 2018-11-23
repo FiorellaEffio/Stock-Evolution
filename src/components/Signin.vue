@@ -33,9 +33,9 @@
                 required></v-text-field>
             </v-flex>
             <v-flex class="text-xs-center" mt-5>
-              <v-btn color="primary" type="submit">Sign In</v-btn>
+              <v-btn v-on:click="userSignIn" color="primary" type="submit">Sign In</v-btn>
               <br>
-              <v-btn color="red" type="submit">Google</v-btn>
+              <v-btn @click="userSignInGoogle()" color="red" type="submit">Google</v-btn>
             </v-flex>
           </v-layout>
         </form>
@@ -45,6 +45,9 @@
 </template>
 
 <script>
+/* eslint-disable */
+
+import firebase from 'firebase'
 export default {
   data () {
     return {
@@ -56,6 +59,16 @@ export default {
   methods: {
     userSignIn () {
       this.$store.dispatch('userSignIn', { email: this.email, password: this.password })
+    },
+     userSignInGoogle () {
+       
+      const provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithPopup(provider).then((result) => {
+        this.$router.push('/home')
+        console.log(result.user)
+      }).catch(error => {
+        console.log(error.message)
+      })
     }
   },
   computed: {
