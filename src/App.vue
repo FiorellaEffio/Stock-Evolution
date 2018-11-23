@@ -46,7 +46,7 @@
 
   #back {
     width: 100vh;
-    background-image: url('https://lh4.googleusercontent.com/BUecxAUQHxbQEDyUrPxazu5vHfosaGvAuuWtD_Kb_BU6aPGju5KOakYQDzDagDgWBvzVCR51zKo3DxK0zFxq=w1366-h657-rw');
+    background-image: url('http://subirimagen.me/uploads/20181123142846.png');
   }
   #bvl-logo {
     background-color: white;

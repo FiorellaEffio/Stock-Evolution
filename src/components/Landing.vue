@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-layout row wrap>
       <v-flex xs12 text-xs-center mt-5>
-        <img id="logo" src="https://lh5.googleusercontent.com/F30AFK_q3rQVRQ1nsjCwt5kr5qZ_e1sIkOgQGiM3wfy9okHkpDNTvS15W2SFLqFp9mD0-Iy68VGeODOkLsUn=w1366-h657" alt="">
+        <img id="logo" src="http://subirimagen.me/uploads/20181123143029.png" alt="">
       </v-flex>
       <v-flex>
         <blockquote class="texto-white blockquote text-xs-center">
