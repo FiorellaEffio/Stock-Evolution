@@ -36,6 +36,7 @@
               <v-btn v-on:click="userSignIn" color="primary" type="submit">Sign In</v-btn>
               <br>
               <v-btn @click="userSignInGoogle()" color="red" type="submit">Google</v-btn>
+              <v-btn @click="signFacebook()" color="blue" type="submit" >Facebook</v-btn>
             </v-flex>
           </v-layout>
         </form>
@@ -69,6 +70,19 @@ export default {
       }).catch(error => {
         console.log(error.message)
       })
+    },
+    signFacebook() {// eslint-disable-next-line
+      const provider = new firebase.auth.FacebookAuthProvider()
+      provider.addScope('public_profile')
+      firebase.auth().signInWithPopup(provider)
+        .then(result => {
+          // falta guardar los datos
+          console.log('connection saccefull!!')
+          this.$router.push('/home')
+        })
+        .catch(error => {
+          alert(error.message)
+        })
     }
   },
   computed: {

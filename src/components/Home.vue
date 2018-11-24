@@ -13,4 +13,10 @@
 
 <script>
 /* eslint-disable */
+export default {
+  name: 'home',
+  data() {
+    return {}
+  }
+}
 </script>
