@@ -38,8 +38,7 @@ export default {
     userSignIn () {
       this.$store.dispatch('userSignIn', { email: this.email, password: this.password })
     },
-     userSignInGoogle () {
-
+    userSignInGoogle () {
       const provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(provider).then((result) => {
         this.$router.push('/home')
@@ -48,7 +47,7 @@ export default {
         console.log(error.message)
       })
     },
-    signFacebook() {// eslint-disable-next-line
+    signFacebook () { // eslint-disable-next-line
       const provider = new firebase.auth.FacebookAuthProvider()
       provider.addScope('public_profile')
       firebase.auth().signInWithPopup(provider)

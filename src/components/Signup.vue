@@ -57,58 +57,65 @@
 
 <script>
 /* eslint-disable */
-import firebase from 'firebase'
+import firebase from "firebase";
 
 export default {
-  data () {
+  data() {
     return {
-      email: '',
-      password: '',
-      passwordConfirm: '',
+      email: "",
+      password: "",
+      passwordConfirm: "",
       alert: false
-    }
+    };
   },
   computed: {
-    comparePasswords () {
-      return this.password === this.passwordConfirm ? true : 'Passwords don\'t match'
+    comparePasswords() {
+      return this.password === this.passwordConfirm
+        ? true
+        : "Passwords don't match";
     },
-    error () {
-      return this.$store.state.error
+    error() {
+      return this.$store.state.error;
     },
-    loading () {
-      return this.$store.state.loading
+    loading() {
+      return this.$store.state.loading;
     }
   },
   methods: {
-    userSignUp () {
+    userSignUp() {
       if (this.comparePasswords !== true) {
-        return
+        return;
       }
-      this.$store.dispatch('userSignUp', { email: this.email, password: this.password })
+      this.$store.dispatch("userSignUp", {
+        email: this.email,
+        password: this.password
+      });
     },
-        userSignInGoogle () {
-       
-      const provider = new firebase.auth.GoogleAuthProvider()
-      firebase.auth().signInWithPopup(provider).then((result) => {
-        this.$router.push('/home')
-        console.log(result.user)
-      }).catch(error => {
-        console.log(error.message)
-      })
+    userSignInGoogle() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(result => {
+          this.$router.push("/home");
+          console.log(result.user);
+        })
+        .catch(error => {
+          console.log(error.message);
+        });
     }
-
   },
   watch: {
-    error (value) {
+    error(value) {
       if (value) {
-        this.alert = true
+        this.alert = true;
       }
     },
-    alert (value) {
+    alert(value) {
       if (!value) {
-        this.$store.commit('setError', null)
+        this.$store.commit("setError", null);
       }
     }
   }
-}
+};
 </script>
