@@ -12,5 +12,5 @@
 </template>
 
 <script>
-export default {}
+/* eslint-disable */
 </script>
