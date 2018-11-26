@@ -73,7 +73,8 @@
       background: #f4f0f00a !important;
     }
     .btn-leo{
-      border-radius: .8em
+      border-radius: .8em;
+      width: 215px
     }
     .v-align-items {
       margin-top: 0% !important;

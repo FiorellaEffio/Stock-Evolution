@@ -9,7 +9,7 @@ const routerOptions = [
   { path: '/home', component: 'Home', meta: { requiresAuth: true } },
   { path: '/leo', component: 'Leo', meta: { requiresAuth: true } },
   { path: '/inform', component: 'Inform', meta: { requiresAuth: true } },
-
+  { path: '/economistas', component: 'Economistas', meta: { requiresAuth: true } },
   { path: '*', component: 'NotFound' }
 ]
 

@@ -152,6 +152,7 @@ export default {
 </script>
 <style>
  .btn-inf{
-      border-radius: .8em
+      border-radius: .8em;
+      width: 215px
     }
 </style>
