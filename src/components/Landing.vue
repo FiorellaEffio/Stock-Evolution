@@ -53,18 +53,28 @@ export default {
             }
             firebase.database().ref("usuarios/" + usuario.uid)
             .set(usuario)
+            this.$router.push('/leo')
             console.log(usuario);
           } else {
+            switch (userData.nivel) {
+              case 0:
+                this.$router.push('/leo')
+                break;
+              case 1:
+                this.$router.push('/nivel')
+                break;
+
+              default:
+
+            }
             console.log('ya existia el usuario');
           }
       })
-      },
+    },
     userSignInGoogle () {
       const provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(provider).then((result) => {
         this.writeDatabase(result.user);
-        this.$router.push('/leo')
-        console.log(result.user)
       }).catch(error => {
         console.log(error.message)
       })
@@ -77,8 +87,6 @@ export default {
           // falta guardar los datos
           console.log(result.user)
           this.writeDatabase(result.user);
-          console.log('connection saccefull!!')
-          this.$router.push('/leo')
         })
         .catch(error => {
           alert(error.message)
