@@ -1,5 +1,6 @@
 <template>
 <div>
+  <v-btn @click="userSignOut">Cerrar sesión</v-btn>
   <v-stepper v-if="!inputs" v-model="e1" class="stepper-leo" align-center>
     <v-stepper-header v-show="false" >
       <v-stepper-step v-for="(data, index) in items" :key="index" :complete="e1 > index" :step="index">Name {{index}}</v-stepper-step>
@@ -114,6 +115,14 @@
         if(this.info === true && (index + 1) === dataLeo.datainformacion.length){
           this.$router.push('/sectores')
         }else{}
+      },
+      userSignOut () {
+        firebase.auth().signOut().then(function() {
+          console.log('Signed Out');
+          this.$router.push('/')
+        }, function(error) {
+          console.error('Sign Out Error', error);
+        });
       }
     }
   }
