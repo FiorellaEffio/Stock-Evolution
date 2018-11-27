@@ -77,9 +77,7 @@ export default {
 };
 </script>
 <style>
-template{
-    background-image: url('http://politico.pe/wp-content/uploads/2017/08/1421339349.jpg')
-}
+
 .btnEco {
   width: 125px;
   height: 135px;

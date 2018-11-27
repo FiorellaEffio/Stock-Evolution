@@ -10,6 +10,8 @@ const routerOptions = [
   { path: '/leo', component: 'Leo', meta: { requiresAuth: true } },
   { path: '/inform', component: 'Inform', meta: { requiresAuth: true } },
   { path: '/economistas', component: 'Economistas', meta: { requiresAuth: true } },
+  { path: '/input', component: 'Input', meta: { requiresAuth: true } },
+  { path: '/sectores', component: 'Sectores', meta: { requiresAuth: true } },
   { path: '*', component: 'NotFound' }
 ]
 
