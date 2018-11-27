@@ -61,6 +61,7 @@
 <script>
  /* eslint-disable */
   import dataLeo from '@/plugins/data_leo.js'
+  import firebase from 'firebase'
   export default {
     name:'leo',
     props: ['informacion'],
@@ -98,6 +99,14 @@
     },
     methods: {
       nextNivel(){
+        firebase.auth().onAuthStateChanged((user) => {
+          let userUID = user.uid;
+          let userRef = firebase.database().ref('usuarios/' + userUID);
+          userRef.update({
+              "nickname": this.name,
+              "nivel": 1
+          })
+        })
         this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
       },
       nextStteper(index){
