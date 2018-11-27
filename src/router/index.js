@@ -17,7 +17,7 @@ const routerOptions = [
   { path: '/sectores', name: 'sectores', component: 'Sectores', meta: { requiresAuth: true } },
   { path: '/nivel', name: 'nivel', component: 'nivel', meta: {requiresAuth: true} },
   { path: '/sab', name: 'Sab', component: 'Sab', meta: {requiresAuth: true} },
-
+  { path: '/level_one', name: 'level_one', component: 'level-one', meta: {requiresAuth: true} },
   { path: '*', component: 'NotFound' }
 ]
 

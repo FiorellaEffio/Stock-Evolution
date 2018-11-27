@@ -62,6 +62,7 @@
 <script>
  /* eslint-disable */
   import dataLeo from '@/plugins/data_leo.js'
+  import {EventBus} from '@/plugins/EventBus.js'
   import firebase from 'firebase'
   export default {
     name:'leo',
@@ -108,7 +109,8 @@
               "nivel": 1
           })
         })
-        this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
+        EventBus.$emit('change-state', {state: true})
+        //this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
       },
       nextStteper(index){
         this.e1= index+2
@@ -120,7 +122,6 @@
         firebase.auth().signOut().then(function() {
           console.log('Signed Out');
           this.$router.push('/')
-        }, function(error) {
           console.error('Sign Out Error', error);
         });
       }
