@@ -7,7 +7,7 @@
         </v-btn>
     </div>
         <v-card height="300px" flat class="box-nivel-content-wapper">
-        
+
         <div class="headline text-xs-center pa-5">
            Inicia tu camino a ser un gran tiburon financiero
         </div>
@@ -26,9 +26,9 @@
             <v-icon class="btn-nivel">play_arrow</v-icon>
             </v-btn>
             <v-bottom-sheet v-model="sheet">
-										
+
 					<v-btn
-				
+
             color="teal"
             flat
             value="favorites"
@@ -59,10 +59,12 @@
         </v-bottom-nav>
         </v-card>
     </v-app>
-				
+
     </div>
 </template>
 <script>
+/* eslint-disable */
+
 export default {
 	name: 'nivel',
 	data(){
