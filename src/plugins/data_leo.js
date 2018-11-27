@@ -27,4 +27,26 @@ const datainformacion = [
     message: 'Para nacer en la bolsa de valores debes escoger una SAB'
   }
 ]
+const dataNivel = [
+  {
+    nivel: 1,
+    description: 'Inicia tu camino a ser un tiburon financiero',
+    img: ''
+  },
+  {
+    nivel: 2,
+    description: '!Genial! Ya eres parte de una SAB!',
+    img: ''
+  },
+  {
+    nivel: 3,
+    description: '!Estas a un paso de ser un inversionista!',
+    img: ''
+  },
+  {
+    nivel: 4,
+    description: '!Ya eres un inversionista!',
+    img: ''
+  }
+]
 export default{datajs, datainformacion}
