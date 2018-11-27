@@ -3,15 +3,19 @@ import Router from 'vue-router'
 import firebase from 'firebase'
 
 const routerOptions = [
-  { path: '/', component: 'Landing' },
+  { path: '/',
+    redirect: '/landing'
+  },
+  { path: '/landing', component: 'Landing' },
   { path: '/signin', component: 'Signin' },
   { path: '/signup', component: 'Signup' },
   { path: '/home', component: 'Home', meta: { requiresAuth: true } },
-  { path: '/leo', component: 'Leo', meta: { requiresAuth: true } },
+  { path: '/leo', name: 'leo', component: 'Leo', meta: { requiresAuth: true } },
   { path: '/inform', component: 'Inform', meta: { requiresAuth: true } },
   { path: '/economistas', component: 'Economistas', meta: { requiresAuth: true } },
   { path: '/input', component: 'Input', meta: { requiresAuth: true } },
   { path: '/sectores', component: 'Sectores', meta: { requiresAuth: true } },
+  { path: '/nivel', name: 'nivel', component: 'nivel', meta: {requiresAuth: true} },
   { path: '*', component: 'NotFound' }
 ]
 
@@ -30,13 +34,11 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
   const isAuthenticated = firebase.auth().currentUser
-  if (requiresAuth && !isAuthenticated) {
-    next('/')
-  } else {
-    next()
-  }
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+  if (requiresAuth && !isAuthenticated) next('/')
+  else if (!requiresAuth && isAuthenticated) next('leo')
+  else next()
 })
 
 export default router

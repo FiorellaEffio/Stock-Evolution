@@ -1,5 +1,6 @@
 <template>
-  <v-stepper v-model="e1" class="stepper-leo" align-center>
+<div>
+  <v-stepper v-if="!inputs" v-model="e1" class="stepper-leo" align-center>
     <v-stepper-header v-show="false" >
       <v-stepper-step v-for="(data, index) in items" :key="index" :complete="e1 > index" :step="index">Name {{index}}</v-stepper-step>
     </v-stepper-header>
@@ -36,6 +37,26 @@
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>
+  <v-container v-else class="text-xs-center">
+       
+        <img id="logo" src="http://subirimagen.me/uploads/20181123143029.png">
+        <h2>¿Cómo te gustaria<br> que te llame?</h2>
+        <input type="text" placeholder="Tu nombre" v-model="name" @click="nextName()">/>
+        <img src="http://subirimagen.me/uploads/20181123205930.png" width="200"/>    
+        <v-btn
+        class="btn-input"
+         v-bind:class="{ 'color': stateName	}" 
+          color="griss"
+          dark
+          :disabled="!stateName"
+          @click="nextNivel()"
+        >
+          Comenzar
+        </v-btn>
+  
+  </v-container>
+    
+</div>
 </template>
 <script>
  /* eslint-disable */
@@ -46,11 +67,33 @@
       return {
         e1: 0,
         items: dataLeo.datajs,
-        hea: false
+        hea: false,
+        name: '',
+        stateName: false
       }
     },
     created(){
-      console.log(this.items, dataLeo.datajs)
+      
+    },
+    computed:{
+      inputs: function() {
+        const stepp = this.e1
+        if(stepp >= 4) return true
+        else return false
+      }
+    },
+    methods: {
+      nextName(){
+        if(this.name !== '' && typeof this.name.slice(0,1) !== Number){
+          this.stateName = true
+        }else{
+          this.stateName = false
+        }
+      },
+      nextNivel(){
+        console.log('noe')
+        this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
+      }
     }
   }
 
@@ -79,6 +122,33 @@
     .v-align-items {
       margin-top: 0% !important;
 }
+v-card{
+    background-color: aqua
+}
+input{
+    width: 215px;
+    height: 35px;
+    padding: 1em;
+    border: 3px solid red;
+    border-radius: 8rem;
+    color: #fff;
+    font-weight: 400;
+    text-align: center;
+    outline: none;
+    font-size: 16px;
+    
+}
+ #logo {
+    width: 45%;
+    margin-bottom: 5px;
+  }
+ .btn-input{
+      border-radius: .8em;
+      width: 215px
+ } 
+ .color{
+   background: red !important
+ }
 </style>
 
 

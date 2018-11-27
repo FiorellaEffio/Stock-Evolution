@@ -27,6 +27,7 @@ const unsubscribe = firebase.auth()
       created () {
         if (firebaseUser) {
           store.dispatch('autoSignIn', firebaseUser)
+          console.log(firebaseUser)
         }
       }
     })
