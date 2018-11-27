@@ -1,0 +1,80 @@
+<template>
+    <v-container class="text-xs-center">
+        <div>
+            <h2>Ahora que ya sabes que es <br> una SAB, debes
+            elegir la que más vaya contigo</h2>
+        </div>
+        <br>
+        <div>          
+            <div class="text-xs-center">
+                
+                    <v-btn flat large 
+                            slot="activator"
+
+                    class="btnSab">
+                     <div>
+                         <h4>Credicorp</h4>
+                        <img src="http://subirimagen.me/uploads/20181127144531.png" width="80" height="95">
+                       
+                     </div>
+                 </v-btn>
+            
+                      <v-btn flat large 
+                      class="btnSab"
+                      slot="activator"
+                      >
+                     <div>
+                         <h4>Kallpa</h4>
+                        <img src="http://subirimagen.me/uploads/20181127145204.png" width="80" alt="">
+                     </div>
+                 </v-btn>
+            
+            </div>              
+              <div class="text-xs-center">
+                    <v-btn flat large 
+                            slot="activator"
+
+                    class="btnSab">
+                     <div>
+                         <h4>Magot</h4>
+                        <img src="http://subirimagen.me/uploads/20181127150026.png" width="65">                
+                     </div>
+                 </v-btn>
+                      <v-btn flat large 
+                      class="btnSab"
+                      slot="activator"
+                      >
+                     <div>
+                         <h4>BTG Pactual</h4>
+                        <img src="http://subirimagen.me/uploads/20181127150838.png" width="80" alt="">
+                     </div>
+                 </v-btn>
+            </div> 
+           
+        </div>
+         <v-btn
+        class="btn-sab"
+          color="red"
+          dark
+        
+        >
+          Continue
+        </v-btn>
+    </v-container>
+</template>
+
+
+<style>
+
+.btnSab {
+  width: 135px;
+  height: 140px;
+  border: 3px solid #1B2A6F;
+ border-radius: 10px
+
+}
+.btn-sab{
+      width: 215px;
+      border-radius: 8rem
+    }
+</style>
