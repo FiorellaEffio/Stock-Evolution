@@ -63,7 +63,7 @@ export default {
       const provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(provider).then((result) => {
         this.writeDatabase(result.user);
-        this.$router.push('/home')
+        this.$router.push('/leo')
         console.log(result.user)
       }).catch(error => {
         console.log(error.message)
@@ -78,7 +78,7 @@ export default {
           console.log(result.user)
           this.writeDatabase(result.user);
           console.log('connection saccefull!!')
-          this.$router.push('/home')
+          this.$router.push('/leo')
         })
         .catch(error => {
           alert(error.message)
