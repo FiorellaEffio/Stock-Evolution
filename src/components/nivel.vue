@@ -63,13 +63,9 @@
     </div>
 </template>
 <script>
-<<<<<<< HEAD
 /* eslint-disable */ 
 import dataLeo from '@/plugins/data_leo.js'
-=======
-/* eslint-disable */
 
->>>>>>> a4bb68d14f725fcb3cb9283b46e64599402a5029
 export default {
 	name: 'nivel',
 	data(){
