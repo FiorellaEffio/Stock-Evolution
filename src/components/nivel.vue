@@ -21,6 +21,7 @@
             color="teal"
             flat
             value="recent"
+						@click="playGame()"
             >
             <v-icon class="btn-nivel">play_arrow</v-icon>
             </v-btn>
@@ -75,6 +76,11 @@ export default {
         { img: 'messenger.png', title: 'Messenger' },
         { img: 'google.png', title: 'Google+' }
       ]
+		}
+	},
+	methods:{
+		playGame(){
+			this.$router.push({ name: 'leo', params: { dataInformation: true }})
 		}
 	}
 }

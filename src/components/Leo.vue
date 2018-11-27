@@ -16,7 +16,7 @@
       column
       justify-center
     >
-      <h3 class="font-weight-thin mb-4">{{data.message}}</h3>
+      <h3 class="font-weight-thin mb-4"><span>{{name}}</span>{{data.message}}</h3>
     </v-layout>
   </v-parallax>  
         <v-card
@@ -30,7 +30,7 @@
         class="btn-leo"
           color="red"
           dark
-          @click="e1 = index+2"
+          @click="nextStteper(index)"
         >
           Continue
         </v-btn>
@@ -63,22 +63,30 @@
   import dataLeo from '@/plugins/data_leo.js'
   export default {
     name:'leo',
+    props: ['informacion'],
     data () {
       return {
         e1: 0,
-        items: dataLeo.datajs,
+        info: this.$route.params.dataInformation,
         hea: false,
         name: '',
         stateName: false
       }
     },
     created(){
-      
     },
     computed:{
+      items: function(){
+        if(this.info === true){
+          return dataLeo.datainformacion
+        }
+        else{
+          return dataLeo.datajs
+        }
+      },
       inputs: function() {
         const stepp = this.e1
-        if(stepp >= 4) return true
+        if(stepp >= this.items.length + 1 && this.info !== true) return true
         else return false
       }
     },
@@ -91,8 +99,13 @@
         }
       },
       nextNivel(){
-        console.log('noe')
         this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
+      },
+      nextStteper(index){
+        this.e1= index+2
+        if(this.info === true && (index + 1) === dataLeo.datainformacion.length){
+          this.$router.push('/sectores')
+        }else{}
       }
     }
   }

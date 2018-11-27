@@ -14,7 +14,7 @@ const routerOptions = [
   { path: '/inform', component: 'Inform', meta: { requiresAuth: true } },
   { path: '/economistas', component: 'Economistas', meta: { requiresAuth: true } },
   { path: '/input', component: 'Input', meta: { requiresAuth: true } },
-  { path: '/sectores', component: 'Sectores', meta: { requiresAuth: true } },
+  { path: '/sectores', name: 'sectores', component: 'Sectores', meta: { requiresAuth: true } },
   { path: '/nivel', name: 'nivel', component: 'nivel', meta: {requiresAuth: true} },
   { path: '*', component: 'NotFound' }
 ]
