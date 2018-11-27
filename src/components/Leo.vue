@@ -5,11 +5,11 @@
       <v-stepper-step v-for="(data, index) in items" :key="index" :complete="e1 > index" :step="index">Name {{index}}</v-stepper-step>
     </v-stepper-header>
     <v-stepper-items >
-      <v-stepper-content v-for="(data, index) in items" :key="index" :step="index+1" class="text-xs-center">       
+      <v-stepper-content v-for="(data, index) in items" :key="index" :step="index+1" class="text-xs-center">
     <v-parallax
     dark
     src="http://subirimagen.me/uploads/20181123205100.png"
-    height="265"  
+    height="265"
   >
     <v-layout
       align-center
@@ -18,13 +18,13 @@
     >
       <h3 class="font-weight-thin mb-4"><span>{{name}}</span>{{data.message}}</h3>
     </v-layout>
-  </v-parallax>  
+  </v-parallax>
         <v-card
           class="mb-3"
           color="light"
           height="280px"
           :img='data.src'
-        >           
+        >
         </v-card>
         <v-btn
         class="btn-leo"
@@ -38,14 +38,14 @@
     </v-stepper-items>
   </v-stepper>
   <v-container v-else class="text-xs-center">
-       
+
         <img id="logo" src="http://subirimagen.me/uploads/20181123143029.png">
         <h2>¿Cómo te gustaria<br> que te llame?</h2>
-        <input type="text" placeholder="Tu nombre" v-model="name" @click="nextName()">/>
-        <img src="http://subirimagen.me/uploads/20181123205930.png" width="200"/>    
+        <input type="text" placeholder="Tu nombre" v-model="name">/>
+        <img src="http://subirimagen.me/uploads/20181123205930.png" width="200"/>
         <v-btn
         class="btn-input"
-         v-bind:class="{ 'color': stateName	}" 
+         v-bind:class="{ 'color': stateName	}"
           color="griss"
           dark
           :disabled="!stateName"
@@ -53,14 +53,15 @@
         >
           Comenzar
         </v-btn>
-  
+
   </v-container>
-    
+
 </div>
 </template>
 <script>
  /* eslint-disable */
   import dataLeo from '@/plugins/data_leo.js'
+  import firebase from 'firebase'
   export default {
     name:'leo',
     props: ['informacion'],
@@ -70,12 +71,18 @@
         info: this.$route.params.dataInformation,
         hea: false,
         name: '',
-        stateName: false
       }
     },
     created(){
     },
     computed:{
+      stateName: function () {
+        if(this.name !== '' && typeof this.name.slice(0,1) !== Number){
+          return true;
+        }else{
+          return false;
+        }
+      },
       items: function(){
         if(this.info === true){
           return dataLeo.datainformacion
@@ -91,14 +98,15 @@
       }
     },
     methods: {
-      nextName(){
-        if(this.name !== '' && typeof this.name.slice(0,1) !== Number){
-          this.stateName = true
-        }else{
-          this.stateName = false
-        }
-      },
       nextNivel(){
+        firebase.auth().onAuthStateChanged((user) => {
+          let userUID = user.uid;
+          let userRef = firebase.database().ref('usuarios/' + userUID);
+          userRef.update({
+              "nickname": this.name,
+              "nivel": 1
+          })
+        })
         this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
       },
       nextStteper(index){
@@ -116,14 +124,14 @@
         width: 100%;
         background-color: pink;
         height: 200px;
-        
+
     } */
-   
+
     h3{
         color:black;
         text-align: center;
         padding: 10px 10px;
-    
+
     }
     .stepper-leo{
       background: #f4f0f00a !important;
@@ -149,7 +157,7 @@ input{
     text-align: center;
     outline: none;
     font-size: 16px;
-    
+
 }
  #logo {
     width: 45%;
@@ -158,10 +166,8 @@ input{
  .btn-input{
       border-radius: .8em;
       width: 215px
- } 
+ }
  .color{
    background: red !important
  }
 </style>
-
-

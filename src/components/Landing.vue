@@ -27,7 +27,7 @@
 </template>
 
 <script>
-/* eslint-disable */ 
+/* eslint-disable */
 import firebase from 'firebase'
 export default {
   data () {
@@ -39,10 +39,31 @@ export default {
     userSignIn () {
       this.$store.dispatch('userSignIn', { email: this.email, password: this.password })
     },
+    writeDatabase (user) {
+      //muestrame si existe el usuario
+      let profile = firebase.database().ref().child('usuarios/' + user.uid);
+      profile.on('value', snap => {
+          let userData = JSON.stringify(snap.val(),null,3);//tbm funciona un solo parametro
+          userData = JSON.parse(userData);
+          if(userData == null) {
+            var usuario = {
+                uid : user.uid,
+                monto: 5000,
+                nivel: 0
+            }
+            firebase.database().ref("usuarios/" + usuario.uid)
+            .set(usuario)
+            console.log(usuario);
+          } else {
+            console.log('ya existia el usuario');
+          }
+      })
+      },
     userSignInGoogle () {
       const provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(provider).then((result) => {
-        this.$router.push('/home')
+        this.writeDatabase(result.user);
+        this.$router.push('/leo')
         console.log(result.user)
       }).catch(error => {
         console.log(error.message)
@@ -54,8 +75,10 @@ export default {
       firebase.auth().signInWithPopup(provider)
         .then(result => {
           // falta guardar los datos
+          console.log(result.user)
+          this.writeDatabase(result.user);
           console.log('connection saccefull!!')
-          this.$router.push('/home')
+          this.$router.push('/leo')
         })
         .catch(error => {
           alert(error.message)
