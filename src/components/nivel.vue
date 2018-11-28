@@ -3,13 +3,13 @@
     <v-app id="inspire" class="box-nivel-content">
         <div class="text-xs-center">
         <v-btn fab dark large color="yellow" class="btn-nivel-number">
-        1
+        {{level}}
         </v-btn>
     </div>
         <v-card height="300px" flat class="box-nivel-content-wapper">
 
         <div class="headline text-xs-center pa-5">
-           Inicia tu camino a ser un gran tiburon financiero
+           {{description}}
         </div>
         <v-bottom-nav
             :active.sync="bottomNav"
@@ -68,23 +68,48 @@ import dataLeo from '@/plugins/data_leo.js'
 
 export default {
 	name: 'nivel',
+	props: ['levels'],
 	data(){
 		return {
-			 bottomNav: 'recent',
-			 sheet: false,
-			 item: this.$route.params.level,
-				tiles: [
-					{ img: 'keep.png', title: 'Keep' },
-					{ img: 'inbox.png', title: 'Inbox' },
-					{ img: 'hangouts.png', title: 'Hangouts' },
-					{ img: 'messenger.png', title: 'Messenger' },
-					{ img: 'google.png', title: 'Google+' }
-				]
+			bottomNav: 'recent',
+			sheet: false,
+			item: this.$route.params.level,
+			tiles: [
+				{ img: 'keep.png', title: 'Keep' },
+				{ img: 'inbox.png', title: 'Inbox' },
+				{ img: 'hangouts.png', title: 'Hangouts' },
+				{ img: 'messenger.png', title: 'Messenger' },
+				{ img: 'google.png', title: 'Google+' }
+			],
+			level: 0,
+			description: '',
+			img: ''
 		}
 	},
-	methods:{
+	created(){
+		const data = dataLeo.dataNivel
+		console.log(dataLeo.dataNivel, data, typeof this.levels)
+		data.forEach(element => {
+			console.log(element.nivel, this.levels);
+			
+			if(element.nivel === this.levels){
+				this.level = this.levels
+				this.description = element.description
+				this.img = element.img
+			}
+		});
+	},
+	methods: {
 		playGame(){
-			this.$router.push({ name: 'leo', params: { dataInformation: true }})
+			if(this.levels === 1){
+				this.$router.push('/level_one')
+			}
+			else{
+				this.levels + 1 === this.levels
+				this.$router.push('/level_two')
+			}
+
+			
 		}
 	}
 }
