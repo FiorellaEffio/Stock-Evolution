@@ -66,7 +66,7 @@
   import firebase from 'firebase'
   export default {
     name:'leo',
-    props: ['information'],
+    props: ['informacion'],
     data () {
       return {
         e1: 0,
@@ -86,7 +86,7 @@
         }
       },
       items: function(){
-        if(this.information === true){
+        if(this.info === true){
           return dataLeo.datainformacion
         }
         else{
@@ -95,31 +95,27 @@
       },
       inputs: function() {
         const stepp = this.e1
-        if(stepp >= this.items.length + 1 && this.information !== true) return true
+        if(stepp >= this.items.length + 1 && this.info !== true) return true
         else return false
       }
     },
     methods: {
       nextNivel(){
-          firebase.auth().onAuthStateChanged((user) => {
-            let userUID = user.uid;
-            let userRef = firebase.database().ref('usuarios/' + userUID);
-            userRef.update({
-                "nickname": this.name,
-                "nivel": 1
-            })
+        firebase.auth().onAuthStateChanged((user) => {
+          let userUID = user.uid;
+          let userRef = firebase.database().ref('usuarios/' + userUID);
+          userRef.update({
+              "nickname": this.name,
+              "nivel": 1
           })
-          EventBus.$emit('change-state', {state: true})
-          //this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
-        
+        })
+        EventBus.$emit('change-state', {state: true})
+        //this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
       },
       nextStteper(index){
         this.e1= index+2
-        if(this.information === true && (index + 1) === dataLeo.datainformacion.length){
-          /* this.$router.push('/sectores') */
-          console.log('sab')
-          EventBus.$emit('change-sab', {state: true})
-                   
+        if(this.info === true && (index + 1) === dataLeo.datainformacion.length){
+          this.$router.push('/sectores')
         }else{}
       },
       userSignOut () {
@@ -129,9 +125,7 @@
           console.error('Sign Out Error', error);
         });
       }
-    },
-    destroyed() {
-    },
+    }
   }
 
 </script>

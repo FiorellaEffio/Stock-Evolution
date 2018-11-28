@@ -53,39 +53,16 @@
            
         </div>
          <v-btn
-          class="btn-sab"
+        class="btn-sab"
           color="red"
           dark
-          @click="nextLeveltwo()"
+        
         >
           Continue
         </v-btn>
     </v-container>
 </template>
-<script>
-import firebase from 'firebase'
-import {EventBus} from '@/plugins/EventBus.js'
-export default {
-    name: 'sab',
-    data(){
-        return{
 
-        }
-    },
-    methods: {
-        nextLeveltwo(){
-            firebase.auth().onAuthStateChanged((user) => {
-            let userUID = user.uid;
-            let userRef = firebase.database().ref('usuarios/' + userUID);
-            userRef.update({
-                "nivel": 2
-                })
-            })
-            EventBus.$emit('change-state-sab', {state: false})
-        }
-    }
-}
-</script>
 
 <style>
 
@@ -97,7 +74,7 @@ export default {
 
 }
 .btn-sab{
-    width: 215px;
-    border-radius: 8rem
+      width: 215px;
+      border-radius: 8rem
     }
 </style>

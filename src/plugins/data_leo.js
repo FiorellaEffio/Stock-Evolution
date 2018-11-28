@@ -49,4 +49,4 @@ const dataNivel = [
     img: ''
   }
 ]
-export default{datajs, datainformacion, dataNivel}
+export default{datajs, datainformacion}

@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import firebase from 'firebase'
+import HelloWorld from '@/components/HelloWorld'
+
 
 const routerOptions = [
   { path: '/',
@@ -17,9 +19,7 @@ const routerOptions = [
   { path: '/sectores', name: 'sectores', component: 'Sectores', meta: { requiresAuth: true } },
   { path: '/nivel', name: 'nivel', component: 'nivel', meta: {requiresAuth: true} },
   { path: '/sab', name: 'Sab', component: 'Sab', meta: {requiresAuth: true} },
-  { path: '/level_zero', name: 'leve_zero', component: 'level-zero', meta: {requiresAuth: true} },
   { path: '/level_one', name: 'level_one', component: 'level-one', meta: {requiresAuth: true} },
-  { path: '/level_two', name: 'level_two', component: 'level-two', meta: {requiresAuth: true} },
   { path: '*', component: 'NotFound' }
 ]
 
@@ -46,3 +46,12 @@ router.beforeEach((to, from, next) => {
 })
 
 export default router
+// export default new Router({
+//   routes: [
+//     {
+//       path: '/',
+//       name: 'HelloWorld',
+//       component: HelloWorld
+//     }
+//   ]
+// })
