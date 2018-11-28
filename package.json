@@ -1,21 +1,18 @@
 {
-  "name": "stock-evolution-pwa",
+  "name": "stock-bvl",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "fiorellaeffio <fiorella.effio@unmsm.edu.pe>",
+  "author": "noelyGitHub <noely.alis209@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "dev": "node build/dev-server.js",
+    "start": "node build/dev-server.js",
     "build": "node build/build.js"
   },
   "dependencies": {
-    "@firebase/app": "^0.3.4",
-    "@firebase/app-types": "^0.3.2",
     "ajv": "^6.5.4",
     "firebase": "^5.5.9",
     "vue": "^2.5.2",
-    "vue-fire": "^0.1.0",
     "vue-router": "^3.0.1",
     "vuetify": "^1.0.0",
     "vuex": "^3.0.1"
@@ -59,7 +56,7 @@
     "uglify-es": "^3.1.3"
   },
   "engines": {
-    "node": ">= 6.0.0",
+    "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
   },
   "browserslist": [

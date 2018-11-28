@@ -1,44 +1,47 @@
 <template>
- <!-- leo y nivel -->
- <div>
-    <leo-component v-if="stateOne">{{state}}}</leo-component>
-    <nivel v-else></nivel>
+  <div>
+    <div v-if="!stateSab">
+      <leo-component v-if="stateOne" :information="true"></leo-component>
+      <nivel-component v-else :levels = '2'></nivel-component>
+    </div>
+    <sab-component v-else></sab-component>    
     <router-view/>
- </div>
-
+  </div>
 </template>
-
 <script>
-/* eslint-disable */
-import {EventBus} from '@/plugins/EventBus.js'
+/* eslint-disable */ 
 import leo from '@/components/Leo'
 import nivel from '@/components/nivel'
-import firebase from 'firebase'
+import sab from '@/components/Sab'
+import {EventBus} from '@/plugins/EventBus.js'
 export default {
-  name: 'level_one',
-  data () {
-    return {
-      alert: false,
-      stateOne: true,
-    }
-  },
-  computed: {
-    state: function () {
-      EventBus.$on('change-state', (value)=>{
-        console.log(value.state)
-        this.stateOne = false;
-        return true;
+    name: 'levelOne',
+    data(){
+        return {
+            stateOne: true,
+            stateSab: false
+        }
+    },
+    created(){
+      EventBus.$on('change-sab', (value)=>{        
+        this.stateSab = true;
+        console.log('llego')
       })
+      EventBus.$on('change-state-sab', (value)=>{        
+        this.stateSab =false;
+        this.stateOne = false
+        console.log('llego sab')
+      })
+    }, 
+  computed: {
+    stae: function () {
+      
     }
   },
   components:{
-      'leo-component': leo,
-      nivel
+    'leo-component': leo,
+    'nivel-component': nivel,
+    'sab-component': sab
     }
-  
 }
 </script>
-
-<style media="screen">
-
-</style>

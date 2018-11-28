@@ -2,14 +2,13 @@
   <v-app>
     <v-content id="back">
       <router-view class="v-align-items"></router-view>
+
     </v-content>
   </v-app>
 </template>
 
 <script>
-
   export default {
-    name: 'App',
     data () {
       return {
         sidebar: false
@@ -54,7 +53,7 @@
     border-radius: 75px 0 0 0 ;
     margin-left: 60%;
     margin-top: 38%;
-
+    
   }
   .v-align-items {
     margin-top: 10%;

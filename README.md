@@ -1,4 +1,4 @@
-# stock-evolution-pwa
+# stock-bvl
 
 > A Vue.js project
 
