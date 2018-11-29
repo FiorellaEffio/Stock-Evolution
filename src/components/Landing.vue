@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid id="back">
     <v-layout row wrap>
       <v-flex xs12 text-xs-center mt-5>
         <img id="logo" src="http://subirimagen.me/uploads/20181123143029.png" alt="">
@@ -129,7 +129,6 @@ export default {
   body {
     background-color: #F4F4F4;
   }
-
   html {
     box-sizing: border-box;
   }
@@ -253,4 +252,27 @@ export default {
   :focus {
   	outline: none;
   }
+
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+    #back {
+      width: 100vh;
+      background-image: url('http://subirimagen.me/uploads/20181123142846.png');
+    }
+    #bvl-logo {
+      background-color: white;
+      border-radius: 75px 0 0 0 ;
+      margin-left: 60%;
+      margin-top: 38%;
+
+    }
+
+    #bvl-png {
+      width: 110px;
+      margin-left: 10%;
+      padding-right: 15%;
+      padding-left: 10%;
+      padding-top: 10%;
+      padding-bottom: 10%;
+    }
 </style>

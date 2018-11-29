@@ -1,6 +1,6 @@
 <template>
  <!-- leo y nivel -->
- <div>
+ <div id="back">
     <leo-component v-if="stateOne">{{state}}}</leo-component>
     <nivel v-else :levels = '1'></nivel>
     <router-view/>
@@ -27,7 +27,7 @@ export default {
       EventBus.$on('change-state', value => {
         this.stateOne = false;
         return true;
-      })/* 
+      })/*
       EventBus.$off('change-state'); */
     }
   },
@@ -35,10 +35,12 @@ export default {
       'leo-component': leo,
       nivel
     }
-  
+
 }
 </script>
 
-<style media="screen">
-
+<style media="screen" scoped>
+#back {
+  background-image: url('http://subirimagen.me/uploads/20181129092953.png');
+}
 </style>

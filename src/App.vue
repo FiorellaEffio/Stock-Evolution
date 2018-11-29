@@ -1,8 +1,7 @@
 <template>
   <v-app>
-    <v-content id="back">
+    <v-content>
       <router-view class="v-align-items"></router-view>
-
     </v-content>
   </v-app>
 </template>
@@ -41,29 +40,10 @@
     }
   }
 </script>
-<style media="screen">
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+<style media="screen" scoped>
 
-  #back {
-    width: 100vh;
-    background-image: url('http://subirimagen.me/uploads/20181123142846.png');
-  }
-  #bvl-logo {
-    background-color: white;
-    border-radius: 75px 0 0 0 ;
-    margin-left: 60%;
-    margin-top: 38%;
-    
-  }
   .v-align-items {
     margin-top: 10%;
   }
-  #bvl-png {
-    width: 110px;
-    margin-left: 10%;
-    padding-right: 15%;
-    padding-left: 10%;
-    padding-top: 10%;
-    padding-bottom: 10%;
-  }
+
 </style>
