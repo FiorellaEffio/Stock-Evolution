@@ -82,4 +82,4 @@ const dataNivel = [
     img: ''
   }
 ]
-export default{datajs, datainformacion, dataNivel, dataLeveltwo_1}
+export default{datajs, datainformacion, dataNivel, dataLeveltwo_1,dataLeveltwo_2, dataLeveltwo_3, dataLeveltwo_4, dataLeveltwo_5}

@@ -133,6 +133,7 @@
         class="btn-inf"
           color="red"
           dark
+          @click="nextLevelTwo()"
         >
           ENTENDIDO
         </v-btn>
@@ -141,10 +142,20 @@
 
 <script>
 /* eslint-disable */
-
+import {EventBus} from '@/plugins/EventBus.js'
 export default {
   name: "Inform",
-  dialog: false
+  data(){
+    return {
+      dialog: false
+    }
+  },
+  methods: {
+    nextLevelTwo(){
+      EventBus.$emit('change-leoTwo_3', true)
+    }
+  }
+
 
 };
 

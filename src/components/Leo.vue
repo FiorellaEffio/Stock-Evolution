@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="bae">
   <v-btn @click="userSignOut">Cerrar sesión</v-btn>
   <v-stepper v-if="!inputs" v-model="e1" class="stepper-leo" align-center>
     <v-stepper-header v-show="false" >
@@ -74,7 +74,6 @@
       }
     },
     created(){
-      console.log(this.information)
     },
     computed:{
       stateName: function () {
@@ -85,11 +84,40 @@
         }
       },
       items: function(){
+/*         console.log(this.information)
+        const nameLevel = this.information.slice(5, this.information.indexOf('_'))
+        const numberLevel = this.information.slice(this.information.length-1)
+        console.log(numberLevel, nameLevel)
+        switch (nameLevel) {
+        case 'On':
+          return dataLeo.datainformacion
+          break;
+        case 'Two':
+          const name = `dataLeveltwo_${numberLevel}` 
+          console.log(name)   
+          return dataLeo.dataLeveltwo_`${numberLevel}`
+          break;
+        default: return dataLeo.datajs
+
+      } */
+      
         if(this.information === 'levelOne'){
           return dataLeo.datainformacion
         }
-        if(this.information === 'levelTwo'){
+        if(this.information === 'levelTwo_1'){
            return dataLeo.dataLeveltwo_1
+        }
+        if(this.information === 'levelTwo_2'){
+           return dataLeo.dataLeveltwo_2
+        }
+        if(this.information === 'levelTwo_3'){
+           return dataLeo.dataLeveltwo_3
+        }
+        if(this.information === 'levelTwo_4'){
+           return dataLeo.dataLeveltwo_4
+        }
+        if(this.information === 'levelTwo_5'){
+           return dataLeo.dataLeveltwo_5
         }
         else{
           return dataLeo.datajs
@@ -98,7 +126,7 @@
       inputs: function() {
         const stepp = this.e1
         if(stepp >= this.items.length + 1 && this.information === undefined) return true
-        if(this.information === 'levelTwo')return false
+        else return false
       }
     },
     methods: {
@@ -108,21 +136,34 @@
             let userRef = firebase.database().ref('usuarios/' + userUID);
             userRef.update({
                 "nickname": this.name,
-                "nivel": 1
             })
           })
           EventBus.$emit('change-state', {state: true})
           //this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
-        
       },
       nextStteper(index){
         this.e1= index+2
         if(this.information === 'levelOne' && (index + 1) === dataLeo.datainformacion.length){
           EventBus.$emit('change-sab', {state: true})
         }
-        if(this.information === 'levelTwo'){
+        if(this.information === 'levelTwo_1'){
           EventBus.$emit('change-question', {state: true})
-        }else{}
+        }
+        if(this.information === 'levelTwo_2' && (index + 1) === dataLeo.dataLeveltwo_2.length ){
+          EventBus.$emit('change-inform', false)
+        }
+        if(this.information === 'levelTwo_3' ){
+          EventBus.$emit('change-economista', false)
+        }
+        if(this.information === 'levelTwo_4' ){
+          EventBus.$emit('change-sectores', false)
+        }
+        if(this.information === 'levelTwo_5' ){
+          EventBus.$emit('change-nivel', true)
+        }
+        else{
+          console.log('no cumle la condicion')
+        }
       },
       userSignOut () {
         firebase.auth().signOut().then(function() {
@@ -187,5 +228,9 @@ input{
  }
  .color{
    background: red !important
+ }
+ #bae {
+   background-color: #92B0FF;
+   /* background-image: url('http://subirimagen.me/uploads/20181129092953.png'); */
  }
 </style>
