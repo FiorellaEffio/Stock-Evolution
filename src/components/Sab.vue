@@ -7,17 +7,15 @@
         <br>
         <div>
             <div class="text-xs-center">
-                    <v-btn flat large
+                <v-btn flat large @click="changeSab('Credicorp')"
                             slot="activator"
                     class="btnSab">
                      <div>
                          <h4>Credicorp</h4>
                         <img src="http://subirimagen.me/uploads/20181127144531.png" width="80" height="95">
-
                      </div>
                  </v-btn>
-
-                      <v-btn flat large
+                 <v-btn flat large @click="changeSab('Kallpa')"
                       class="btnSab"
                       slot="activator"
                       >
@@ -26,10 +24,9 @@
                         <img src="http://subirimagen.me/uploads/20181127145204.png" width="80" alt="">
                      </div>
                  </v-btn>
-
             </div>
               <div class="text-xs-center">
-                    <v-btn flat large
+                    <v-btn flat large @click="changeSab('Magot')"
                             slot="activator"
 
                     class="btnSab">
@@ -38,7 +35,7 @@
                         <img src="http://subirimagen.me/uploads/20181127150026.png" width="65">
                      </div>
                  </v-btn>
-                      <v-btn flat large
+                      <v-btn flat large @click="changeSab('BTG Pactual')"
                       class="btnSab"
                       slot="activator"
                       >
@@ -48,7 +45,6 @@
                      </div>
                  </v-btn>
             </div>
-
         </div>
          <v-btn
           class="btn-sab"
@@ -67,7 +63,7 @@ export default {
     name: 'sab',
     data(){
         return{
-
+          sabName: '',
         }
     },
     methods: {
@@ -76,10 +72,14 @@ export default {
             let userUID = user.uid;
             let userRef = firebase.database().ref('usuarios/' + userUID);
             userRef.update({
-                "nivel": 2
+                "sab": this.sabName
                 })
             })
             EventBus.$emit('change-state-sab', {state: false})
+        },
+        changeSab(sabName) {
+          this.sabName = sabName;
+          console.log(this.sabName)
         }
     }
 }
