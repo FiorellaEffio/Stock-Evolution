@@ -3,15 +3,7 @@
   <div>
 
     <div v-if="!stateSab">
-<<<<<<< HEAD
       <leo-component v-if="stateOne" information="levelOne"></leo-component>
-=======
-   
-               <Nav-component></Nav-component>
-
-             <leo-component v-if="stateOne" :information="true">
-             </leo-component>
->>>>>>> b39dd777df3132a9d2c74b3cd1e5a7ee8e087895
       <nivel-component v-else :levels = '2'></nivel-component>
  
   
