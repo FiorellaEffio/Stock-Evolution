@@ -87,10 +87,8 @@ export default {
 	},
 	created(){
 		const data = dataLeo.dataNivel
-		console.log(dataLeo.dataNivel, data, typeof this.levels)
 		data.forEach(element => {
 			console.log(element.nivel, this.levels);
-
 			if(element.nivel === this.levels){
 				this.level = this.levels
 				this.description = element.description

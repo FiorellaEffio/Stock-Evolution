@@ -6,26 +6,19 @@
     </v-stepper-header>
     <v-stepper-items >
       <v-stepper-content v-for="(data, index) in items" :key="index" :step="index+1" class="text-xs-center">
-    <v-parallax
-    dark
-    src="http://subirimagen.me/uploads/20181123205100.png"
-    height="265"
-  >
-    <v-layout
-      align-center
+        <img src="http://subirimagen.me/uploads/20181123143029.png" width="40%">
+
+   <div class="divNube">
+    <div
       column
       justify-center
+      class="textNube"
     >
-      <h3 class="font-weight-thin mb-4"><span>{{name}}</span>{{data.message}}</h3>
-    </v-layout>
-  </v-parallax>
-        <v-card
-          class="mb-3"
-          color="light"
-          height="280px"
-          :img='data.src'
-        >
-        </v-card>
+      <h2 class="font-weight-thin "><span>{{name}}</span>{{data.message}}</h2>
+    </div>
+  
+   </div>
+        <img :src='data.src' @click="nextStteper(index)" height="250px"/>
         <v-btn
         class="btn-leo"
           color="red"
@@ -41,7 +34,7 @@
 
         <img id="logo" src="http://subirimagen.me/uploads/20181123143029.png">
         <h2>¿Cómo te gustaria<br> que te llame?</h2>
-        <input type="text" placeholder="Tu nombre" v-model="name">/>
+        <input type="text" placeholder="Tu nombre" v-model="name">/
         <img src="http://subirimagen.me/uploads/20181123205930.png" width="200"/>
         <v-btn
         class="btn-input"
@@ -69,8 +62,6 @@
     data () {
       return {
         e1: 0,
-        info: this.$route.params.dataInformation,
-        hea: false,
         name: '',
       }
     },
@@ -85,8 +76,40 @@
         }
       },
       items: function(){
-        if(this.information === true){
+/*         console.log(this.information)
+        const nameLevel = this.information.slice(5, this.information.indexOf('_'))
+        const numberLevel = this.information.slice(this.information.length-1)
+        console.log(numberLevel, nameLevel)
+        switch (nameLevel) {
+        case 'On':
           return dataLeo.datainformacion
+          break;
+        case 'Two':
+          const name = `dataLeveltwo_${numberLevel}` 
+          console.log(name)   
+          return dataLeo.dataLeveltwo_`${numberLevel}`
+          break;
+        default: return dataLeo.datajs
+
+      } */
+      
+        if(this.information === 'levelOne'){
+          return dataLeo.datainformacion
+        }
+        if(this.information === 'levelTwo_1'){
+           return dataLeo.dataLeveltwo_1
+        }
+        if(this.information === 'levelTwo_2'){
+           return dataLeo.dataLeveltwo_2
+        }
+        if(this.information === 'levelTwo_3'){
+           return dataLeo.dataLeveltwo_3
+        }
+        if(this.information === 'levelTwo_4'){
+           return dataLeo.dataLeveltwo_4
+        }
+        if(this.information === 'levelTwo_5'){
+           return dataLeo.dataLeveltwo_5
         }
         else{
           return dataLeo.datajs
@@ -94,7 +117,7 @@
       },
       inputs: function() {
         const stepp = this.e1
-        if(stepp >= this.items.length + 1 && this.information !== true) return true
+        if(stepp >= this.items.length + 1 && this.information === undefined) return true
         else return false
       }
     },
@@ -105,11 +128,27 @@
       },
       nextStteper(index){
         this.e1= index+2
-        if(this.information === true && (index + 1) === dataLeo.datainformacion.length){
-          /* this.$router.push('/sectores') */
-          console.log('sab')
+        if(this.information === 'levelOne' && (index + 1) === dataLeo.datainformacion.length){
           EventBus.$emit('change-sab', {state: true})
-        }else{}
+        }
+        if(this.information === 'levelTwo_1'){
+          EventBus.$emit('change-question', {state: true})
+        }
+        if(this.information === 'levelTwo_2' && (index + 1) === dataLeo.dataLeveltwo_2.length ){
+          EventBus.$emit('change-inform', false)
+        }
+        if(this.information === 'levelTwo_3' ){
+          EventBus.$emit('change-economista', false)
+        }
+        if(this.information === 'levelTwo_4' ){
+          EventBus.$emit('change-sectores', false)
+        }
+        if(this.information === 'levelTwo_5' ){
+          EventBus.$emit('change-nivel', true)
+        }
+        else{
+          console.log('no cumle la condicion')
+        }
       },
 
     },
@@ -125,11 +164,30 @@
         height: 200px;
 
     } */
+.font-weight-thin {
+  color: palevioletred;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  margin-top: -15px
+}   
+.divNube{
+  background-image: url("http://subirimagen.me/uploads/20181123205100.png");
+  background-size: 100% ;
+  height: 228px;
+  width: 290px;
+    display: table-cell;
+    vertical-align: middle;
+  justify-content: flex-start;
+      text-align: center;
 
-    h3{
+}
+    h2{
         color:black;
         text-align: center;
-        padding: 10px 10px;
+        padding: 20px 20px ;
+        margin-left: 20px;
+        margin-right: 20px
 
     }
     .stepper-leo{
@@ -137,7 +195,8 @@
     }
     .btn-leo{
       border-radius: .8em;
-      width: 215px
+      width: 225px;
+      height: 40px;
     }
     .v-align-items {
       margin-top: 0% !important;
@@ -149,7 +208,7 @@ input{
     width: 215px;
     height: 35px;
     padding: 1em;
-    border: 3px solid red;
+    border: 3px solid #FF0000;
     border-radius: 8rem;
     color: #fff;
     font-weight: 400;
