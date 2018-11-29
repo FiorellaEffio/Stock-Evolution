@@ -21,7 +21,7 @@ const datainformacion = [
     message: '¿Qué es una SAB o Sociedad Agente de bolsa?'
   },
   { src: 'http://subirimagen.me/uploads/20181123161541.png',
-    message: 'Una SAB es una entidad financiera intermediaria de la bolsa de valores, autorisada a la compra y venta que los inversionistas solicitan.'
+    message: 'Es una entidad financiera intermediaria de la BVL, autorizada a la compra y venta que los inversionistas solicitan'
   },
   { src: 'http://subirimagen.me/uploads/20181123161541.png',
     message: 'Para nacer en la bolsa de valores debes escoger una SAB'

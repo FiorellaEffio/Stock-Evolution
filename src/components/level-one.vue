@@ -1,17 +1,12 @@
 <template>
 
   <div>
-
+      <Nav-component></Nav-component>
     <div v-if="!stateSab">
-   
-               <Nav-component></Nav-component>
-
              <leo-component v-if="stateOne" :information="true">
              </leo-component>
-      <nivel-component v-else :levels = '2'></nivel-component>
- 
-  
-      
+      <nivel-component v-else :levels = '2'>
+      </nivel-component>      
     </div>
     <sab-component v-else></sab-component>
   </div>

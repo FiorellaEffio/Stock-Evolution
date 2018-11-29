@@ -14,7 +14,7 @@
       justify-center
       class="textNube"
     >
-      <h2 class="font-weight-thin "><span>{{name}}</span>{{data.message}}</h2>
+      <h3 class="font-weight-regular"><span>{{name}}</span>{{data.message}}</h3>
     </div>
   
    </div>
@@ -125,16 +125,19 @@
         height: 200px;
 
     } */
-.font-weight-thin {
+.font-weight-regular {
   color: palevioletred;
   display: flex;
   justify-content: flex-start;
   align-content: center;
-  margin-top: -15px
+  margin-top: -15px;
+  font-weight: 700
+
 }   
 .divNube{
   background-image: url("http://subirimagen.me/uploads/20181123205100.png");
   background-size: 100% ;
+  margin-top: 0%;
   height: 228px;
   width: 290px;
     display: table-cell;
@@ -143,12 +146,12 @@
       text-align: center;
 
 }
-    h2{
+    h3{
         color:black;
         text-align: center;
         padding: 20px 20px ;
         margin-left: 20px;
-        margin-right: 20px
+        margin-right: 20px;
 
     }
     .stepper-leo{
@@ -162,6 +165,10 @@
     .v-align-items {
       margin-top: 0% !important;
 }
+
+v-stepper-content{
+  margin: 0px
+} 
 v-card{
     background-color: aqua
 }
