@@ -6,26 +6,19 @@
     </v-stepper-header>
     <v-stepper-items >
       <v-stepper-content v-for="(data, index) in items" :key="index" :step="index+1" class="text-xs-center">
-    <v-parallax
-    dark
-    src="http://subirimagen.me/uploads/20181123205100.png"
-    height="265"
-  >
-    <v-layout
-      align-center
+        <img src="http://subirimagen.me/uploads/20181123143029.png" width="40%">
+
+   <div class="divNube">
+    <div
       column
       justify-center
+      class="textNube"
     >
-      <h3 class="font-weight-thin mb-4"><span>{{name}}</span>{{data.message}}</h3>
-    </v-layout>
-  </v-parallax>
-        <v-card
-          class="mb-3"
-          color="light"
-          height="280px"
-          :img='data.src'
-        >
-        </v-card>
+      <h2 class="font-weight-thin "><span>{{name}}</span>{{data.message}}</h2>
+    </div>
+  
+   </div>
+        <img :src='data.src' @click="nextStteper(index)" height="250px"/>
         <v-btn
         class="btn-leo"
           color="red"
@@ -41,7 +34,7 @@
 
         <img id="logo" src="http://subirimagen.me/uploads/20181123143029.png">
         <h2>¿Cómo te gustaria<br> que te llame?</h2>
-        <input type="text" placeholder="Tu nombre" v-model="name">/>
+        <input type="text" placeholder="Tu nombre" v-model="name">/
         <img src="http://subirimagen.me/uploads/20181123205930.png" width="200"/>
         <v-btn
         class="btn-input"
@@ -132,11 +125,30 @@
         height: 200px;
 
     } */
+.font-weight-thin {
+  color: palevioletred;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  margin-top: -15px
+}   
+.divNube{
+  background-image: url("http://subirimagen.me/uploads/20181123205100.png");
+  background-size: 100% ;
+  height: 228px;
+  width: 290px;
+    display: table-cell;
+    vertical-align: middle;
+  justify-content: flex-start;
+      text-align: center;
 
-    h3{
+}
+    h2{
         color:black;
         text-align: center;
-        padding: 10px 10px;
+        padding: 20px 20px ;
+        margin-left: 20px;
+        margin-right: 20px
 
     }
     .stepper-leo{
@@ -144,7 +156,8 @@
     }
     .btn-leo{
       border-radius: .8em;
-      width: 215px
+      width: 225px;
+      height: 40px;
     }
     .v-align-items {
       margin-top: 0% !important;
@@ -156,7 +169,7 @@ input{
     width: 215px;
     height: 35px;
     padding: 1em;
-    border: 3px solid red;
+    border: 3px solid #FF0000;
     border-radius: 8rem;
     color: #fff;
     font-weight: 400;
