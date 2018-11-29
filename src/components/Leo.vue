@@ -100,13 +100,6 @@
     },
     methods: {
       nextNivel(){
-          firebase.auth().onAuthStateChanged((user) => {
-            let userUID = user.uid;
-            let userRef = firebase.database().ref('usuarios/' + userUID);
-            userRef.update({
-                "nickname": this.name,
-            })
-          })
           EventBus.$emit('change-state', {state: true})
           //this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
       },

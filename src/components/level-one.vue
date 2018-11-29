@@ -1,23 +1,15 @@
 <template>
-
   <div>
-
     <div v-if="!stateSab">
-   
-               <Nav-component></Nav-component>
-
+             <Nav-component></Nav-component>
              <leo-component v-if="stateOne" :information="true">
              </leo-component>
       <nivel-component v-else :levels = '2'></nivel-component>
- 
-  
-      
     </div>
     <sab-component v-else></sab-component>
   </div>
 </template>
 <script>
-/* eslint-disable */
 import leo from '@/components/Leo'
 import nivel from '@/components/nivel'
 import nav from '@/components/Nav'
@@ -43,15 +35,12 @@ export default {
       })
     },
   computed: {
-    stae: function () {
-
-    }
   },
   components:{
     'leo-component': leo,
     'nivel-component': nivel,
     'sab-component': sab,
     'Nav-component' : nav
-        }
+  }
 }
 </script>
