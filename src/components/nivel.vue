@@ -7,7 +7,6 @@
         </v-btn>
     </div>
         <v-card height="300px" flat class="box-nivel-content-wapper">
-
         <div class="headline text-xs-center pa-5">
            {{description}}
         </div>
@@ -65,7 +64,7 @@
 <script>
 /* eslint-disable */
 import dataLeo from '@/plugins/data_leo.js'
-
+import firebase from 'firebase'
 export default {
 	name: 'nivel',
 	props: ['levels'],
@@ -101,14 +100,32 @@ export default {
 	},
 	methods: {
 		playGame(){
-			if(this.levels === 1){
-				this.$router.push('/level_one')
-			}
-			else{
-				this.levels + 1 === this.levels
-				this.$router.push('/level_two')
-			}
-		}
+      console.log(this.levels)
+      firebase.auth().onAuthStateChanged((user) => {
+        let userUID = user.uid;
+        let userRef = firebase.database().ref('usuarios/' + userUID);
+        userRef.update({
+            "nivel": this.levels
+        })
+      })
+      let path;
+      switch (this.levels) {
+        case 1:
+          this.$router.push('/level_one')
+          break;
+        case 2:
+          this.$router.push('/level_two')
+          break;
+        case 3:
+          this.$router.push('/level_three')
+          break;
+        case 4:
+          this.$router.push('/level_four')
+          break;
+        default:
+
+      }
+		},
 	}
 }
 </script>
@@ -148,5 +165,8 @@ export default {
 	color: orange;
 	font-size: 20px;
 	font-weight: 800
+}
+#app {
+  background-image: url('http://subirimagen.me/uploads/20181123142846.png');
 }
 </style>

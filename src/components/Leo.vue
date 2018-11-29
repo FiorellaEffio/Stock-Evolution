@@ -106,12 +106,10 @@
             let userRef = firebase.database().ref('usuarios/' + userUID);
             userRef.update({
                 "nickname": this.name,
-                "nivel": 1
             })
           })
           EventBus.$emit('change-state', {state: true})
           //this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
-
       },
       nextStteper(index){
         this.e1= index+2

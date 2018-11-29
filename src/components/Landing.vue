@@ -67,7 +67,6 @@ export default {
                 this.$router.push('/level_two')
                 break;
               default:
-
             }
             console.log('ya existia el usuario');
           }
@@ -144,45 +143,6 @@ export default {
     top: 60%;
     bottom: 50%;
   }
-
-  .social-button {
-  	display: inline-block;
-
-  	line-height: 50px;
-  	margin-left: 0 !important;
-  	margin-right: 20px !important;
-  	text-align: center;
-  	position: relative;
-  	overflow: hidden;
-  	opacity: .99;
-  	border-radius: 30%;
-  	box-shadow: 0 0 30px 0 rgba(0,0,0,0.06);
-  	-webkit-transition: all .35s cubic-bezier(0.31,-0.105,0.43,1.59);
-  	transition: all .35s cubic-bezier(0.31,-0.105,0.43,1.59);
-  }
-
-
-
-
-
-
-
-  .social-button:focus {
-  	opacity: .85;
-  }
-
-  * {
-  	margin: 0;
-  	padding: 0;
-  	color: inherit;
-  	    box-sizing: border-box;
-
-  }
-
-  :focus {
-  	outline: none;
-  }
-
   @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
     #back {

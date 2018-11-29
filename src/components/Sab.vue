@@ -5,21 +5,19 @@
             elegir la que más vaya contigo</h2>
         </div>
         <br>
-        <div>          
+        <div>
             <div class="text-xs-center">
-                
-                    <v-btn flat large 
+                    <v-btn flat large
                             slot="activator"
-
                     class="btnSab">
                      <div>
                          <h4>Credicorp</h4>
                         <img src="http://subirimagen.me/uploads/20181127144531.png" width="80" height="95">
-                       
+
                      </div>
                  </v-btn>
-            
-                      <v-btn flat large 
+
+                      <v-btn flat large
                       class="btnSab"
                       slot="activator"
                       >
@@ -28,19 +26,19 @@
                         <img src="http://subirimagen.me/uploads/20181127145204.png" width="80" alt="">
                      </div>
                  </v-btn>
-            
-            </div>              
+
+            </div>
               <div class="text-xs-center">
-                    <v-btn flat large 
+                    <v-btn flat large
                             slot="activator"
 
                     class="btnSab">
                      <div>
                          <h4>Magot</h4>
-                        <img src="http://subirimagen.me/uploads/20181127150026.png" width="65">                
+                        <img src="http://subirimagen.me/uploads/20181127150026.png" width="65">
                      </div>
                  </v-btn>
-                      <v-btn flat large 
+                      <v-btn flat large
                       class="btnSab"
                       slot="activator"
                       >
@@ -49,8 +47,8 @@
                         <img src="http://subirimagen.me/uploads/20181127150838.png" width="80" alt="">
                      </div>
                  </v-btn>
-            </div> 
-           
+            </div>
+
         </div>
          <v-btn
           class="btn-sab"

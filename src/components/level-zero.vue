@@ -1,15 +1,11 @@
 <template>
- <!-- leo y nivel -->
  <div>
     <leo-component id="ba" v-if="stateOne">{{state}}}</leo-component>
     <nivel v-else :levels = '1'></nivel>
     <router-view/>
  </div>
-
 </template>
-
 <script>
-/* eslint-disable */
 import {EventBus} from '@/plugins/EventBus.js'
 import leo from '@/components/Leo'
 import nivel from '@/components/nivel'
@@ -35,14 +31,11 @@ export default {
       'leo-component': leo,
       nivel
     }
-
 }
 </script>
 
 <style media="screen" scoped>
 #ba {
-  width: 100vh;
-  background-color: black;
-  background-image: url('http://subirimagen.me/uploads/20181129092953.png');
+  background-color: #92B0FF;
 }
 </style>
