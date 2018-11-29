@@ -1,8 +1,17 @@
 <template>
+
   <div>
+
     <div v-if="!stateSab">
-      <leo-component v-if="stateOne" :information="true"></leo-component>
+   
+               <Nav-component></Nav-component>
+
+             <leo-component v-if="stateOne" :information="true">
+             </leo-component>
       <nivel-component v-else :levels = '2'></nivel-component>
+ 
+  
+      
     </div>
     <sab-component v-else></sab-component>    
     <router-view/>
@@ -12,6 +21,7 @@
 /* eslint-disable */ 
 import leo from '@/components/Leo'
 import nivel from '@/components/nivel'
+import nav from '@/components/Nav'
 import sab from '@/components/Sab'
 import {EventBus} from '@/plugins/EventBus.js'
 export default {
@@ -41,7 +51,8 @@ export default {
   components:{
     'leo-component': leo,
     'nivel-component': nivel,
-    'sab-component': sab
-    }
+    'sab-component': sab,
+    'Nav-component' : nav
+        }
 }
 </script>
