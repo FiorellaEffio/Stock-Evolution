@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="bae">
   <v-stepper v-if="!inputs" v-model="e1" class="stepper-leo" align-center>
     <v-stepper-header v-show="false" >
       <v-stepper-step v-for="(data, index) in items" :key="index" :complete="e1 > index" :step="index">Name {{index}}</v-stepper-step>
@@ -105,12 +105,10 @@
             let userRef = firebase.database().ref('usuarios/' + userUID);
             userRef.update({
                 "nickname": this.name,
-                "nivel": 1
             })
           })
           EventBus.$emit('change-state', {state: true})
           //this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
-        
       },
       nextStteper(index){
         this.e1= index+2
@@ -118,7 +116,6 @@
           /* this.$router.push('/sectores') */
           console.log('sab')
           EventBus.$emit('change-sab', {state: true})
-                   
         }else{}
       },
 
@@ -178,5 +175,9 @@ input{
  }
  .color{
    background: red !important
+ }
+ #bae {
+   background-color: #92B0FF;
+   /* background-image: url('http://subirimagen.me/uploads/20181129092953.png'); */
  }
 </style>

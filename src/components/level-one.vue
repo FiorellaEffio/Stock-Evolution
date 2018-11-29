@@ -13,12 +13,11 @@
   
       
     </div>
-    <sab-component v-else></sab-component>    
-    <router-view/>
+    <sab-component v-else></sab-component>
   </div>
 </template>
 <script>
-/* eslint-disable */ 
+/* eslint-disable */
 import leo from '@/components/Leo'
 import nivel from '@/components/nivel'
 import nav from '@/components/Nav'
@@ -33,19 +32,19 @@ export default {
         }
     },
     created(){
-      EventBus.$on('change-sab', (value)=>{        
+      EventBus.$on('change-sab', (value)=>{
         this.stateSab = true;
         console.log('llego')
       })
-      EventBus.$on('change-state-sab', (value)=>{        
+      EventBus.$on('change-state-sab', (value)=>{
         this.stateSab =false;
         this.stateOne = false
         console.log('llego sab')
       })
-    }, 
+    },
   computed: {
     stae: function () {
-      
+
     }
   },
   components:{
