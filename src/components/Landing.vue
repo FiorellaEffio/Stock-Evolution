@@ -58,12 +58,14 @@ export default {
           } else {
             switch (userData.nivel) {
               case 0:
-                this.$router.push('/leo')
+                this.$router.push('/level_zero')
                 break;
               case 1:
-                this.$router.push('/nivel')
+                this.$router.push('/level_one')
                 break;
-
+              case 2:
+                this.$router.push('/level_two')
+                break;
               default:
 
             }

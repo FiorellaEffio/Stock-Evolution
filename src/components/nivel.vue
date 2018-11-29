@@ -63,7 +63,7 @@
     </div>
 </template>
 <script>
-/* eslint-disable */ 
+/* eslint-disable */
 import dataLeo from '@/plugins/data_leo.js'
 
 export default {
@@ -91,7 +91,7 @@ export default {
 		console.log(dataLeo.dataNivel, data, typeof this.levels)
 		data.forEach(element => {
 			console.log(element.nivel, this.levels);
-			
+
 			if(element.nivel === this.levels){
 				this.level = this.levels
 				this.description = element.description
@@ -108,8 +108,6 @@ export default {
 				this.levels + 1 === this.levels
 				this.$router.push('/level_two')
 			}
-
-			
 		}
 	}
 }
