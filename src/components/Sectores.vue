@@ -87,7 +87,7 @@
         class="btn-Eco"
           color="red"
           dark
-        
+        @click="nextLevelTwo()"
         >
           Continue
         </v-btn>
@@ -95,9 +95,19 @@
 </template>
 <script>
 /* eslint-disable */
+import {EventBus} from '@/plugins/EventBus.js'
  export default {
-  name: "Inform",
-  dialog: false
+  name: "Inform",  
+  data() {
+      return {
+          dialog: false
+      }
+  },
+  methods: {
+      nextLevelTwo(){
+          EventBus.$emit('change-leoTwo_5', true)
+      }
+  }
 
 };
 </script>

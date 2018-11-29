@@ -64,7 +64,7 @@
         class="btn-Eco"
           color="red"
           dark
-        
+            @click="nextLevelTwo()"
         >
           Continue
         </v-btn>
@@ -73,8 +73,19 @@
 
 <script>
  /* eslint-disable */ 
+ import {EventBus} from '@/plugins/EventBus.js'
 export default {
-  data() {}
+    name: 'economista',
+  data() {
+      return {
+          
+      }
+  },
+  methods: {
+      nextLevelTwo(){
+          EventBus.$emit('change-leoTwo_4', true)
+      }
+  }
 }
 </script>
 <style>

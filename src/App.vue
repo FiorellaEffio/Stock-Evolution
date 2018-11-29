@@ -1,25 +1,23 @@
 <template>
   <v-app>
-    <v-content>
-      <router-view class="v-align-items"></router-view>
-    </v-content>
+    <router-view class="contenedor-fondo"></router-view>
   </v-app>
 </template>
 
-<script>
-  export default {
-    data () {
-      return {
-      }
-    },
-    computed: {
-    },
-  }
-</script>
-<style media="screen" scoped>
+<style media="screen">
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-  .v-align-items {
-    margin-top: 10%;
-  }
-
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    margin-top: 0px;
+    font-family: 'Open Sans', sans-serif;
+}
+.contenedor-fondo {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
 </style>

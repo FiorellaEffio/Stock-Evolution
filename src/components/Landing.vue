@@ -1,46 +1,37 @@
 <template>
-  <v-container fluid id="back">
-    <v-layout row wrap>
-      <v-flex xs12 text-xs-center mt-5>
-        <img id="logo" src="http://subirimagen.me/uploads/20181123143029.png" alt="">
-      </v-flex>
-      <v-flex>
-        <blockquote class="texto-white blockquote text-xs-center">
-          <strong>Ingresa con</strong>
-        </blockquote>
-      </v-flex>
-      <v-flex xs12 sm6 offset-sm3 mt-3 class="text-xs-center" mt-5>
-        <div class="social-buttons">
-          <a href="#" @click="signFacebook()" class="social-button facebook">
-            <img src="http://subirimagen.me/uploads/20181128145504.png" >
-          </a>
-          <a href="#" @click="userSignInGoogle()" class="social-button google">
-            <img src="http://subirimagen.me/uploads/20181128145139.png">
-          </a>
-        </div>
-      </v-flex>
-      <v-flex id="bvl-logo">
-        <img id="bvl-png" src="http://subirimagen.me/uploads/20181123120801.png" alt="">
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <v-layout class="fondo" row wrap>
+    <v-flex xs12 text-xs-center mt-5 pt-5>
+      <img id="logo" src="http://subirimagen.me/uploads/20181123143029.png" alt="">
+    </v-flex>
+    <v-flex mr-3>
+      <blockquote class="texto-white blockquote text-xs-center">
+        <strong>Ingresa con</strong>
+      </blockquote>
+    </v-flex>
+    <v-flex xs12 text-xs-center>
+      <v-btn class="button" large round="true" href="#" @click="signFacebook()">
+        <img class="button-img" src="http://subirimagen.me/uploads/20181128145504.png" > <span>acebook</span>
+      </v-btn>
+      <br>
+      <v-btn class="button" large round="true" href="#" @click="userSignInGoogle()">
+        <img class="button-img" src="http://subirimagen.me/uploads/20181128145139.png"> <span>oogle</span>
+      </v-btn>
+    </v-flex>
+    <v-flex class="bvl-contenedor">
+      <img class="bvl-img" src="http://subirimagen.me/uploads/20181123120801.png" alt="">
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
-/* eslint-disable */
 import firebase from 'firebase'
 export default {
   data () {
     return {
-      alert: false
     }
   },
   methods: {
-    userSignIn () {
-      this.$store.dispatch('userSignIn', { email: this.email, password: this.password })
-    },
     writeDatabase (user) {
-      //muestrame si existe el usuario
       let profile = firebase.database().ref().child('usuarios/' + user.uid);
       profile.on('value', snap => {
           let userData = JSON.stringify(snap.val(),null,3);//tbm funciona un solo parametro
@@ -53,8 +44,7 @@ export default {
             }
             firebase.database().ref("usuarios/" + usuario.uid)
             .set(usuario)
-            this.$router.push('/leo')
-            console.log(usuario);
+            this.$router.push('/level_zero')
           } else {
             switch (userData.nivel) {
               case 0:
@@ -66,9 +56,14 @@ export default {
               case 2:
                 this.$router.push('/level_two')
                 break;
+              case 3:
+                this.$router.push('/level_three')
+                break;
+              case 4:
+                this.$router.push('/level_four')
+                break;
               default:
             }
-            console.log('ya existia el usuario');
           }
       })
     },
@@ -77,7 +72,7 @@ export default {
       firebase.auth().signInWithPopup(provider).then((result) => {
         this.writeDatabase(result.user);
       }).catch(error => {
-        console.log(error.message)
+        alert(error.message)
       })
     },
     signFacebook () { // eslint-disable-next-line
@@ -85,82 +80,44 @@ export default {
       provider.addScope('public_profile')
       firebase.auth().signInWithPopup(provider)
         .then(result => {
-          // falta guardar los datos
-          console.log(result.user)
           this.writeDatabase(result.user);
         })
         .catch(error => {
           alert(error.message)
         })
     }
-  },
-  computed: {
-    error () {
-      return this.$store.state.error
-    },
-    loading () {
-      return this.$store.state.loading
-    }
-  },
-  watch: {
-    error (value) {
-      if (value) {
-        this.alert = true
-      }
-    },
-    alert (value) {
-      if (!value) {
-        this.$store.commit('setError', null)
-      }
-    }
   }
 }
 </script>
-
 <style media="screen">
   #logo {
-    width: 75%;
-    margin-bottom: 40px;
+    width: 80%;
   }
   .texto-white {
     color: white;
     font-size: 26px;
-    font-weight: 390;
+    font-weight: 400;
   }
-  body {
-    background-color: #F4F4F4;
+  .fondo {
+    background-image: url('http://subirimagen.me/uploads/20181123142846.png');
   }
-  html {
-    box-sizing: border-box;
+  .button-img {
+    width: 30%;
   }
-  .social-buttons {
-  	height: 50px;
-  	font-size: 10;
-  	text-align: center;
-  	position: absolute;
-    right: 0;
-    left: 0;
-    top: 60%;
-    bottom: 50%;
+  .button {
+    opacity: 0.8 !important;
   }
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-    #back {
-      width: 100vh;
-      background-image: url('http://subirimagen.me/uploads/20181123142846.png');
-    }
-    #bvl-logo {
-      background-color: white;
-      border-radius: 75px 0 0 0 ;
-      margin-left: 60%;
-      margin-top: 38%;
-    }
-    #bvl-png {
-      width: 110px;
-      margin-left: 10%;
-      padding-right: 15%;
-      padding-left: 10%;
-      padding-top: 10%;
-      padding-bottom: 10%;
-    }
+  .bvl-contenedor {
+    background-color: white;
+    border-radius: 95% 0% 0% 0% ;
+    margin-left: 60%;
+    margin-top: 30%;
+  }
+  .bvl-img {
+    width: 90%;
+    margin-left: 15%;
+    padding-right: 15%;
+    padding-left: 10%;
+    padding-top: 20%;
+  }
 </style>

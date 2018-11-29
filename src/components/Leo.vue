@@ -62,8 +62,6 @@
     data () {
       return {
         e1: 0,
-        info: this.$route.params.dataInformation,
-        hea: false,
         name: '',
       }
     },
@@ -78,8 +76,40 @@
         }
       },
       items: function(){
-        if(this.information === true){
+/*         console.log(this.information)
+        const nameLevel = this.information.slice(5, this.information.indexOf('_'))
+        const numberLevel = this.information.slice(this.information.length-1)
+        console.log(numberLevel, nameLevel)
+        switch (nameLevel) {
+        case 'On':
           return dataLeo.datainformacion
+          break;
+        case 'Two':
+          const name = `dataLeveltwo_${numberLevel}` 
+          console.log(name)   
+          return dataLeo.dataLeveltwo_`${numberLevel}`
+          break;
+        default: return dataLeo.datajs
+
+      } */
+      
+        if(this.information === 'levelOne'){
+          return dataLeo.datainformacion
+        }
+        if(this.information === 'levelTwo_1'){
+           return dataLeo.dataLeveltwo_1
+        }
+        if(this.information === 'levelTwo_2'){
+           return dataLeo.dataLeveltwo_2
+        }
+        if(this.information === 'levelTwo_3'){
+           return dataLeo.dataLeveltwo_3
+        }
+        if(this.information === 'levelTwo_4'){
+           return dataLeo.dataLeveltwo_4
+        }
+        if(this.information === 'levelTwo_5'){
+           return dataLeo.dataLeveltwo_5
         }
         else{
           return dataLeo.datajs
@@ -87,29 +117,38 @@
       },
       inputs: function() {
         const stepp = this.e1
-        if(stepp >= this.items.length + 1 && this.information !== true) return true
+        if(stepp >= this.items.length + 1 && this.information === undefined) return true
         else return false
       }
     },
     methods: {
       nextNivel(){
-          firebase.auth().onAuthStateChanged((user) => {
-            let userUID = user.uid;
-            let userRef = firebase.database().ref('usuarios/' + userUID);
-            userRef.update({
-                "nickname": this.name,
-            })
-          })
           EventBus.$emit('change-state', {state: true})
           //this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
       },
       nextStteper(index){
         this.e1= index+2
-        if(this.information === true && (index + 1) === dataLeo.datainformacion.length){
-          /* this.$router.push('/sectores') */
-          console.log('sab')
+        if(this.information === 'levelOne' && (index + 1) === dataLeo.datainformacion.length){
           EventBus.$emit('change-sab', {state: true})
-        }else{}
+        }
+        if(this.information === 'levelTwo_1'){
+          EventBus.$emit('change-question', {state: true})
+        }
+        if(this.information === 'levelTwo_2' && (index + 1) === dataLeo.dataLeveltwo_2.length ){
+          EventBus.$emit('change-inform', false)
+        }
+        if(this.information === 'levelTwo_3' ){
+          EventBus.$emit('change-economista', false)
+        }
+        if(this.information === 'levelTwo_4' ){
+          EventBus.$emit('change-sectores', false)
+        }
+        if(this.information === 'levelTwo_5' ){
+          EventBus.$emit('change-nivel', true)
+        }
+        else{
+          console.log('no cumle la condicion')
+        }
       },
 
     },
