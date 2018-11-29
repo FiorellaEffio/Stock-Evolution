@@ -12,10 +12,10 @@
       <v-flex xs12 sm6 offset-sm3 mt-3 class="text-xs-center" mt-5>
         <div class="social-buttons">
           <a href="#" @click="signFacebook()" class="social-button facebook">
-            <i class="fa fa-facebook"></i>
+            <img src="http://subirimagen.me/uploads/20181128145504.png" >
           </a>
           <a href="#" @click="userSignInGoogle()" class="social-button google">
-            <i class="fa fa-google"></i>
+            <img src="http://subirimagen.me/uploads/20181128145139.png">
           </a>
         </div>
       </v-flex>
@@ -145,12 +145,10 @@ export default {
 
   .social-button {
   	display: inline-block;
-  	background-color: #fff;
-  	width: 50px;
-  	height: 50px;
+
   	line-height: 50px;
   	margin-left: 0 !important;
-  	margin-right: 15px !important;
+  	margin-right: 20px !important;
   	text-align: center;
   	position: relative;
   	overflow: hidden;
@@ -161,82 +159,11 @@ export default {
   	transition: all .35s cubic-bezier(0.31,-0.105,0.43,1.59);
   }
 
-  .social-button:before {
-  	content: '';
-  	background-color: #000;
-  	width: 120%;
-  	height: 120%;
-  	position: absolute;
-  	top: 90%;
-  	left: -110%;
-  	-webkit-transform: rotate(45deg);
-  	-ms-transform: rotate(45deg);
-  	transform: rotate(45deg);
-  	-webkit-transition: all .35s cubic-bezier(0.31,-0.105,0.43,1.79);
-  	transition: all .35s cubic-bezier(0.31,-0.105,0.43,1.79);
-  }
 
-  .social-button .fa {
-  	font-size: 28px;
-  	vertical-align: middle;
-  	-webkit-transform: scale(0.75);
-  	-ms-transform: scale(0.75);
-  	transform: scale(0.75);
-  	-webkit-transition: all .35s cubic-bezier(0.31,-0.105,0.43,1.59);
-  	transition: all .35s cubic-bezier(0.31,-0.105,0.43,1.59);
-  }
 
-  .social-button.facebook:before {
-  	background-color: #3B5998;
-  }
 
-  .social-button.facebook .fa {
-  	color: #3B5998;
-  }
 
-  .social-button.twitter:before {
-  	background-color: #3CF;
-  }
 
-  .social-button.twitter .fa {
-  	color: #3CF;
-  }
-
-  .social-button.google:before {
-  	background-color: #DC4A38;
-  }
-
-  .social-button.google .fa {
-  	color: #DC4A38;
-  }
-
-  .social-button.dribbble:before {
-  	background-color: #F26798;
-  }
-
-  .social-button.dribbble .fa {
-  	color: #F26798;
-  }
-
-  .social-button.skype:before {
-  	background-color: #00AFF0;
-  }
-
-  .social-button.skype .fa {
-  	color: #00AFF0;
-  }
-
-  .social-button:hover:before {
-  	top: -10%;
-  	left: -10%;
-  }
-
-  .social-button:hover .fa {
-  	color: #fff;
-  	-webkit-transform: scale(1);
-  	-ms-transform: scale(1);
-  	transform: scale(1);
-  }
 
   .social-button:focus {
   	opacity: .85;
@@ -246,7 +173,8 @@ export default {
   	margin: 0;
   	padding: 0;
   	color: inherit;
-  	box-sizing: inherit;
+  	    box-sizing: border-box;
+
   }
 
   :focus {
