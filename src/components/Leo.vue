@@ -17,7 +17,7 @@
       column
       justify-center
     >
-      <h3 class="font-weight-thin mb-4"><span>{{name}}</span>{{data.message}}</h3>
+      <h3 class="font-weight-thin mb-4">{{data.message}}</h3>
     </v-layout>
   </v-parallax>
         <v-card
@@ -70,12 +70,11 @@
     data () {
       return {
         e1: 0,
-        info: this.$route.params.dataInformation,
-        hea: false,
         name: '',
       }
     },
     created(){
+      console.log(this.information)
     },
     computed:{
       stateName: function () {
@@ -86,8 +85,11 @@
         }
       },
       items: function(){
-        if(this.information === true){
+        if(this.information === 'levelOne'){
           return dataLeo.datainformacion
+        }
+        if(this.information === 'levelTwo'){
+           return dataLeo.dataLeveltwo_1
         }
         else{
           return dataLeo.datajs
@@ -95,8 +97,8 @@
       },
       inputs: function() {
         const stepp = this.e1
-        if(stepp >= this.items.length + 1 && this.information !== true) return true
-        else return false
+        if(stepp >= this.items.length + 1 && this.information === undefined) return true
+        if(this.information === 'levelTwo')return false
       }
     },
     methods: {
@@ -115,11 +117,11 @@
       },
       nextStteper(index){
         this.e1= index+2
-        if(this.information === true && (index + 1) === dataLeo.datainformacion.length){
-          /* this.$router.push('/sectores') */
-          console.log('sab')
+        if(this.information === 'levelOne' && (index + 1) === dataLeo.datainformacion.length){
           EventBus.$emit('change-sab', {state: true})
-                   
+        }
+        if(this.information === 'levelTwo'){
+          EventBus.$emit('change-question', {state: true})
         }else{}
       },
       userSignOut () {
