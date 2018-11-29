@@ -2,7 +2,6 @@
  <div>
     <leo-component id="ba" v-if="stateOne">{{state}}}</leo-component>
     <nivel v-else :levels = '1'></nivel>
-    <router-view/>
  </div>
 </template>
 <script>

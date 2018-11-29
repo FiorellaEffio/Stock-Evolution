@@ -117,7 +117,6 @@
           /* this.$router.push('/sectores') */
           console.log('sab')
           EventBus.$emit('change-sab', {state: true})
-
         }else{}
       },
       userSignOut () {

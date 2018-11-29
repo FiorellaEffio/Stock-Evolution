@@ -1,5 +1,5 @@
 <template>
-    <v-container class="text-xs-center">
+    <v-container id="sab" class="text-xs-center">
         <div>
             <h2>Ahora que ya sabes que es <br> una SAB, debes
             elegir la que más vaya contigo</h2>
@@ -85,7 +85,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .btnSab {
   width: 135px;
@@ -98,4 +98,8 @@ export default {
     width: 215px;
     border-radius: 8rem
     }
+
+ #sab {
+   background-image: url('http://subirimagen.me/uploads/20181129111939.png');
+ }
 </style>
