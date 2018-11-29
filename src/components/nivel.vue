@@ -164,7 +164,5 @@ export default {
 	font-size: 20px;
 	font-weight: 800
 }
-#app {
-  background-image: url('http://subirimagen.me/uploads/20181123142846.png');
-}
+
 </style>

@@ -16,7 +16,7 @@
     >
       <h2 class="font-weight-thin "><span>{{name}}</span>{{data.message}}</h2>
     </div>
-  
+
    </div>
         <img :src='data.src' @click="nextStteper(index)" height="250px"/>
         <v-btn
@@ -34,7 +34,7 @@
 
         <img id="logo" src="http://subirimagen.me/uploads/20181123143029.png">
         <h2>¿Cómo te gustaria<br> que te llame?</h2>
-        <input type="text" placeholder="Tu nombre" v-model="name">/
+        <input type="text" placeholder="Tu nombre" v-model="name">
         <img src="http://subirimagen.me/uploads/20181123205930.png" width="200"/>
         <v-btn
         class="btn-input"
@@ -85,14 +85,14 @@
           return dataLeo.datainformacion
           break;
         case 'Two':
-          const name = `dataLeveltwo_${numberLevel}` 
-          console.log(name)   
+          const name = `dataLeveltwo_${numberLevel}`
+          console.log(name)
           return dataLeo.dataLeveltwo_`${numberLevel}`
           break;
         default: return dataLeo.datajs
 
       } */
-      
+
         if(this.information === 'levelOne'){
           return dataLeo.datainformacion
         }
@@ -124,6 +124,13 @@
     methods: {
       nextNivel(){
           EventBus.$emit('change-state', {state: true})
+          firebase.auth().onAuthStateChanged((user) => {
+            let userUID = user.uid;
+            let userRef = firebase.database().ref('usuarios/' + userUID);
+            userRef.update({
+                "nickname": this.name
+            })
+          })
           //this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
       },
       nextStteper(index){
@@ -170,7 +177,7 @@
   justify-content: flex-start;
   align-content: center;
   margin-top: -15px
-}   
+}
 .divNube{
   background-image: url("http://subirimagen.me/uploads/20181123205100.png");
   background-size: 100% ;
@@ -222,14 +229,10 @@ input{
     margin-bottom: 5px;
   }
  .btn-input{
-      border-radius: .8em;
-      width: 215px
+    border-radius: .8em;
+    width: 215px
  }
  .color{
    background: red !important
- }
- #bae {
-   background-color: #92B0FF;
-   /* background-image: url('http://subirimagen.me/uploads/20181129092953.png'); */
  }
 </style>

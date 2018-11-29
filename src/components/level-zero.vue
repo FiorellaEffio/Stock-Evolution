@@ -1,6 +1,6 @@
 <template>
- <div>
-    <leo-component id="ba" v-if="stateOne">{{state}}}</leo-component>
+ <div class="fondo-color" v-bind:class="{fondo: !stateOne}">
+    <leo-component v-if="stateOne">{{state}}}</leo-component>
     <nivel v-else :levels = '1'></nivel>
  </div>
 </template>
@@ -22,8 +22,7 @@ export default {
       EventBus.$on('change-state', value => {
         this.stateOne = false;
         return true;
-      })/*
-      EventBus.$off('change-state'); */
+      })
     }
   },
   components:{
@@ -34,7 +33,10 @@ export default {
 </script>
 
 <style media="screen" scoped>
-#ba {
+.fondo-color {
   background-color: #92B0FF;
+}
+.fondo {
+  background-image: url('http://subirimagen.me/uploads/20181123142846.png');
 }
 </style>

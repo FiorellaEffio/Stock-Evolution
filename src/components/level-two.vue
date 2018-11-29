@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fondo-claro" v-bind:class="{fondooscuro: !stateOne}">
     <div v-if="showLeo">
       <leo-component v-if="stateOne" :information="informationLevelTwo"></leo-component>
       <nivel-component v-else :levels = '3'></nivel-component>
@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-/* eslint-disable */ 
+/* eslint-disable */
 import nivel from '@/components/nivel'
 import leo from '@/components/Leo'
 import question from '@/components/level-two-questions'
@@ -35,7 +35,7 @@ export default {
 		}
   },
   created() {
-    EventBus.$on('change-question', (value)=>{        
+    EventBus.$on('change-question', (value)=>{
         this.showLeo = false
         this.stateQuestion = true
       })
@@ -71,7 +71,7 @@ export default {
       this.showLeo = value
     })
     EventBus.$on('change-nivel', (value)=>{
-      this.showLeo = value      
+      this.showLeo = value
       this.stateSectores = false
       this.stateOne = false
     })
@@ -91,5 +91,10 @@ export default {
 }
 </script>
 <style scoped>
-
+.fondo-claro {
+  background-image: url('http://subirimagen.me/uploads/20181129111939.png');
+}
+.fondooscuro {
+  background-image: url('http://subirimagen.me/uploads/20181123142846.png') !important;
+}
 </style>
