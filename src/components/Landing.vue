@@ -192,9 +192,7 @@ export default {
       border-radius: 75px 0 0 0 ;
       margin-left: 60%;
       margin-top: 38%;
-
     }
-
     #bvl-png {
       width: 110px;
       margin-left: 10%;

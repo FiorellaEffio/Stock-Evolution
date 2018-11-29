@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="bae">
   <v-btn @click="userSignOut">Cerrar sesión</v-btn>
   <v-stepper v-if="!inputs" v-model="e1" class="stepper-leo" align-center>
     <v-stepper-header v-show="false" >
@@ -111,7 +111,7 @@
           })
           EventBus.$emit('change-state', {state: true})
           //this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
-        
+
       },
       nextStteper(index){
         this.e1= index+2
@@ -119,7 +119,7 @@
           /* this.$router.push('/sectores') */
           console.log('sab')
           EventBus.$emit('change-sab', {state: true})
-                   
+
         }else{}
       },
       userSignOut () {
@@ -185,5 +185,9 @@ input{
  }
  .color{
    background: red !important
+ }
+ #bae {
+   background-color: #92B0FF;
+   /* background-image: url('http://subirimagen.me/uploads/20181129092953.png'); */
  }
 </style>

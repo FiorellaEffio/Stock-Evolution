@@ -1,7 +1,7 @@
 <template>
  <!-- leo y nivel -->
- <div id="back">
-    <leo-component v-if="stateOne">{{state}}}</leo-component>
+ <div>
+    <leo-component id="ba" v-if="stateOne">{{state}}}</leo-component>
     <nivel v-else :levels = '1'></nivel>
     <router-view/>
  </div>
@@ -40,7 +40,9 @@ export default {
 </script>
 
 <style media="screen" scoped>
-#back {
+#ba {
+  width: 100vh;
+  background-color: black;
   background-image: url('http://subirimagen.me/uploads/20181129092953.png');
 }
 </style>
