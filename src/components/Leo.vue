@@ -92,7 +92,7 @@
         default: return dataLeo.datajs
 
       } */
-      
+      // todos los datos(dataLeo) estan en data_leo.js
         if(this.information === 'levelOne'){
           return dataLeo.datainformacion
         }
@@ -110,6 +110,9 @@
         }
         if(this.information === 'levelTwo_5'){
            return dataLeo.dataLeveltwo_5
+        }
+        if(this.information === 'levelThree_1'){
+           return dataLeo.dataLevellthree_1
         }
         else{
           return dataLeo.datajs
@@ -138,6 +141,7 @@
         if(this.information === 'levelOne' && (index + 1) === dataLeo.datainformacion.length){
           EventBus.$emit('change-sab', {state: true})
         }
+        // level 2
         if(this.information === 'levelTwo_1'){
           EventBus.$emit('change-question', {state: true})
         }
@@ -152,6 +156,10 @@
         }
         if(this.information === 'levelTwo_5' ){
           EventBus.$emit('change-nivel', true)
+        }
+        // level 3
+        if(this.information === 'levelThree_1'){/* && (index + 1) === dataLeo.dataLevellthree_1.length */
+          EventBus.$emit('change-sectorInvertir', false)
         }
         else{
           console.log('no cumle la condicion')

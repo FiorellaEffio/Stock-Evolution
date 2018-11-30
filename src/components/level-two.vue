@@ -16,11 +16,13 @@
 /* eslint-disable */ 
 import nivel from '@/components/nivel'
 import leo from '@/components/Leo'
+import {EventBus} from '@/plugins/EventBus.js'
+
 import question from '@/components/level-two-questions'
 import inform from '@/components/Inform'
 import economista from '@/components/Economistas'
 import sectores from '@/components/Sectores'
-import {EventBus} from '@/plugins/EventBus.js'
+
 export default {
   name: 'leveltwo',
   data(){
