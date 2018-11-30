@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="fondo-claro" v-bind:class="{fondooscuro: !stateOne}">
       <Nav-component></Nav-component>
     <div v-if="!stateSab">
              <leo-component v-if="stateOne" :information="true">
              </leo-component>
       <nivel-component v-else :levels = '2'>
-      </nivel-component>      
+      </nivel-component>
     </div>
     <sab-component v-else></sab-component>
   </div>
@@ -45,3 +45,11 @@ export default {
   }
 }
 </script>
+<style media="screen">
+  .fondo-claro {
+    background-image: url('http://subirimagen.me/uploads/20181129111939.png');
+  }
+  .fondooscuro {
+    background-image: url('http://subirimagen.me/uploads/20181123142846.png') !important;
+  }
+</style>

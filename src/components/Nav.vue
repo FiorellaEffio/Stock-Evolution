@@ -3,7 +3,7 @@
       app
        color=#1B2A6F
     >
-    
+
       <a @click="userSignOut">
         <img src="http://subirimagen.me/uploads/20181129103140.png">
       </a>
@@ -25,14 +25,14 @@
       return {}
     },
       methods: {
-        userSignOut(){ 
-          console.log('dafdgfd')
-        firebase.auth().signOut()
+        userSignOut(){
+          self = this;
+          firebase.auth().signOut().then(function() {
+            self.$router.push('/landing')
+          }, function(error) {
+            alert('Sign Out Error', error);
+          });
         }
-        
       }
-      
-    
   }
   </script>
-  

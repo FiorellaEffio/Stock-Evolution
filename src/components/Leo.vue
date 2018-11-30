@@ -1,5 +1,5 @@
 <template>
-<div id="bae">
+<div>
   <v-stepper v-if="!inputs" v-model="e1" class="stepper-leo" align-center>
     <v-stepper-header v-show="false" >
       <v-stepper-step v-for="(data, index) in items" :key="index" :complete="e1 > index" :step="index">Name {{index}}</v-stepper-step>
@@ -16,7 +16,7 @@
     >
       <h3 class="font-weight-regular"><span>{{name}}</span>{{data.message}}</h3>
     </div>
-  
+
    </div>
         <img :src='data.src' @click="nextStteper(index)" height="250px"/>
         <v-btn
@@ -34,7 +34,7 @@
 
         <img id="logo" src="http://subirimagen.me/uploads/20181123143029.png">
         <h2>¿Cómo te gustaria<br> que te llame?</h2>
-        <input type="text" placeholder="Tu nombre" v-model="name">/
+        <input type="text" placeholder="Tu nombre" v-model="name">
         <img src="http://subirimagen.me/uploads/20181123205930.png" width="200"/>
         <v-btn
         class="btn-input"
@@ -85,8 +85,8 @@
           return dataLeo.datainformacion
           break;
         case 'Two':
-          const name = `dataLeveltwo_${numberLevel}` 
-          console.log(name)   
+          const name = `dataLeveltwo_${numberLevel}`
+          console.log(name)
           return dataLeo.dataLeveltwo_`${numberLevel}`
           break;
         default: return dataLeo.datajs
@@ -126,8 +126,14 @@
     },
     methods: {
       nextNivel(){
+          firebase.auth().onAuthStateChanged((user) => {
+            let userUID = user.uid;
+            let userRef = firebase.database().ref('usuarios/' + userUID);
+            userRef.update({
+                "nickname": this.name
+            })
+          })
           EventBus.$emit('change-state', {state: true})
-          //this.$router.push({ name: 'nivel', params: { nameGramer: this.name }})
       },
       nextStteper(index){
         this.e1= index+2
@@ -180,7 +186,7 @@
   margin-top: -15px;
   font-weight: 700
 
-}   
+}
 .divNube{
   background-image: url("http://subirimagen.me/uploads/20181123205100.png");
   background-size: 100% ;
@@ -215,7 +221,7 @@
 
 v-stepper-content{
   margin: 0px
-} 
+}
 v-card{
     background-color: aqua
 }
