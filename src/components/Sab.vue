@@ -46,14 +46,16 @@
                  </v-btn>
             </div>
         </div>
-         <v-btn
-          class="btn-sab"
-          color="red"
-          dark
-          @click="nextLeveltwo()"
-        >
-          Continue
-        </v-btn>
+        <v-flex mt-4>
+          <v-btn
+           class="btn-sab"
+           color="red"
+           dark
+           @click="nextLeveltwo()"
+         >
+           Continue
+         </v-btn>
+        </v-flex>
     </v-container>
 </template>
 <script>

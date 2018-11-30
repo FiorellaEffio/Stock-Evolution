@@ -7,7 +7,9 @@
         <nivel-component v-else :levels = '2'>
         </nivel-component>
       </div>
-      <sab-component v-else></sab-component>
+      <v-flex v-else mt-4>
+        <sab-component ></sab-component>
+      </v-flex>
   </div>
 </template>
 <script>

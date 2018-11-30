@@ -37,11 +37,12 @@
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>
-  <v-container v-else class="text-xs-center">
-
+  <v-container v-else class="text-xs-center" mt-5>
         <img id="logo" src="http://subirimagen.me/uploads/20181123143029.png">
         <h2>¿Cómo te gustaria<br> que te llame?</h2>
-        <input type="text" placeholder="Tu nombre" v-model="name">
+        <v-flex my-3>
+          <input type="text" placeholder="Tu nombre" v-model="name">
+        </v-flex>
         <img src="http://subirimagen.me/uploads/20181123205930.png" width="200"/>
         <v-btn
         class="btn-input"
@@ -53,9 +54,7 @@
         >
           Comenzar
         </v-btn>
-
   </v-container>
-
 </div>
 </template>
 <script>
