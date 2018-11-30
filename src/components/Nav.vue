@@ -5,7 +5,7 @@
      <v-expansion-panel class="backExpans">
        <v-expansion-panel-content class="indigo darken-4">
          <div slot="header">
-           <v-toolbar-title class="nameNav">juanita   s/.50000   nivel 1</v-toolbar-title>
+           <v-toolbar-title class="nameNav">{{userName}} {{userNivel}} {{userMonto}}</v-toolbar-title>
          </div>
            <a href="#">
              <p class="text"><img src="http://subirimagen.me/uploads/20181130102322.png" width="20px">
@@ -36,19 +36,51 @@
  </template>
  <script>
  import firebase from 'firebase'
-
+ import {EventBus} from '@/plugins/EventBus.js'
  export default {
    name: 'nav',
-     methods: {
-       userSignOut(){
-         self = this;
-         firebase.auth().signOut().then(function() {
-           self.$router.push('/landing')
-         }, function(error) {
-           alert('Sign Out Error', error);
-         });
-       }
+   data(){
+ 		return {
+       userName: '',
+       userNivel: 0,
+       userMonto: 5000,
+ 		}
+   },
+   beforeCreate() {
+       let self = this;
+       firebase.auth().onAuthStateChanged((user) => {
+         let userUID = user.uid;
+         let userRef = firebase.database().ref('usuarios/' + userUID);
+         userRef.once('value', value => {
+             const keyData = value.val()
+             this.items = Object.keys(value.val())
+             Object.keys(keyData).forEach(element => {
+               switch (element) {
+                 case "monto":
+                   self.userMonto = keyData[element]
+                   break;
+                 case "nivel":
+                   self.userNivel = keyData[element]
+                   break;
+                 case "nickname":
+                   self.userName = keyData[element]
+                   break;
+                 default:
+               }
+             })
+         })
+       })
+   },
+   methods: {
+     userSignOut(){
+       self = this;
+       firebase.auth().signOut().then(function() {
+         self.$router.push('/landing')
+       }, function(error) {
+         alert('Sign Out Error', error);
+       });
      }
+   }
  }
  </script>
 
