@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="showLeo">
-      <leo-component v-if="stateOne" :information="'informationLevelThree'"></leo-component>
+      <leo-component v-if="stateOne" :information="informationLevelThree"></leo-component>
       <nivel-component v-else :levels = '4'></nivel-component>
     </div>
     <div v-else>
@@ -22,7 +22,7 @@ export default {
 					stateOne: true,
 					showLeo: true,
 					stateSectores: false,
-					informationLevelTwo: 'levelThree_1'
+					informationLevelThree: 'levelThree_1'
         }
 		},
 		created() {

@@ -1,7 +1,8 @@
 <template>
   <div class="fondo-claro" v-bind:class="{fondooscuro: !stateOne}">
+    <Nav-component v-if="stateOne"></Nav-component>
     <div v-if="showLeo">
-      <leo-component v-if="stateOne" :information="'levelTwo_1'"></leo-component>
+      <leo-component v-if="stateOne" :information="informationLevelTwo"></leo-component>
       <nivel-component v-else :levels = '3'></nivel-component>
     </div>
     <div v-else>
@@ -17,7 +18,7 @@
 import nivel from '@/components/nivel'
 import leo from '@/components/Leo'
 import {EventBus} from '@/plugins/EventBus.js'
-
+import nav from '@/components/Nav'
 import question from '@/components/level-two-questions'
 import inform from '@/components/Inform'
 import economista from '@/components/Economistas'
@@ -87,7 +88,8 @@ export default {
     'question-component': question,
     'inform-component': inform,
     'economista-component': economista,
-    'sectores-component': sectores
+    'sectores-component': sectores,
+    'Nav-component' : nav
     }
 
 }

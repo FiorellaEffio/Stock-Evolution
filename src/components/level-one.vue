@@ -1,13 +1,13 @@
 <template>
   <div class="fondo-claro" v-bind:class="{fondooscuro: !stateOne}">
-      <Nav-component></Nav-component>
-    <div v-if="!stateSab">
-       <leo-component v-if="stateOne" :information="'levelOne'">
-       </leo-component>
-      <nivel-component v-else :levels = '2'>
-      </nivel-component>
-    </div>
-    <sab-component v-else></sab-component>
+    <Nav-component v-if="stateOne"></Nav-component>
+      <div v-if="!stateSab">
+        <leo-component v-if="stateOne" :information="'levelOne'">
+        </leo-component>
+        <nivel-component v-else :levels = '2'>
+        </nivel-component>
+      </div>
+      <sab-component v-else></sab-component>
   </div>
 </template>
 <script>

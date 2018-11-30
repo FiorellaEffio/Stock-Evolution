@@ -1,18 +1,32 @@
 <template>
  <div id="app">
  <nav class="navTool">
-   <div class="hidden-md-and-up"  >
+   <div class="hidden-md-and-up">
      <v-expansion-panel class="backExpans">
        <v-expansion-panel-content class="indigo darken-4">
          <div slot="header">
            <v-toolbar-title class="nameNav">juanita   s/.50000   nivel 1</v-toolbar-title>
          </div>
-           <router-link class="nav-item" to="/Landing">
-               <a @click="userSignOut">
-            <p class="text"><img src="http://subirimagen.me/uploads/20181130025019.png" width="20px">
-            Cerrar sesión</p>
-        </a>
-         </router-link>
+           <a href="#">
+             <p class="text"><img src="http://subirimagen.me/uploads/20181130102322.png" width="20px">
+               Home
+             </p>
+           </a>
+           <a href="#">
+             <p class="text"><img src="http://subirimagen.me/uploads/20181130102548.png" width="20px">
+               Noticias
+             </p>
+           </a>
+           <a href="#">
+             <p class="text"><img src="http://subirimagen.me/uploads/20181130025019.png" width="20px">
+               Glosario
+             </p>
+           </a>
+            <a @click="userSignOut">
+              <p class="text"><img src="http://subirimagen.me/uploads/20181130025019.png" width="20px">
+                Cerrar sesión
+              </p>
+            </a>
        </v-expansion-panel-content>
      </v-expansion-panel>
    </div>
@@ -25,16 +39,16 @@
 
  export default {
    name: 'nav',
-
      methods: {
        userSignOut(){
-         console.log('dafdgfd')
-       firebase.auth().signOut()
+         self = this;
+         firebase.auth().signOut().then(function() {
+           self.$router.push('/landing')
+         }, function(error) {
+           alert('Sign Out Error', error);
+         });
        }
-
      }
-
-
  }
  </script>
 
