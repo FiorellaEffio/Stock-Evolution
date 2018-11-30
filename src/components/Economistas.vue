@@ -1,89 +1,99 @@
 <template>
     <v-container class="text-xs-center">
-        <div>
-            <h2>Estos son los economistas que debes escuchar</h2>
-        </div>
-        <br>
-        <br>
-        <div>          
-            <v-flex >
-                 <v-btn flat large class="btnEco">
-                     <div>
-                         <h4>Julio<br>Velarde</h4>
-                         <v-avatar
-              slot="activator"
-              size="75px"
-            >
- 
-                        <img src="https://portal.andina.pe/EDPfotografia3/Thumbnail/2017/11/08/000461860W.jpg" alt="">
-                         </v-avatar>
-                     </div>
-                 </v-btn>
-                  <v-btn flat large class="btnEco">
-                     <div>
-                         <h4>Humberto<br>Chavez</h4>
-                         <v-avatar
-              slot="activator"
-              size="75px"
-            >
- 
-                        <img src="http://subirimagen.me/uploads/20181126011113.jpg" alt="">
-                         </v-avatar>
-                     </div>
-                 </v-btn>
-            </v-flex>              
-             <v-flex>
-                         <v-btn flat large class="btnEco">
-                     <div>
-                         <h4>Fernando<br> Zavala</h4>
-                         <v-avatar
-              slot="activator"
-              size="75px"
-            >
- 
-                        <img src="http://subirimagen.me/uploads/20181126011359.jpg" alt="">
-                         </v-avatar>
-                     </div>
-                 </v-btn>
-         <v-btn flat large class="btnEco">
-                     <div>
-                         <h4>Santiago<br> Mendoza</h4>
-                         <v-avatar
-              slot="activator"
-              size="75px"
-            >
- 
-                        <img src="http://subirimagen.me/uploads/20181126011458.jpg" alt="">
-                         </v-avatar>
-                     </div>
-                 </v-btn>
+      <v-flex mt-4>
+        <h2>Selecciona un economista que debes escuchar al momento de invertir:</h2>
+      </v-flex>
+      <v-flex mt-5>
+          <v-flex >
+               <v-btn @click="changeEconomist('Julio Velarde')" flat large class="btnEco">
+                   <div>
+                       <h4>Julio<br>Velarde</h4>
+                       <v-avatar
+            slot="activator"
+            size="75px"
+          >
+                      <img src="https://portal.andina.pe/EDPfotografia3/Thumbnail/2017/11/08/000461860W.jpg" alt="">
+                       </v-avatar>
+                   </div>
+               </v-btn>
+                <v-btn @click="changeEconomist('wrong')" flat large class="btnEco">
+                   <div>
+                       <h4>Humberto<br>Chavez</h4>
+                       <v-avatar
+            slot="activator"
+            size="75px"
+          >
 
-            </v-flex>
-        </div>
-         <v-btn
-        class="btn-Eco"
-          color="red"
-          dark
-            @click="nextLevelTwo()"
-        >
-          Continue
-        </v-btn>
+                      <img src="http://subirimagen.me/uploads/20181126011113.jpg" alt="">
+                       </v-avatar>
+                   </div>
+               </v-btn>
+          </v-flex>
+           <v-flex>
+                       <v-btn @click="changeEconomist('wrong')" flat large class="btnEco">
+                   <div>
+                       <h4>Fernando<br> Zavala</h4>
+                       <v-avatar
+            slot="activator"
+            size="75px"
+          >
+
+                      <img src="http://subirimagen.me/uploads/20181126011359.jpg" alt="">
+                       </v-avatar>
+                   </div>
+               </v-btn>
+       <v-btn @click="changeEconomist('wrong')" flat large class="btnEco">
+                   <div>
+                       <h4>Santiago<br> Mendoza</h4>
+                       <v-avatar
+            slot="activator"
+            size="75px"
+          >
+
+                      <img src="http://subirimagen.me/uploads/20181126011458.jpg" alt="">
+                       </v-avatar>
+                   </div>
+               </v-btn>
+
+          </v-flex>
+      </v-flex>
+      <v-flex mt-5>
+        <v-btn
+        :disabled="!btnActivator"
+       class="btn-Eco"
+         color="red"
+         dark
+           @click="nextLevelTwo()"
+       >
+         Continue
+       </v-btn>
+      </v-flex>
     </v-container>
 </template>
 
 <script>
- /* eslint-disable */ 
+ /* eslint-disable */
  import {EventBus} from '@/plugins/EventBus.js'
 export default {
     name: 'economista',
   data() {
       return {
-          
+        btnActivator: false,
+        economistName: '',
       }
   },
   methods: {
       nextLevelTwo(){
+        if(this.economistName === "Julio Velarde") {
           EventBus.$emit('change-leoTwo_4', true)
+        } else {
+          console.log('te equivocaste')
+        }
+      },
+      changeEconomist(ecoName) {
+        this.economistName = ecoName;
+        this.btnActivator = true;
+        console.log(this.economistName)
       }
   }
 }
