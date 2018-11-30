@@ -1,7 +1,7 @@
 <template>
   <div class="fondo-claro" v-bind:class="{fondooscuro: !stateOne}">
     <div v-if="showLeo">
-      <leo-component v-if="stateOne" :information="informationLevelTwo"></leo-component>
+      <leo-component v-if="stateOne" :information="'levelTwo_1'"></leo-component>
       <nivel-component v-else :levels = '3'></nivel-component>
     </div>
     <div v-else>

@@ -7,26 +7,33 @@
     <v-stepper-items >
       <v-stepper-content v-for="(data, index) in items" :key="index" :step="index+1" class="text-xs-center">
         <img src="http://subirimagen.me/uploads/20181123143029.png" width="40%">
+   <div class="contentNube">
+     <div class="divNube">
+      <div
+        column
+        justify-center
+        class="textNube"
+      >
+        <h3 class="font-weight-regular"><span>{{name}}</span>{{data.message}}</h3>
+      </div>
 
-   <div class="divNube">
-    <div
-      column
-      justify-center
-      class="textNube"
-    >
-      <h3 class="font-weight-regular"><span>{{name}}</span>{{data.message}}</h3>
-    </div>
-
+     </div>
    </div>
-        <img :src='data.src' @click="nextStteper(index)" height="250px"/>
-        <v-btn
-        class="btn-leo"
-          color="red"
-          dark
-          @click="nextStteper(index)"
-        >
-          Continue
-        </v-btn>
+   <div class="contentLeoBtn">
+     <div class="imgDiv">
+       <img :src='data.src' @click="nextStteper(index)" height="250px"/>
+     </div>
+     <div class="btnDiv">
+       <v-btn
+       class="btn-leo"
+         color="red"
+         dark
+         @click="nextStteper(index)"
+       >
+         Continue
+       </v-btn>
+     </div>
+   </div>
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>
@@ -81,6 +88,7 @@
             return dataLeo.datainformacion
             break;
           case 'levelTwo_1':
+          console.log('nivel 2')
             return dataLeo.dataLeveltwo_1
             break;
           case 'levelTwo_2':
@@ -160,34 +168,32 @@
 <style>
 
 .font-weight-regular {
-  color: palevioletred;
+  color: #333;
   display: flex;
   justify-content: flex-start;
-  align-content: center;
-  margin-top: -15px;
-  font-weight: 700
-
+  text-align: center;
+  padding: 12% 15%;
 }
 .divNube{
   background-image: url("http://subirimagen.me/uploads/20181123205100.png");
   background-size: 100% ;
   margin-top: 0%;
-  height: 228px;
-  width: 290px;
-    display: table-cell;
-    vertical-align: middle;
-  justify-content: flex-start;
-      text-align: center;
-
+  height: 210px;
+  width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-    h3{
-        color:black;
-        text-align: center;
-        padding: 20px 20px ;
-        margin-left: 20px;
-        margin-right: 20px;
-
-    }
+.contentNube {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contentLeoBtn {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
     .stepper-leo{
       background: #f4f0f00a !important;
     }
@@ -234,4 +240,5 @@ input{
    background-color: #92B0FF;
    /* background-image: url('http://subirimagen.me/uploads/20181129092953.png'); */
  }
+
 </style>
