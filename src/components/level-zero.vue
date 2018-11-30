@@ -1,7 +1,12 @@
 <template>
  <div class="fondo-color" v-bind:class="{fondo: !stateOne}">
-    <leo-component v-if="stateOne"></leo-component>
-    <nivel v-else :levels='1'></nivel>
+   <v-flex mt-4 ml-5 pl-4 v-if="stateOne">
+     <img src="http://subirimagen.me/uploads/20181123143029.png" width="75%">
+   </v-flex>
+   <v-flex class="level-zero">
+     <leo-component v-if="stateOne"></leo-component>
+     <nivel v-else :levels='1'></nivel>
+   </v-flex>
  </div>
 </template>
 <script>
@@ -36,5 +41,8 @@ export default {
 }
 .fondo {
   background-image: url('http://subirimagen.me/uploads/20181123142846.png');
+}
+.level-zero {
+  margin-top: -10%;
 }
 </style>

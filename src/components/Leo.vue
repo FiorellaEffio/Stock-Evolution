@@ -6,7 +6,6 @@
     </v-stepper-header>
     <v-stepper-items >
       <v-stepper-content v-for="(data, index) in items" :key="index" :step="index+1" class="text-xs-center">
-        <img src="http://subirimagen.me/uploads/20181123143029.png" width="40%">
    <div class="contentNube">
      <div class="divNube">
       <div
@@ -38,7 +37,6 @@
     </v-stepper-items>
   </v-stepper>
   <v-container v-else class="text-xs-center" mt-5>
-        <img id="logo" src="http://subirimagen.me/uploads/20181123143029.png">
         <h2>¿Cómo te gustaria<br> que te llame?</h2>
         <v-flex my-3>
           <input type="text" placeholder="Tu nombre" v-model="name">
