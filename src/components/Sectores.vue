@@ -4,33 +4,31 @@
             <h2>¿Qué factores debes tener en cuenta al momento de invertir?</h2>
         </v-flex>
         <v-flex mt-4>
-          <v-flex b-5>
-            <v-btn flat large
-                       slot="activator"
-               class="btnEco">
-                <div>
-                    <h4>Sectores, empresas y otros</h4>
-                </div>
-            </v-btn>
-          </v-flex>
-
-          <v-btn flat large
+          <v-btn flat large @click="changeFactor(0)"
                      slot="activator"
              class="btnEco">
               <div>
                   <h4>Sectores, empresas y otros</h4>
               </div>
           </v-btn>
-          <v-btn flat large
+          <v-btn flat large @click="changeFactor(1)"
+             slot="activator"
+             class="btnEco">
+              <div>
+                  <h4>Mercado y recomendaciones</h4>
+              </div>
+          </v-btn>
+          <v-btn  flat large @click="changeFactor(2)"
                      slot="activator"
              class="btnEco">
               <div>
-                  <h4>Sectores, empresas y otros</h4>
+                  <h4>Mercado local, sectores y empresas</h4>
               </div>
           </v-btn>
         </v-flex>
         <v-flex mt-4>
           <v-btn
+          :disabled="!btnActivator"
          class="btn-Eco"
            color="red"
            dark
@@ -42,20 +40,29 @@
     </v-container>
 </template>
 <script>
-/* eslint-disable */
 import {EventBus} from '@/plugins/EventBus.js'
  export default {
   name: "Inform",
   data() {
       return {
+        btnActivator: false,
+        factorOption: '',
       }
   },
   methods: {
       nextLevelTwo(){
+        if(this.factorOption === 2) {
           EventBus.$emit('change-leoTwo_5', true)
+        } else {
+          console.log('te equivocaste')
+        }
+      },
+      changeFactor(factorOption) {
+        this.factorOption = factorOption;
+        this.btnActivator = true;
+        console.log(this.factorOption)
       }
   }
-
 };
 </script>
 <style>
