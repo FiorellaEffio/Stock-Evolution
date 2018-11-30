@@ -48,6 +48,7 @@
         </div>
         <v-flex mt-4>
           <v-btn
+           :disabled="!btnActivator"
            class="btn-sab"
            color="red"
            dark
@@ -66,6 +67,7 @@ export default {
     data(){
         return{
           sabName: '',
+          btnActivator: false
         }
     },
     methods: {
@@ -81,6 +83,7 @@ export default {
         },
         changeSab(sabName) {
           this.sabName = sabName;
+          this.btnActivator = true;
           console.log(this.sabName)
         }
     }
