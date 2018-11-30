@@ -98,7 +98,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 
 .btnEco {
   width: 125px;

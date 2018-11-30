@@ -162,7 +162,7 @@
   }
 
 </script>
-<style>
+<style scoped>
 
 .font-weight-regular {
   color: #333;

@@ -65,7 +65,7 @@ import {EventBus} from '@/plugins/EventBus.js'
   }
 };
 </script>
-<style>
+<style scoped>
 
 .btnEco {
   width: 80%;

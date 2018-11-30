@@ -4,16 +4,21 @@
         <v-app id="inspire" v-if="!compraVenta">
             <v-container fluid grid-list-xl>           
             <v-layout wrap align-center>
-                <v-flex xs12 sm6 d-flex>                
+                <v-flex xs12 sm6 d-flex>
+                <!--     <select>
+                        <option v-for="item in items" :key="item" @change="changeSector(item)">{{item}}</option>
+                    </select>  -->            
                 <v-select
+                    v-model="option"
                     :items="items"
                     :label="state"
                     outline
+                    @change="changeSector"
                 ></v-select>
                 </v-flex>
             </v-layout>
            <!--  steppers -->
-            <div id="app">
+            <div id="app" v-if="option !== ''">
             <v-app id="inspire">
                 <v-stepper v-model="e1">
                 <v-stepper-header  v-show="false" >
@@ -136,6 +141,7 @@ export default {
     name: 'sectores-inversion',
     data(){
         return {
+            keyData: [],
             empresas: [],
             items: [],
             description: '',
@@ -149,26 +155,24 @@ export default {
             acciones: 0,
             compra: 0,
             valor: 0,
+            option: ''
         }
     },
     created(){
         this.firebaseSectores()
     },
+    computed: {
+        select: function () {
+            console.log(this.option)
+        }
+    },
     methods:{
         firebaseSectores(){
             const data = firebase.database().ref().child('sectores/')
             data.once('value', value => {
-                const keyData = value.val()
+                this.keyData = value.val()
                 this.items = Object.keys(value.val())
-                Object.keys(keyData).forEach(element => {
-                    console.log(keyData[element], element)
-                    if(element === this.selectSector){
-                        this.description = keyData[element].descripcion.texto
-                        this.img = keyData[element].descripcion.src 
-                        this.empresas.push(keyData[element].empresas)
-                        console.log(this.empresas, 'img')
-                    }                    
-                })
+                
             })
         },
         elegirEmpresa(){
@@ -196,6 +200,16 @@ export default {
         venta(){
             this.acciones = 'venta'
             this.compra = this.valor * 5
+        },
+        changeSector(correct){
+            Object.keys(this.keyData).forEach(element => {
+                    if(element === correct){
+                        this.description = this.keyData[element].descripcion.texto
+                        this.img = this.keyData[element].descripcion.src 
+                        this.empresas.push(this.keyData[element].empresas)
+                    }                    
+                })
+            
         }
         /* solo falta emitir un evento para mostrar la el ultimo mensaje de leo en el level 3 y escoger dinammicamente el select */
     }
@@ -203,7 +217,12 @@ export default {
 </script>
 <style scoped>
 .application--wrap{
-    min-height: 60vh !important
+    min-height: 20px !important;
+    height: 50px;
 }
+.theme--light.application, .theme--light.v-stepper{
+    background: none;
+}  
+
 </style>
 

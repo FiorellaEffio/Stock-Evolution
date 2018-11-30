@@ -150,7 +150,7 @@ export default {
 
 };
 </script>
-<style>
+<style scoped>
  .btn-inf{
       border-radius: .8em;
       width: 215px
