@@ -62,7 +62,6 @@
     </div>
 </template>
 <script>
-/* eslint-disable */
 import dataLeo from '@/plugins/data_leo.js'
 import firebase from 'firebase'
 export default {
@@ -88,6 +87,7 @@ export default {
 	created(){
 		const data = dataLeo.dataNivel
 		data.forEach(element => {
+      console.log(element)
 			console.log(element.nivel, this.levels);
 			if(element.nivel === this.levels){
 				this.level = this.levels
@@ -121,7 +121,6 @@ export default {
           this.$router.push('/level_four')
           break;
         default:
-
       }
 		},
 	}

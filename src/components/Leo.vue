@@ -76,47 +76,33 @@
         }
       },
       items: function(){
-/*         console.log(this.information)
-        const nameLevel = this.information.slice(5, this.information.indexOf('_'))
-        const numberLevel = this.information.slice(this.information.length-1)
-        console.log(numberLevel, nameLevel)
-        switch (nameLevel) {
-        case 'On':
-          return dataLeo.datainformacion
-          break;
-        case 'Two':
-          const name = `dataLeveltwo_${numberLevel}`
-          console.log(name)
-          return dataLeo.dataLeveltwo_`${numberLevel}`
-          break;
-        default: return dataLeo.datajs
+        switch (this.information) {
+          case 'levelOne':
+            return dataLeo.datainformacion
+            break;
+          case 'levelTwo_1':
+            return dataLeo.dataLeveltwo_1
+            break;
+          case 'levelTwo_2':
+            return dataLeo.dataLeveltwo_2
+            break;
+          case 'levelTwo_3':
+            return dataLeo.dataLeveltwo_3
+            break;
+          case 'levelTwo_4':
+            return dataLeo.dataLeveltwo_4
+            break;
+          case 'levelTwo_5':
+            return dataLeo.dataLeveltwo_5
+            break;
+          case 'levelThree_1':
+            return dataLeo.dataLevelthree_1
+            break;
+          default:
+            console.log('no funciona')
+            return dataLeo.datajs
+        }
 
-      } */
-      // todos los datos(dataLeo) estan en data_leo.js
-        if(this.information === 'levelOne'){
-          return dataLeo.datainformacion
-        }
-        if(this.information === 'levelTwo_1'){
-           return dataLeo.dataLeveltwo_1
-        }
-        if(this.information === 'levelTwo_2'){
-           return dataLeo.dataLeveltwo_2
-        }
-        if(this.information === 'levelTwo_3'){
-           return dataLeo.dataLeveltwo_3
-        }
-        if(this.information === 'levelTwo_4'){
-           return dataLeo.dataLeveltwo_4
-        }
-        if(this.information === 'levelTwo_5'){
-           return dataLeo.dataLeveltwo_5
-        }
-        if(this.information === 'levelThree_1'){
-           return dataLeo.dataLevellthree_1
-        }
-        else{
-          return dataLeo.datajs
-        }
       },
       inputs: function() {
         const stepp = this.e1
@@ -172,12 +158,7 @@
 
 </script>
 <style>
-    /* #nube {
-        width: 100%;
-        background-color: pink;
-        height: 200px;
 
-    } */
 .font-weight-regular {
   color: palevioletred;
   display: flex;

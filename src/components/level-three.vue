@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="showLeo">
-      <leo-component v-if="stateOne" :information="informationLevelTwo"></leo-component>
+      <leo-component v-if="stateOne" :information="informationLevelThree"></leo-component>
       <nivel-component v-else :levels = '4'></nivel-component>
     </div>
     <div v-else>
@@ -26,7 +26,7 @@ export default {
         }
 		},
 		created() {
-			EventBus.$on('change-sectorInvertir', (value)=>{        
+			EventBus.$on('change-sectorInvertir', (value)=>{
         this.showLeo = false
         this.stateSectores = true
       })

@@ -2,8 +2,8 @@
   <div class="fondo-claro" v-bind:class="{fondooscuro: !stateOne}">
       <Nav-component></Nav-component>
     <div v-if="!stateSab">
-             <leo-component v-if="stateOne" :information="true">
-             </leo-component>
+       <leo-component v-if="stateOne" :information="'levelOne'">
+       </leo-component>
       <nivel-component v-else :levels = '2'>
       </nivel-component>
     </div>

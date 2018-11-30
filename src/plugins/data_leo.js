@@ -60,7 +60,7 @@ const dataLeveltwo_5 = [
     message: 'Una SAB es entidad financiera intermediaria autorizada a la compra y venta que los inversionistas solicitan.'
   }
 ]
-const dataLevellthree_1 = [
+const dataLevelthree_1 = [
   {
     src: 'http://subirimagen.me/uploads/20181123161725.png',
     message: 'Pequeño pecesito: Llegó el momento de invertir'
@@ -104,4 +104,4 @@ const dataNivel = [
     img: ''
   }
 ]
-export default{datajs, datainformacion, dataNivel, dataLeveltwo_1,dataLeveltwo_2, dataLeveltwo_3, dataLeveltwo_4, dataLeveltwo_5,dataLevellthree_1}
+export default{datajs, datainformacion, dataNivel, dataLeveltwo_1,dataLeveltwo_2, dataLeveltwo_3, dataLeveltwo_4, dataLeveltwo_5,dataLevelthree_1}

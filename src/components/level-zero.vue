@@ -1,7 +1,7 @@
 <template>
  <div class="fondo-color" v-bind:class="{fondo: !stateOne}">
     <leo-component v-if="stateOne"></leo-component>
-    <nivel v-else :levels = '1'></nivel>
+    <nivel v-else :levels='1'></nivel>
  </div>
 </template>
 <script>
@@ -20,6 +20,7 @@ export default {
   created(){
     EventBus.$on('change-state', (value)=>{
       this.stateOne = false;
+      console.log(this.stateOne)
     })
   },
   components:{
