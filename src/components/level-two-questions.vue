@@ -1,12 +1,13 @@
 <template>
-    <v-card class="text-xs-center">
+
+    <div class="text-xs-center divSab">
         <v-card-title class="headline">¿Recuerdas que es una SAB?</v-card-title>
         <v-card-text>Una sociedad Agente de Bolsa (SAB) es la única _________ financiera _______________ del mercado bursátil que esta autorizada a la compra y venta que los ____________ solicitan; a cambio cobran una comisión, que es determinada libremente por cada una de ellas.</v-card-text>
-        <v-card-actions>
-          <v-flex v-for="(item, index) in radio">
-            <input type="radio" class="inlineinput" name="tr" :value="index" v-model="answer">{{item}}<hr>
-          </v-flex>
-        </v-card-actions>
+     
+          <button v-for="(item, index) in radio" class="divRadio">
+          <span><input type="radio" class="inlineinput" name="tr" :value="index" v-model="answer">{{item}}</span>  
+          </button>
+     
         	<v-btn
         class="btn-leo"
           color="red"
@@ -15,7 +16,7 @@
         >
           Continue
         </v-btn>
-      </v-card>
+      </div>
 </template>
 <script>
 import {EventBus} from '@/plugins/EventBus.js'
@@ -26,7 +27,7 @@ export default {
 				radioGroup: 1,
         selected: false,
         answer: 0,
-				radio: ['entidad/intermediaria/inversionista', 'intermediaria/intermediaria/señores', 'entidad/acompañada/bancos']
+				radio: ['entidad/intermediaria/ inversionista', 'intermediaria/intermediaria/ señores', 'entidad/acompañada/bancos']
 			}
   },
   methods: {
@@ -41,5 +42,27 @@ export default {
 }
 </script>
 <style scoped>
+input{
+  width: 20px
+}
+.divRadio{
+  display: inline-block;
+  width: 90%;
+  font-size: 16px;
+  border: 2px solid navy;
+  margin: 3px;
+  padding: 2px;
+  border-radius: 8rem
+}
+
+.divSab{
+  padding: 5%;
+  /* text-align: justify; */
+  font-size: 18px
+}
+
+.inlineinput{
+  float: left;
+}
 
 </style>
