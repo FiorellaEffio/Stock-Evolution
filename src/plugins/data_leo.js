@@ -60,6 +60,28 @@ const dataLeveltwo_5 = [
     message: 'Una SAB es entidad financiera intermediaria autorizada a la compra y venta que los inversionistas solicitan.'
   }
 ]
+const dataLevellthree_1 = [
+  {
+    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    message: 'Pequeño pecesito: Llegó el momento de invertir'
+  },
+  {
+    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    message: 'Para invertir es importante que conoscas dos términos'
+  },
+  {
+    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    message: 'VALOR FUNDAMENTAL: Es definido por un cálculo en el que influyen diferentes factores propios de la empresa'
+  },
+  {
+    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    message: 'VALOR DE MERCADO: Este valor varía de acuerdo a factores externos tales como noticias y eventos'
+  },
+  {
+    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    message: 'Genial! Empezamos!!'
+  }
+]
 const dataNivel = [
   {
     nivel: 1,
@@ -82,4 +104,4 @@ const dataNivel = [
     img: ''
   }
 ]
-export default{datajs, datainformacion, dataNivel, dataLeveltwo_1,dataLeveltwo_2, dataLeveltwo_3, dataLeveltwo_4, dataLeveltwo_5}
+export default{datajs, datainformacion, dataNivel, dataLeveltwo_1,dataLeveltwo_2, dataLeveltwo_3, dataLeveltwo_4, dataLeveltwo_5,dataLevellthree_1}
