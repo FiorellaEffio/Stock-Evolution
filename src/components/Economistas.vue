@@ -23,7 +23,6 @@
             slot="activator"
             size="75px"
           >
-
                       <img src="http://subirimagen.me/uploads/20181126011113.jpg" alt="">
                        </v-avatar>
                    </div>
@@ -68,25 +67,49 @@
          Continue
        </v-btn>
       </v-flex>
+      <v-snackbar
+        v-model="snackbar"
+        :color="color"
+        :multi-line="mode === 'multi-line'"
+        :timeout="timeout"
+        :vertical="mode === 'vertical'"
+      >
+        {{ text }}
+        <v-btn
+          dark
+          flat
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </v-snackbar>
     </v-container>
 </template>
 
 <script>
- /* eslint-disable */
- import {EventBus} from '@/plugins/EventBus.js'
+import wrong from '@/components/wrong'
+import {EventBus} from '@/plugins/EventBus.js'
 export default {
     name: 'economista',
   data() {
       return {
         btnActivator: false,
         economistName: '',
+        snackbar: false,
+        color: 'red',
+        mode: 'vertical',
+        timeout: 6000,
+        text: 'Respuesta incorrecta :(, intenta de nuevo'
       }
+  },
+  components: {
   },
   methods: {
       nextLevelTwo(){
         if(this.economistName === "Julio Velarde") {
           EventBus.$emit('change-leoTwo_4', true)
         } else {
+          this.snackbar = true;
           console.log('te equivocaste')
         }
       },
