@@ -82,6 +82,12 @@ const dataLevelthree_1 = [
     message: 'Genial! Empezamos!!'
   }
 ]
+const dataLevelthree_2 = [
+  {
+    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    message: 'Felicitaciones compraste tus primera acciones'
+    
+  }]
 const dataNivel = [
   {
     nivel: 1,
@@ -104,4 +110,4 @@ const dataNivel = [
     img: ''
   }
 ]
-export default{datajs, datainformacion, dataNivel, dataLeveltwo_1,dataLeveltwo_2, dataLeveltwo_3, dataLeveltwo_4, dataLeveltwo_5,dataLevelthree_1}
+export default{datajs, datainformacion, dataNivel, dataLeveltwo_1,dataLeveltwo_2, dataLeveltwo_3, dataLeveltwo_4, dataLeveltwo_5,dataLevelthree_1, dataLevelthree_2}
