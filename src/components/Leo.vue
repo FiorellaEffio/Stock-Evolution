@@ -5,7 +5,7 @@
       <v-stepper-step v-for="(data, index) in items" :key="index" :complete="e1 > index" :step="index">Name {{index}}</v-stepper-step>
     </v-stepper-header>
     <v-stepper-items >
-      <v-stepper-content v-for="(data, index) in items" :key="index" :step="index+1" class="text-xs-center">
+      <v-stepper-content v-for="(data, index) in items" :key="index" :step="index+1" class="text-xs-center no-transition" >
    <div class="contentNube">
      <div class="divNube">
       <div
@@ -163,6 +163,9 @@
 
 </script>
 <style scoped>
+.no-transition{
+  transition: none
+}
 
 .font-weight-regular {
   color: #333;

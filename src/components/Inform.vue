@@ -3,24 +3,26 @@
        <h1>Para invertir debes tener en cuenta estos 3 puntos</h1>
         <br>
         <h3>Presiona cada uno para ver más información</h3>
-          <v-parallax
+          <!-- <v-parallax
     dark
-    src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-    height="280"
-  >
-    <v-layout
+    src="http://subirimagen.me/uploads/20181201100215.png"
+    height="300"
+  > -->
+
+      <div
       align-center
       column
       justify-center
+      class="divParalax"
     >
      <div class="text-xs-center">
     <v-dialog
       v-model="dialog"
-      width="300"
+      width="500"
     >
       <v-btn
         slot="activator"
-        color="primary"
+        color="transparent"
         dark
       >
         Mercado Local
@@ -118,8 +120,9 @@
       </v-card>
     </v-dialog>
   </div>
-    </v-layout>
-  </v-parallax>
+    </div>
+
+  <!-- </v-parallax> -->
 
       <v-btn
         class="btn-inf"
@@ -155,4 +158,8 @@ export default {
       border-radius: .8em;
       width: 215px
     }
+  /* .divParalax{
+    background-image: url('http://subirimagen.me/uploads/20181201100215.png');
+    background-size: auto;
+  }   */
 </style>
