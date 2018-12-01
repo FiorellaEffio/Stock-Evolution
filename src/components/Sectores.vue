@@ -58,7 +58,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .btnSec {
   border-radius: 0.8em;
   width: 225px;

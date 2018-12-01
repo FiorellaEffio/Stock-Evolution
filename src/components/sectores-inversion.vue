@@ -27,25 +27,12 @@
                 <v-stepper-items>
                     <v-stepper-content step="1">
                     <v-card
-                        class="mb-5"
-                        color="grey lighten-1"
-                        height="250px"
+                        class="mb-5 cardDescrip"
+                        height="50%"
                     >
                     <v-flex >
-                            <v-btn flat large class="btnEco"
-                            >
-                                <div>
-                                    <v-avatar
-                                        slot="activator"
-                                        size="80px"
-                                        >
-                
-                                        <img :src="img" alt="">
-                                        </v-avatar>
-                                    </div>
-                                </v-btn>
-                    </v-flex>
-                    <v-card-title class="headline">Descripcion:</v-card-title>
+                    <v-card-title class="headline"><img :src="img" alt="" width="45px">Descripcion:</v-card-title>
+                     </v-flex>
                     <v-card-text>{{description}}</v-card-text>        
                     </v-card> 
                   <!--   template lista de imagenes -->
@@ -57,10 +44,11 @@
                                 <div>
                                     <v-avatar
                                         slot="activator"
-                                        size="45px"
+                                        tile
+                                        
                                         >
                 
-                                        <img :src="item.src" alt="">
+                                        <img :src="item.src"  alt="">
                                         </v-avatar>
                                     </div>
                                 </v-btn>
@@ -223,6 +211,10 @@ export default {
 .theme--light.application, .theme--light.v-stepper{
     background: none;
 }  
+
+.cardDescrip{
+    background-color: transparent
+}
 
 </style>
 
