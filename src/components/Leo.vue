@@ -103,6 +103,9 @@
           case 'levelThree_1':
             return dataLeo.dataLevelthree_1
             break;
+            case 'levelThree_2':
+            return dataLeo.dataLevelthree_2
+            break;
           default:
             console.log('no funciona')
             return dataLeo.datajs
@@ -148,8 +151,11 @@
           EventBus.$emit('change-nivel', true)
         }
         // level 3
-        if(this.information === 'levelThree_1'){/* && (index + 1) === dataLeo.dataLevellthree_1.length */
+        if(this.information === 'levelThree_1' && (index + 1) === dataLeo.dataLevelthree_1.length){
           EventBus.$emit('change-sectorInvertir', false)
+        }
+        if(this.information === 'levelThree_2'){
+          EventBus.$emit('change-nivelFour', true)
         }
         else{
           console.log('no cumle la condicion')

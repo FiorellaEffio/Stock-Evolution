@@ -6,10 +6,11 @@
       <nivel-component v-else :levels = '3'></nivel-component>
     </div>
     <div v-else>
-      <question-component v-if="stateQuestion" ></question-component>
-      <inform-component v-if="stateInform"></inform-component>
-      <economista-component v-if="stateEconomista"></economista-component>
-      <sectores-component  v-if="stateSectores"></sectores-component>
+      <!-- mejorar con clase -->
+      <question-component id="view1" v-if="stateQuestion" ></question-component>
+      <inform-component id= "view2" v-if="stateInform"></inform-component>
+      <economista-component id= "view3" v-if="stateEconomista"></economista-component>
+      <sectores-component id="view4" v-if="stateSectores"></sectores-component>
     </div>
   </div>
 </template>

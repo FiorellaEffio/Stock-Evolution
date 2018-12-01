@@ -32,8 +32,15 @@ export default {
         this.showLeo = false
         this.stateSectores = true
       })
-		},
-    methods:{
+      EventBus.$on('change-inLevelthree', (value)=>{
+        this.showLeo = true
+        this.stateSectores = value        
+        this.informationLevelThree = 'levelThree_2'
+      })
+      EventBus.$on('change-nivelFour', (value)=>{
+        this.stateOne = false
+        
+      })
 		},
 		 components:{
     'leo-component': leo,

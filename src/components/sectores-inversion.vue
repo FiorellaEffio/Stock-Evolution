@@ -5,11 +5,7 @@
             <v-container fluid grid-list-xl>           
             <v-layout wrap align-center>
                 <v-flex xs12 sm6 d-flex>
-                <!--     <select>
-                        <option v-for="item in items" :key="item" @change="changeSector(item)">{{item}}</option>
-                    </select>  -->            
                 <v-select
-                    v-model="option"
                     :items="items"
                     :label="state"
                     outline
@@ -18,7 +14,7 @@
                 </v-flex>
             </v-layout>
            <!--  steppers -->
-            <div id="app" v-if="option !== ''">
+            <div id="app" v-if="changeEmpresa !== ''">
             <v-app id="inspire">
                 <v-stepper v-model="e1">
                 <v-stepper-header  v-show="false" >
@@ -58,13 +54,12 @@
                                     <v-avatar
                                         slot="activator"
                                         size="45px"
-                                        >
-                
-                                        <img :src="item.src" alt="">
-                                        </v-avatar>
-                                    </div>
-                                </v-btn>
-                            </v-flex> 
+                                    >
+                                    <img :src="item.src" alt="">
+                                    </v-avatar>
+                                </div>
+                            </v-btn>
+                    </v-flex> 
                      <v-btn
                     class="btn-leo"
                     color="red"
@@ -103,7 +98,7 @@
                     ></v-img>  
                 </v-card>
                 <v-card>
-                    <span>{{accion}}:</span>
+                    <span>{{acciones}}:</span>
                     <v-flex xs12 md6>
                         <v-text-field
                         v-model="valor"
@@ -137,81 +132,79 @@
 <script>
 import dataFinaciero from '@/plugins/data_financiero.js'
 import firebase from 'firebase'
+import {EventBus} from '@/plugins/EventBus.js'
 export default {
     name: 'sectores-inversion',
     data(){
         return {
-            keyData: [],
-            empresas: [],
-            items: [],
+            keyData: [],// todo el dato de firebase /sectores
+            empresas: [], // informacion de las empresas del sector
+            items: [], // lista de nombres para el select
+            // informacion para template
             description: '',
             img: '',
-            selectSector: 'electrico',
             titulo: 'Seleccione el sector donde quiera invertir',
             state: 'sector',
             e1: 0,
-            showDescripcion: true,
             compraVenta: false,
             acciones: 0,
             compra: 0,
             valor: 0,
-            option: ''
+            changeEmpresa: ''
         }
     },
     created(){
         this.firebaseSectores()
-    },
-    computed: {
-        select: function () {
-            console.log(this.option)
-        }
     },
     methods:{
         firebaseSectores(){
             const data = firebase.database().ref().child('sectores/')
             data.once('value', value => {
                 this.keyData = value.val()
-                this.items = Object.keys(value.val())
-                
+                this.items = Object.keys(value.val())                
             })
         },
         elegirEmpresa(){
             if( this.state !== 'empresa'){
-                this.showDescripcion = false
                 this.titulo = 'Seleccione una empresa del sector industrial'
                 this.state = 'empresa'
-                this.items = Object.keys(this.empresas[0]) 
-                Object.keys(this.empresas[0]).forEach(element => {
-                    if(element === 'ELECTROPERU'){
-                        this.description = this.empresas[0][element].texto
-                        this.img = this.empresas[0][element].src
-                    }
-                })
-               
+                this.items = Object.keys(this.empresas[0])                
+                this.changeEmpresa = ''
             }else{
                 this.compraVenta = true
-                this.titulo = 'Compra y venta de acciones de Alicorp'
-            }
+                this.titulo = 'Compra y venta de acciones de'+this.changeEmpresa 
+            }            
         },
         comprar(){
             this.acciones = 'compra'
             this.compra = this.valor * 5.1
+            EventBus.$emit('change-inLevelthree', false)
         },
-        venta(){
+        vender(){
             this.acciones = 'venta'
             this.compra = this.valor * 5
+            EventBus.$emit('change-inLevelthree', false)
         },
         changeSector(correct){
-            Object.keys(this.keyData).forEach(element => {
+            this.changeEmpresa = correct
+            if(this.state !== 'empresa'){
+                Object.keys(this.keyData).forEach(element => {
                     if(element === correct){
                         this.description = this.keyData[element].descripcion.texto
                         this.img = this.keyData[element].descripcion.src 
-                        this.empresas.push(this.keyData[element].empresas)
+                        this.empresas = [this.keyData[element].empresas]
                     }                    
                 })
-            
+            } else {
+                Object.keys(this.empresas[0]).forEach(element => {
+                    console.log(element, this.changeEmpresa)
+                    if(element === this.changeEmpresa){
+                        this.description = this.empresas[0][element].texto
+                        this.img = this.empresas[0][element].src
+                    }
+                })
+            }
         }
-        /* solo falta emitir un evento para mostrar la el ultimo mensaje de leo en el level 3 y escoger dinammicamente el select */
     }
 }
 </script>
