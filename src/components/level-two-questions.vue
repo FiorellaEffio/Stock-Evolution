@@ -9,7 +9,7 @@
 
       	<v-btn
       class="btn-leo"
-        color="color"
+        color="red"
         dark
         @click="nextleo()"
       >
@@ -17,7 +17,7 @@
       </v-btn>
       <v-snackbar
         v-model="snackbar"
-        :color="red"
+        :color="color"
         :multi-line="mode === 'multi-line'"
         :timeout="timeout"
         :vertical="mode === 'vertical'"
