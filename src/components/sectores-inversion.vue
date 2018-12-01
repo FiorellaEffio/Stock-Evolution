@@ -23,25 +23,12 @@
                 <v-stepper-items>
                     <v-stepper-content step="1">
                     <v-card
-                        class="mb-5"
-                        color="grey lighten-1"
-                        height="250px"
+                        class="mb-5 cardDescrip"
+                        height="160"
                     >
                     <v-flex >
-                            <v-btn flat large class="btnEco"
-                            >
-                                <div>
-                                    <v-avatar
-                                        slot="activator"
-                                        size="80px"
-                                        >
-                
-                                        <img :src="img" alt="">
-                                        </v-avatar>
-                                    </div>
-                                </v-btn>
-                    </v-flex>
-                    <v-card-title class="headline">Descripcion:</v-card-title>
+                    <h3 ><img :src="img" alt="" width="45px">Descripcion:</h3>
+                     </v-flex>
                     <v-card-text>{{description}}</v-card-text>        
                     </v-card> 
                   <!--   template lista de imagenes -->
@@ -53,14 +40,18 @@
                                 <div>
                                     <v-avatar
                                         slot="activator"
-                                        size="45px"
-                                    >
-                                    <img :src="item.src" alt="">
-                                    </v-avatar>
-                                </div>
-                            </v-btn>
-                    </v-flex> 
-                     <v-btn
+                                        tile
+                                        size="60"
+                                        
+                                        >
+                
+                                        <img :src="item.src"  alt="">
+                                        </v-avatar>
+                                    </div>
+                                </v-btn>
+                            </v-flex> 
+              <div class="divConfirm">
+                         <v-btn
                     class="btn-leo"
                     color="red"
                     dark
@@ -68,6 +59,8 @@
                     >
                     Confirmar
                     </v-btn> 
+              </div>
+
                     </v-stepper-content>  
                 </v-stepper-items>
                 </v-stepper>
@@ -81,12 +74,12 @@
             <v-flex xs12 sm6 offset-sm3>
                 <v-card>
                     <v-card-title primary-title>
-                        <v-flex>
-                            <div>
+                        <v-flex class="content-desccription">
+                            <div class="description">
                                 <h4 class="headline mb-0">Compra: $5.1</h4>
                                 <div>Indica que las personas estan comprando acciones a $5.1</div>
                             </div>
-                            <div>
+                            <div class="description">
                                 <h4 class="headline mb-0">Compra: $5</h4>
                                 <div>Indica que las personas estan vendiendo sus acciones a $5</div>
                             </div>
@@ -97,17 +90,17 @@
                     aspect-ratio="2.75"
                     ></v-img>  
                 </v-card>
-                <v-card>
-                    <span>{{acciones}}:</span>
-                    <v-flex xs12 md6>
+                <v-card class="content-input">
+                    <span class="input">{{acciones}}:</span>
+                    <v-flex xs6 md4 class="input">
                         <v-text-field
                         v-model="valor"
-                        box
                         color="blue-grey"
                         label="Acciones"
+                        class='input-value'
                         ></v-text-field>
                     </v-flex>
-                    <strong>TOTAL: {{compra}}</strong>
+                    <strong class="input">TOTAL: {{compra}}</strong>
                 </v-card>
                 <v-btn
                         class="btn-leo"
@@ -147,7 +140,7 @@ export default {
             state: 'sector',
             e1: 0,
             compraVenta: false,
-            acciones: 0,
+            acciones: 'Comprar',
             compra: 0,
             valor: 0,
             changeEmpresa: ''
@@ -155,6 +148,13 @@ export default {
     },
     created(){
         this.firebaseSectores()
+    },
+    computed: {
+        val: function () {
+            console.log(this.valor)
+            this.compra = this.valor * 5.1
+            return true           
+        }
     },
     methods:{
         firebaseSectores(){
@@ -176,8 +176,7 @@ export default {
             }            
         },
         comprar(){
-            this.acciones = 'compra'
-            this.compra = this.valor * 5.1
+            this.acciones = 'Compra'            
             EventBus.$emit('change-inLevelthree', false)
         },
         vender(){
@@ -209,13 +208,41 @@ export default {
 }
 </script>
 <style scoped>
+.v-card{
+    box-shadow: none !important
+}
 .application--wrap{
     min-height: 20px !important;
     height: 50px;
 }
-.theme--light.application, .theme--light.v-stepper{
+.theme--light.application, .theme--light.v-stepper, .theme--light.v-card{
     background: none;
 }  
 
+.cardDescrip{
+    background-color: transparent
+}
+.divConfirm{
+    margin-top: 20px
+}
+.content-desccription {
+    display: flex;
+}
+.desccription{
+    width: 50%;
+}
+.content-input{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 20%;
+}
+.input{
+    margin: auto;
+}
+.input-value{
+    border: 1px solid;
+    border-bottom: none;
+    border-radius: .8em;
+}
 </style>
 

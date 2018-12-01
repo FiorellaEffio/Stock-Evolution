@@ -30,6 +30,22 @@
     <div>
       <v-btn :disabled="!btnActivator" color="red" @click="nextLevelTwo()" class="btnSec">Continue</v-btn>
     </div>
+    <v-snackbar
+      v-model="snackbar"
+      :color="color"
+      :multi-line="mode === 'multi-line'"
+      :timeout="timeout"
+      :vertical="mode === 'vertical'"
+    >
+      {{ text }}
+      <v-btn
+        dark
+        flat
+        @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
   </v-container>
 </template>
 <script>
@@ -38,8 +54,13 @@ export default {
   name: "Inform",
   data() {
     return {
+      color:'red',
       btnActivator: false,
-      factorOption: ""
+      factorOption: "",
+      snackbar: false,
+      mode: 'vertical',
+      timeout: 6000,
+      text: 'Respuesta incorrecta :(, intenta de nuevo'
     };
   },
   methods: {
@@ -47,6 +68,7 @@ export default {
       if (this.factorOption === 2) {
         EventBus.$emit("change-leoTwo_5", true);
       } else {
+        this.snackbar = true;
         console.log("te equivocaste");
       }
     },
@@ -58,7 +80,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .btnSec {
   border-radius: 0.8em;
   width: 225px;
