@@ -8,25 +8,21 @@
     src="http://subirimagen.me/uploads/20181201100215.png"
     height="300"
   > -->
-
-      <div
-      align-center
-      column
+<div align-center
       justify-center
-      class="divParalax"
-    >
-     <div class="text-xs-center">
+      class="divParalax">
+        <div>
+   
     <v-dialog
       v-model="dialog"
       width="500"
     >
-      <v-btn
+      <button
         slot="activator"
-        color="transparent"
-        dark
+        class="modalBtn"
       >
         Mercado Local
-      </v-btn>
+      </button>
 
       <v-card>
 
@@ -51,18 +47,17 @@
     </v-dialog>
   </div>
 
-      <div class="text-xs-center">
+      <div >
     <v-dialog
       v-model="dialog"
       width="300"
     >
-      <v-btn
+      <button
         slot="activator"
-        color="primary"
-        dark
+        class="modalBtn"
       >
         Sectores
-      </v-btn>
+      </button>
 
       <v-card>
 
@@ -86,31 +81,24 @@
       </v-card>
     </v-dialog>
   </div>
-         <div class="text-xs-center">
+         <div>
     <v-dialog
       v-model="dialog"
       width="300"
     >
-      <v-btn
+      <button
         slot="activator"
-        color="primary "
-        dark
+        class="modalBtn"
       >
         Empresas
-      </v-btn>
-
+      </button>
       <v-card>
-
-
         <v-card-text>
           <h1>Empresas</h1>
-
             <h3>
               Revisa datos históricos de las empresas para tomar una mejor decisión.
             </h3>
-
         </v-card-text>
-
         <v-divider></v-divider>
 
         <v-card-actions>
@@ -120,7 +108,10 @@
       </v-card>
     </v-dialog>
   </div>
-    </div>
+      
+      </div>
+    
+
 
   <!-- </v-parallax> -->
 
@@ -158,8 +149,20 @@ export default {
       border-radius: .8em;
       width: 215px
     }
-  /* .divParalax{
+  .divParalax{
     background-image: url('http://subirimagen.me/uploads/20181201100215.png');
-    background-size: auto;
-  }   */
+    background-position-x: center;
+    margin-bottom: 60px
+  }  
+
+  .modalBtn{
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    margin: 25px;
+    width: 135px;
+    height: 35px;
+    font-size: 18px;
+    font-weight: bold
+  }
 </style>

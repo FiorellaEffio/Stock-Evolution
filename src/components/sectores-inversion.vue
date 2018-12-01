@@ -76,12 +76,12 @@
                     <v-card-title primary-title>
                         <v-flex class="content-desccription">
                             <div class="description">
-                                <h4 class="headline mb-0">Compra: $5.1</h4>
-                                <div>Indica que las personas estan comprando acciones a $5.1</div>
+                                <h4 class="headline mb-0 red--text" color="warning">Compra: $5.1</h4>
+                                <h5>Indica que las personas estan comprando acciones a $5.1</h5>
                             </div>
                             <div class="description">
-                                <h4 class="headline mb-0">Compra: $5</h4>
-                                <div>Indica que las personas estan vendiendo sus acciones a $5</div>
+                                <h4 class="headline mb-0 green--text">Compra: $5</h4>
+                                <h5>Indica que las personas estan vendiendo sus acciones a $5</h5>
                             </div>
                         </v-flex>
                     </v-card-title>
@@ -222,6 +222,7 @@ export default {
 .cardDescrip{
     background-color: transparent
 }
+
 .divConfirm{
     margin-top: 20px
 }
