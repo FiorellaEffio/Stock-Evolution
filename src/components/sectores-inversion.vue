@@ -28,10 +28,10 @@
                     <v-stepper-content step="1">
                     <v-card
                         class="mb-5 cardDescrip"
-                        height="50%"
+                        height="160"
                     >
                     <v-flex >
-                    <v-card-title class="headline"><img :src="img" alt="" width="45px">Descripcion:</v-card-title>
+                    <h3 ><img :src="img" alt="" width="45px">Descripcion:</h3>
                      </v-flex>
                     <v-card-text>{{description}}</v-card-text>        
                     </v-card> 
@@ -45,6 +45,7 @@
                                     <v-avatar
                                         slot="activator"
                                         tile
+                                        size="60"
                                         
                                         >
                 
@@ -53,7 +54,8 @@
                                     </div>
                                 </v-btn>
                             </v-flex> 
-                     <v-btn
+              <div class="divConfirm">
+                         <v-btn
                     class="btn-leo"
                     color="red"
                     dark
@@ -61,6 +63,8 @@
                     >
                     Confirmar
                     </v-btn> 
+              </div>
+
                     </v-stepper-content>  
                 </v-stepper-items>
                 </v-stepper>
@@ -215,6 +219,8 @@ export default {
 .cardDescrip{
     background-color: transparent
 }
-
+.divConfirm{
+    margin-top: 20px
+}
 </style>
 
