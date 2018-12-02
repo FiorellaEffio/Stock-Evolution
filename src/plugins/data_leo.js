@@ -132,27 +132,27 @@ const dataNivel = [
   {
     nivel: 1,
     description: 'Inicia tu camino a ser un tiburon financiero',
-    img: ''
+    img: 'http://subirimagen.me/uploads/20181202000457.png'
   },
   {
     nivel: 2,
     description: '!Genial! Ya eres parte de una SAB!',
-    img: ''
+    img: 'http://subirimagen.me/uploads/20181202001033.png'
   },
   {
     nivel: 3,
     description: '!Estas a un paso de ser un inversionista!',
-    img: ''
+    img: 'http://subirimagen.me/uploads/20181202001317.png'
   },
   {
     nivel: 4,
     description: '!Ya eres un inversionista!',
-    img: ''
+    img: 'http://subirimagen.me/uploads/20181202001438.png'
   },
   {
     nivel: 5,
     description: '!Sigue avanzando en el mar de la inversión!',
-    img: ''
+    img: 'http://subirimagen.me/uploads/20181202001659.png'
   }
 ];
 
