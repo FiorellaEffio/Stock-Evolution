@@ -5,13 +5,14 @@
      <v-expansion-panel class="backExpans">
        <v-expansion-panel-content class="indigo darken-4">
          <div slot="header">
-           <v-toolbar-title class="nameNav">{{userName}} {{userNivel}} {{userMonto}}</v-toolbar-title>
+           <v-toolbar-title class="nameNav">
+             <v-layout row wrap>
+               <v-flex xs6>{{userName}}</v-flex>
+               <v-flex xs4><img :src="nivelCoin" alt="" width="30px"></v-flex>
+               <v-flex xs2>{{userMonto}}</v-flex>
+             </v-layout>
+           </v-toolbar-title>
          </div>
-           <a href="#">
-             <p class="text"><img src="http://subirimagen.me/uploads/20181130102322.png" width="20px">
-               Home
-             </p>
-           </a>
            <a href="#">
              <p class="text"><img src="http://subirimagen.me/uploads/20181130102548.png" width="20px">
                Noticias
@@ -36,6 +37,7 @@
  </template>
  <script>
  import firebase from 'firebase'
+ import dataLeo from '@/plugins/data_leo.js'
  import {EventBus} from '@/plugins/EventBus.js'
  export default {
    name: 'nav',
@@ -44,6 +46,7 @@
        userName: '',
        userNivel: 0,
        userMonto: 5000,
+       nivelCoin: '',
  		}
    },
    beforeCreate() {
@@ -60,6 +63,33 @@
                    self.userMonto = keyData[element]
                    break;
                  case "nivel":
+                   switch (keyData[element]) {
+                     case 0:
+                       this.nivelCoin = '';
+                       break;
+                     case 1:
+                       this.nivelCoin = dataLeo.moneyNivel[0];
+                       break;
+                     case 2:
+                       this.nivelCoin = dataLeo.moneyNivel[1];
+                       break;
+                     case 3:
+                       this.nivelCoin = dataLeo.moneyNivel[2];
+                       break;
+                     case 4:
+                       this.nivelCoin = dataLeo.moneyNivel[3];
+                       break;
+                     case 5:
+                       this.nivelCoin = dataLeo.moneyNivel[4];
+                       break;
+                     case 6:
+                       this.nivelCoin = dataLeo.moneyNivel[5];
+                       break;
+                     case 6:
+                       this.nivelCoin = dataLeo.moneyNivel[6];
+                       break;
+                     default:
+                   }
                    self.userNivel = keyData[element]
                    break;
                  case "nickname":
