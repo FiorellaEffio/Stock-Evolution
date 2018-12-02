@@ -13,7 +13,7 @@
         justify-center
         class="textNube"
       >
-        <h3 class="font-weight-regular"><span>{{name}}</span>{{data.message}}</h3>
+        <h3 class="font-weight-medium "><span>{{name}}</span>{{data.message}}</h3>
       </div>
 
      </div>
@@ -191,7 +191,11 @@
   transition: none
 }
 
-.font-weight-regular {
+.textNube{
+  padding-top: 20px
+}
+
+.font-weight-medium {
   color: #333;
   display: flex;
   justify-content: flex-start;
@@ -212,6 +216,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 0px
 }
 .contentLeoBtn {
   display: inline-block;

@@ -20,22 +20,22 @@ const datainformacion = [
   { src: 'http://subirimagen.me/uploads/20181123161541.png',
   message: 'Para nacer en el mundo de la bolsa de valores, debes escoger una SAB'
 },
-  { src: 'http://subirimagen.me/uploads/20181123161541.png',
+  { src: 'http://subirimagen.me/uploads/20181201233629.png',
     message: '¿Y qué es una SAB o Sociedad Agente de bolsa?'
   },
-  { src: 'http://subirimagen.me/uploads/20181123161541.png',
+  { src: 'http://subirimagen.me/uploads/20181201233854.png',
     message: 'Es una entidad financiera intermediaria de la BVL, autorizada a la compra y venta que los inversionistas solicitan'
   }
 ]
 const dataLeveltwo_1 = [
   {
-    src: 'http://subirimagen.me/uploads/20181123161725.png',
-    message: '¡Mirate! ¡Estás creciendo!<br> Ganaste 1000 pts BURSEN<br>Canjéalos aquí'
+    src: 'http://subirimagen.me/uploads/20181201234107.png',
+    message: '¡Mirate! ¡Estás creciendo! Ganaste 1000 pts BURSEN  Canjéalos aquí'
   }
 ]
 const dataLeveltwo_2 = [
   {
-    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    src: 'http://subirimagen.me/uploads/20181123161838.gif',
     message: '¡Eres un capo!'
   },
   {
@@ -57,7 +57,7 @@ const dataLeveltwo_4 = [
 
 const dataLevelthree_1 = [
   {
-    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    src: 'http://subirimagen.me/uploads/20181123161838.gif',
     message: '¡Llego el momento de invertir pecesito! Ganaste 1000 pts. BURSEN  Canjéalos aquí'
   },
   {
@@ -65,7 +65,7 @@ const dataLevelthree_1 = [
     message: 'Para invertir es importante que conozcas 2 términos:'
   },
   {
-    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    src: 'http://subirimagen.me/uploads/20181123161541.png',
     message: 'Valor fundamental: Es definido por un cálculo en el que influyen diferentes factores propios de la empresa'
   },
   {
@@ -73,7 +73,7 @@ const dataLevelthree_1 = [
     message: 'Valor de mercado: Este valor varía de acuerdo a factores externos tales como noticias y eventos'
   },
   {
-    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    src: 'http://subirimagen.me/uploads/20181123161541.png',
     message: '¡Genial! ¡Empecemos!'
   }
 ]
@@ -84,7 +84,7 @@ const dataLevelthree_2 = [
   }]
 const dataLevelFour_1 = [
   {
-    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    src: 'http://subirimagen.me/uploads/20181123161541.png',
     message: 'Mantente atento a los acontecimientos  Ganaste 1000 pts. BURSEN'
   }
 ]
@@ -118,7 +118,7 @@ const dataLevelFive_1 =[
     message: 'Ten en cuenta cada noticia pez azul  Ganaste 1000 pts. BURSEN Canjéalos aquí'
   },
   {
-    src: 'http://subirimagen.me/uploads/20181123161541.png',
+    src: 'http://subirimagen.me/uploads/20181201235258.png',
     message: 'Pongamos a prueba tus conocimientos, contesta las siguientes preguntas:'
   }
 ]
