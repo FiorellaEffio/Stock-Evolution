@@ -66,7 +66,7 @@ export default {
   methods: {
     nextLevelTwo() {
       if (this.factorOption === 2) {
-        EventBus.$emit("change-leoTwo_5", true);
+        EventBus.$emit("change-nivel", true);
       } else {
         this.snackbar = true;
         console.log("te equivocaste");

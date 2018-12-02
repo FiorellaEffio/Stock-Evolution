@@ -70,10 +70,7 @@ export default {
       this.stateEconomista = false
       this.stateSectores = true
     })
-    EventBus.$on('change-leoTwo_5', (value)=>{
-      this.informationLevelTwo = "levelTwo_5"
-      this.showLeo = value
-    })
+ 
     EventBus.$on('change-nivel', (value)=>{
       this.showLeo = value
       this.stateSectores = false
