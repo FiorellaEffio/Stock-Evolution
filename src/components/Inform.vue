@@ -3,28 +3,26 @@
        <h1>Para invertir debes tener en cuenta estos 3 puntos</h1>
         <br>
         <h3>Presiona cada uno para ver más información</h3>
-          <v-parallax
+          <!-- <v-parallax
     dark
-    src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-    height="280"
-  >
-    <v-layout
-      align-center
-      column
+    src="http://subirimagen.me/uploads/20181201100215.png"
+    height="300"
+  > -->
+<div align-center
       justify-center
-    >
-     <div class="text-xs-center">
+      class="divParalax">
+        <div>
+   
     <v-dialog
       v-model="dialog"
-      width="300"
+      width="500"
     >
-      <v-btn
+      <button
         slot="activator"
-        color="primary"
-        dark
+        class="modalBtn"
       >
         Mercado Local
-      </v-btn>
+      </button>
 
       <v-card>
 
@@ -49,18 +47,17 @@
     </v-dialog>
   </div>
 
-      <div class="text-xs-center">
+      <div >
     <v-dialog
       v-model="dialog"
       width="300"
     >
-      <v-btn
+      <button
         slot="activator"
-        color="primary"
-        dark
+        class="modalBtn"
       >
         Sectores
-      </v-btn>
+      </button>
 
       <v-card>
 
@@ -84,31 +81,24 @@
       </v-card>
     </v-dialog>
   </div>
-         <div class="text-xs-center">
+         <div>
     <v-dialog
       v-model="dialog"
       width="300"
     >
-      <v-btn
+      <button
         slot="activator"
-        color="primary "
-        dark
+        class="modalBtn"
       >
         Empresas
-      </v-btn>
-
+      </button>
       <v-card>
-
-
         <v-card-text>
           <h1>Empresas</h1>
-
             <h3>
               Revisa datos históricos de las empresas para tomar una mejor decisión.
             </h3>
-
         </v-card-text>
-
         <v-divider></v-divider>
 
         <v-card-actions>
@@ -118,8 +108,12 @@
       </v-card>
     </v-dialog>
   </div>
-    </v-layout>
-  </v-parallax>
+      
+      </div>
+    
+
+
+  <!-- </v-parallax> -->
 
       <v-btn
         class="btn-inf"
@@ -155,4 +149,20 @@ export default {
       border-radius: .8em;
       width: 215px
     }
+  .divParalax{
+    background-image: url('http://subirimagen.me/uploads/20181201100215.png');
+    background-position-x: center;
+    margin-bottom: 60px
+  }  
+
+  .modalBtn{
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    margin: 25px;
+    width: 135px;
+    height: 35px;
+    font-size: 18px;
+    font-weight: bold
+  }
 </style>
