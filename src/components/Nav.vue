@@ -9,7 +9,7 @@
              <v-layout class="nav-style" row wrap>
                <v-flex xs6>{{userName}}</v-flex>
                <v-flex xs2><img :src="nivelCoin" alt="" width="30px"></v-flex>
-               <v-flex xs4>S./{{userMonto}}</v-flex>
+               <v-flex xs4>S/.{{userMonto}}</v-flex>
              </v-layout>
            </v-toolbar-title>
          </div>
