@@ -175,7 +175,33 @@ export default {
         },
         comprar(){
             if(this.levelFour !== 'compraL4'){
+               let self = this;
                this.acciones = 'Compra'
+               firebase.auth().onAuthStateChanged((user) => {
+                 let userUID = user.uid;
+                 let userRef = firebase.database().ref('usuarios/' + userUID);
+                 userRef.once('value', (snapshot) => {
+                     let userData = JSON.stringify(snapshot.val(), null, 3);
+                     userData = JSON.parse(userData);
+                     let lastMonto = userData.monto;
+                     userRef.update({
+                         "monto": lastMonto - self.compra,
+                     })
+                     firebase.database().ref('usuarios/' + userUID + '/acciones').push({
+                         company: this.changeEmpresa,
+                         cantidad: this.valor,
+                     })
+                 })
+                 let stockRef = firebase.database().ref('sectores/' + sector + '/empresas/' + company);
+                 stockRef.once('value', (snapshot) => {
+                     let stockData = JSON.stringify(snapshot.val(), null, 3);
+                     stockData = JSON.parse(stockData);
+                     let lastCantidad = stockData.cantidad;
+                     stockRef.update({
+                         "cantidad": lastCantidad - this.valor,
+                     })
+                 })
+               })        
                 EventBus.$emit('change-inLevelthree', false)
             }
             else{
