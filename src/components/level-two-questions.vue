@@ -3,8 +3,8 @@
       <v-card-title class="headline">¿Recuerdas que es una SAB?</v-card-title>
       <v-card-text>Una sociedad Agente de Bolsa (SAB) es la única _________ financiera _______________ del mercado bursátil que esta autorizada a la compra y venta que los ____________ solicitan; a cambio cobran una comisión, que es determinada libremente por cada una de ellas.</v-card-text>
 
-        <button v-for="(item, index) in radio" class="divRadio">
-        <span><input type="radio" class="inlineinput" name="tr" :value="index" v-model="answer">{{item}}</span>
+        <button v-for="(item, index) in radio" :key="index" class="divRadio">
+          <span><input type="radio" class="inlineinput" name="tr" :value="index" v-model="answer">{{item}}</span>
         </button>
 
       	<v-btn

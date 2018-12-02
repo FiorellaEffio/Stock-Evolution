@@ -38,8 +38,7 @@ export default {
         this.informationLevelThree = 'levelThree_2'
       })
       EventBus.$on('change-nivelFour', (value)=>{
-        this.stateOne = false
-        
+        this.stateOne = false        
       })
 		},
 		 components:{

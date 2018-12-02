@@ -128,6 +128,7 @@ import firebase from 'firebase'
 import {EventBus} from '@/plugins/EventBus.js'
 export default {
     name: 'sectores-inversion',
+    props: ['levelFour'], 
     data(){
         return {
             keyData: [],// todo el dato de firebase /sectores
@@ -176,8 +177,14 @@ export default {
             }            
         },
         comprar(){
-            this.acciones = 'Compra'            
-            EventBus.$emit('change-inLevelthree', false)
+            if(this.levelFour !== 'compraL4'){
+               this.acciones = 'Compra'            
+                EventBus.$emit('change-inLevelthree', false) 
+            }
+            else{
+                EventBus.$emit('change-leoFour_3', true)
+            }
+            
         },
         vender(){
             this.acciones = 'venta'

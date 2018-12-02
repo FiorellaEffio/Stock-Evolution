@@ -24,6 +24,7 @@ const routerOptions = [
   { path: '/level_two', name: 'level_two', component: 'level-two', meta: {requiresAuth: true} },
   { path: '/level_three', name: 'level_three', component: 'level-three', meta: {requiresAuth: true} },
   { path: '/level_four', name: 'level_four', component: 'level-four', meta: {requiresAuth: true} },
+  { path: '/level_five', name: 'level_five', component: 'level-five', meta: {requiresAuth: true} },
   { path: '*', component: 'NotFound' }
 ]
 

@@ -103,8 +103,17 @@
           case 'levelThree_1':
             return dataLeo.dataLevelthree_1
             break;
-            case 'levelThree_2':
+          case 'levelThree_2':
             return dataLeo.dataLevelthree_2
+            break;
+          case 'levelThFour_1':
+            return dataLeo.dataLevelFour_1
+            break;
+          case 'levelThFour_2':
+            return dataLeo.dataLevelFour_2
+            break;
+          case 'levelThFour_3':
+            return dataLeo.dataLevelFour_3
             break;
           default:
             console.log('no funciona')
@@ -156,6 +165,15 @@
         }
         if(this.information === 'levelThree_2'){
           EventBus.$emit('change-nivelFour', true)
+        }
+        if(this.information === 'levelThFour_1'){
+          EventBus.$emit('change-inforAcciones', false)
+        }
+        if(this.information === 'levelThFour_2' && (index + 1) === dataLeo.dataLevelFour_2.length){
+          EventBus.$emit('change-inversion', false)
+        }
+        if(this.information === 'levelThFour_3' && (index + 1) === dataLeo.dataLevelFour_3.length){
+          EventBus.$emit('change-nivelFive', true)
         }
         else{
           console.log('no cumle la condicion')

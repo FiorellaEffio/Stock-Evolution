@@ -119,6 +119,9 @@ export default {
           break;
         case 4:
           this.$router.push('/level_four')
+					break;
+				case 5:
+          this.$router.push('/level_five')
           break;
         default:
       }

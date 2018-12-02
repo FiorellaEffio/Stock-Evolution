@@ -88,6 +88,36 @@ const dataLevelthree_2 = [
     message: 'Felicitaciones compraste tus primera acciones'
     
   }]
+const dataLevelFour_1 = [
+  {
+    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    message: 'Vaya que has crecido! Mantente atento a los acontecimientos!!'
+  }
+]
+const dataLevelFour_2 = [
+  {
+    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    message: 'Cada noticia cuenta! Analiza lo que pasa con el mercado, sector y la empresa que invertiste'
+  },
+  {
+    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    message: '¿Qué opinas de la noticia? ¿Es positiva o negativa?'
+  },
+  {
+    src: 'http://subirimagen.me/uploads/20181123161541.png',
+    message: 'De acuerdo a lo que creas, puedes comprar, vender o simplemente no actuar sobre la noticia'
+  }
+]
+const dataLevelFour_3 =[
+  {
+    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    message: 'Compraste acciones en'
+  },
+  {
+    src: 'http://subirimagen.me/uploads/20181123161541.png',
+    message: 'Justificacion fue una buena inversión'
+  }
+]
 const dataNivel = [
   {
     nivel: 1,
@@ -108,6 +138,25 @@ const dataNivel = [
     nivel: 4,
     description: '!Ya eres un inversionista!',
     img: ''
+  },
+  {
+    nivel: 5,
+    description: '!Sigue avanzando en el mar de la inversión!',
+    img: ''
   }
 ]
-export default{datajs, datainformacion, dataNivel, dataLeveltwo_1,dataLeveltwo_2, dataLeveltwo_3, dataLeveltwo_4, dataLeveltwo_5,dataLevelthree_1, dataLevelthree_2}
+export default {
+  datajs, 
+  datainformacion, 
+  dataNivel,
+  dataLeveltwo_1,
+  dataLeveltwo_2, 
+  dataLeveltwo_3, 
+  dataLeveltwo_4, 
+  dataLeveltwo_5,
+  dataLevelthree_1, 
+  dataLevelthree_2,
+  dataLevelFour_1,
+  dataLevelFour_2,
+  dataLevelFour_3
+}
