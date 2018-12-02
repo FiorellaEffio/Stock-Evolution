@@ -137,6 +137,9 @@
    color: white;
    text-transform: uppercase
  }
+ .material-icons {
+   color: white !important;
+ }
 
 
  </style>
