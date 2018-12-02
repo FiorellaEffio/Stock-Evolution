@@ -144,6 +144,16 @@ const dataNivel = [
     description: '!Sigue avanzando en el mar de la inversión!',
     img: ''
   }
+];
+
+const moneyNivel=[
+  'http://subirimagen.me/uploads/20181201215812.png',
+  'http://subirimagen.me/uploads/20181201215950.png',
+  'http://subirimagen.me/uploads/20181201220058.png',
+  'http://subirimagen.me/uploads/20181201220204.png',
+  'http://subirimagen.me/uploads/20181201220243.png',
+  'http://subirimagen.me/uploads/20181201220320.png',
+  'http://subirimagen.me/uploads/20181201220419.png'
 ]
 export default {
   datajs, 
@@ -158,5 +168,6 @@ export default {
   dataLevelthree_2,
   dataLevelFour_1,
   dataLevelFour_2,
-  dataLevelFour_3
+  dataLevelFour_3,
+  moneyNivel
 }
