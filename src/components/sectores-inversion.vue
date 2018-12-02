@@ -2,7 +2,7 @@
     <div class="text-xs-center">
         <v-card-title class="headline">{{titulo}}</v-card-title>
         <v-app id="inspire" v-if="!compraVenta">
-            <v-container fluid grid-list-xl>           
+            <v-container fluid grid-list-xl>
             <v-layout wrap align-center>
                 <v-flex xs12 sm6 d-flex>
                 <v-select
@@ -18,8 +18,8 @@
             <v-app id="inspire">
                 <v-stepper v-model="e1">
                 <v-stepper-header  v-show="false" >
-                    <v-stepper-step :complete="e1 > 1" step="1"></v-stepper-step>  
-                </v-stepper-header>  
+                    <v-stepper-step :complete="e1 > 1" step="1"></v-stepper-step>
+                </v-stepper-header>
                 <v-stepper-items>
                     <v-stepper-content step="1">
                     <v-card
@@ -27,10 +27,10 @@
                         height="160"
                     >
                     <v-flex >
-                    <h3 ><img :src="img" alt="" width="45px">Descripcion:</h3>
+                    <h3 ><img :src="img" alt="" width="45px"> {{sectorTitle}}:</h3>
                      </v-flex>
-                    <v-card-text>{{description}}</v-card-text>        
-                    </v-card> 
+                    <v-card-text>{{description}}</v-card-text>
+                    </v-card>
                   <!--   template lista de imagenes -->
                     <v-flex v-if="state=='sector'">
                             <v-btn flat large class="btnEco"
@@ -42,14 +42,14 @@
                                         slot="activator"
                                         tile
                                         size="60"
-                                        
+
                                         >
-                
+
                                         <img :src="item.src"  alt="">
                                         </v-avatar>
                                     </div>
                                 </v-btn>
-                            </v-flex> 
+                            </v-flex>
               <div class="divConfirm">
                          <v-btn
                     class="btn-leo"
@@ -58,19 +58,18 @@
                     @click="elegirEmpresa()"
                     >
                     Confirmar
-                    </v-btn> 
+                    </v-btn>
               </div>
-
-                    </v-stepper-content>  
+                    </v-stepper-content>
                 </v-stepper-items>
                 </v-stepper>
             </v-app>
             </div>
-                      
+
             </v-container>
         </v-app>
         <!--  template venta -->
-        <v-layout v-else>             
+        <v-layout v-else>
             <v-flex xs12 sm6 offset-sm3>
                 <v-card>
                     <v-card-title primary-title>
@@ -88,7 +87,7 @@
                     <v-img
                     src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
                     aspect-ratio="2.75"
-                    ></v-img>  
+                    ></v-img>
                 </v-card>
                 <v-card class="content-input">
                     <span class="input">{{acciones}}:</span>
@@ -109,7 +108,7 @@
                         @click="comprar()"
                         >
                         Comprar
-                </v-btn> 
+                </v-btn>
                 <v-btn
                         class="btn-leo"
                         color="blue"
@@ -117,7 +116,7 @@
                         @click="vender()"
                         >
                         Vender
-                </v-btn> 
+                </v-btn>
         </v-flex>
     </v-layout>
     </div>
@@ -128,7 +127,7 @@ import firebase from 'firebase'
 import {EventBus} from '@/plugins/EventBus.js'
 export default {
     name: 'sectores-inversion',
-    props: ['levelFour'], 
+    props: ['levelFour'],
     data(){
         return {
             keyData: [],// todo el dato de firebase /sectores
@@ -154,7 +153,11 @@ export default {
         val: function () {
             console.log(this.valor)
             this.compra = this.valor * 5.1
-            return true           
+            return true
+        },
+        sectorTitle: function () {
+          let sectorName = this.changeEmpresa;
+          return this.keyData[sectorName].descripcion.titulo
         }
     },
     methods:{
@@ -162,29 +165,29 @@ export default {
             const data = firebase.database().ref().child('sectores/')
             data.once('value', value => {
                 this.keyData = value.val()
-                this.items = Object.keys(value.val())                
+                this.items = Object.keys(value.val())
             })
         },
         elegirEmpresa(){
             if( this.state !== 'empresa'){
                 this.titulo = 'Seleccione una empresa del sector industrial'
                 this.state = 'empresa'
-                this.items = Object.keys(this.empresas[0])                
+                this.items = Object.keys(this.empresas[0])
                 this.changeEmpresa = ''
             }else{
                 this.compraVenta = true
-                this.titulo = 'Compra y venta de acciones de'+this.changeEmpresa 
-            }            
+                this.titulo = 'Compra y venta de acciones de '+this.changeEmpresa
+            }
         },
         comprar(){
             if(this.levelFour !== 'compraL4'){
-               this.acciones = 'Compra'            
-                EventBus.$emit('change-inLevelthree', false) 
+               this.acciones = 'Compra'
+                EventBus.$emit('change-inLevelthree', false)
             }
             else{
                 EventBus.$emit('change-leoFour_3', true)
             }
-            
+
         },
         vender(){
             this.acciones = 'venta'
@@ -192,14 +195,15 @@ export default {
             EventBus.$emit('change-inLevelthree', false)
         },
         changeSector(correct){
+            console.log(correct)
             this.changeEmpresa = correct
             if(this.state !== 'empresa'){
                 Object.keys(this.keyData).forEach(element => {
                     if(element === correct){
                         this.description = this.keyData[element].descripcion.texto
-                        this.img = this.keyData[element].descripcion.src 
+                        this.img = this.keyData[element].descripcion.src
                         this.empresas = [this.keyData[element].empresas]
-                    }                    
+                    }
                 })
             } else {
                 Object.keys(this.empresas[0]).forEach(element => {
@@ -224,7 +228,7 @@ export default {
 }
 .theme--light.application, .theme--light.v-stepper, .theme--light.v-card{
     background: none;
-}  
+}
 
 .cardDescrip{
     background-color: transparent
@@ -253,4 +257,3 @@ export default {
     border-radius: .8em;
 }
 </style>
-

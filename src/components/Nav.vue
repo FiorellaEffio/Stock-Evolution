@@ -6,10 +6,10 @@
        <v-expansion-panel-content class="indigo darken-4">
          <div slot="header">
            <v-toolbar-title class="nameNav">
-             <v-layout row wrap>
+             <v-layout class="nav-style" row wrap>
                <v-flex xs6>{{userName}}</v-flex>
-               <v-flex xs4><img :src="nivelCoin" alt="" width="30px"></v-flex>
-               <v-flex xs2>{{userMonto}}</v-flex>
+               <v-flex xs2><img :src="nivelCoin" alt="" width="30px"></v-flex>
+               <v-flex xs4>S./{{userMonto}}</v-flex>
              </v-layout>
            </v-toolbar-title>
          </div>
@@ -140,6 +140,8 @@
  .material-icons {
    color: white !important;
  }
-
+ .nav-style {
+   font-size: 20px;
+ }
 
  </style>

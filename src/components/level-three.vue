@@ -15,7 +15,6 @@ import nav from '@/components/Nav'
 import nivel from '@/components/nivel'
 import leo from '@/components/Leo'
 import {EventBus} from '@/plugins/EventBus.js'
-
 import sectores from '@/components/sectores-inversion'
 export default {
     name: 'level-three',
@@ -34,11 +33,11 @@ export default {
       })
       EventBus.$on('change-inLevelthree', (value)=>{
         this.showLeo = true
-        this.stateSectores = value        
+        this.stateSectores = value
         this.informationLevelThree = 'levelThree_2'
       })
       EventBus.$on('change-nivelFour', (value)=>{
-        this.stateOne = false        
+        this.stateOne = false
       })
 		},
 		 components:{
