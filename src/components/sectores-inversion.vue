@@ -88,7 +88,7 @@
                     ></v-img>
                 </v-card>
                 <v-card class="content-input">
-                    <span class="input">{{acciones}}:</span>
+                    <!-- <span class="input" vmodel="countStock">{{acciones}}:</span> -->
                     <v-flex xs6 md4 class="input">
                         <v-text-field
                         v-model="valor"
@@ -139,7 +139,6 @@ export default {
             e1: 0,
             compraVenta: false,
             acciones: 'Comprar',
-            compra: 0,
             valor: 0,
             changeEmpresa: '',
             sectorTitle: '',
@@ -151,10 +150,8 @@ export default {
         this.firebaseSectores()
     },
     computed: {
-        val: function () {
-            console.log(this.valor)
-            this.compra = this.valor * 5.1
-            return true
+        compra: function () {
+            return this.valor * this.vventa;
         }
     },
     methods:{
@@ -192,7 +189,6 @@ export default {
             EventBus.$emit('change-inLevelthree', false)
         },
         changeSector(correct){
-            console.log(correct)
             this.changeEmpresa = correct
             if(this.state !== 'empresa'){
               let sectorName = this.changeEmpresa;
