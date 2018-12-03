@@ -49,6 +49,28 @@
        nivelCoin: '',
  		}
    },
+   created() {
+     EventBus.$on('changeUserData', (value)=>{
+       console.log('estamos enviando data :D')
+       let self = this;
+       firebase.auth().onAuthStateChanged((user) => {
+         let userUID = user.uid;
+         let userRef = firebase.database().ref('usuarios/' + userUID);
+         userRef.on('value', value => {
+             const keyData = value.val()
+             this.items = Object.keys(value.val())
+             Object.keys(keyData).forEach(element => {
+               switch (element) {
+                 case "monto":
+                   self.userMonto = keyData[element]
+                   break;
+                 default:
+               }
+             })
+         })
+       })
+     })
+   },
    beforeCreate() {
        let self = this;
        firebase.auth().onAuthStateChanged((user) => {

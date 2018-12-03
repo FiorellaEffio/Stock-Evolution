@@ -19,24 +19,20 @@
               height="250"
               src='http://subirimagen.me/uploads/20181123161725.png'
             ></v-img>
-            <div class="text-xs-center inversion" >
-                <v-spacer></v-spacer>
-                <v-spacer></v-spacer>                
+            <div class="text-xs-center inversion" v-for="stock in userStock">
                 <div class="acciones-descr">
-                    <h3 class="title font-weight-light mb-2">200 acciones en Alicorp</h3>
-                    <h4>$1000 invertidos</h4>
-                    <span>Compra: $5   Venta: $5.1</span>
+                    <h3 class="title font-weight-light mb-2">{{stock.cantidad}} acciones en {{stock.company}}</h3>
+                    <h4>S/.{{stock.inversion}} invertidos</h4>
+                    <span>Compra: S/.{{stock.vcompra}}   Venta: S/.{{stock.vventa}}</span>
                 </div>
                 <h4>Ultima noticia hace 10 min >></h4>
+                <v-flex mb-3></v-flex>
             </div>
-            <v-spacer></v-spacer>
-            <v-spacer></v-spacer>
-            
             <span class="caption grey--text">*Recuerda tomar acciones si crees que es necesario</span>
           </div>
         </v-window-item>
       </v-window>
-        
+
     </v-card>
     <v-card-actions class="text-xs-center">
         <v-spacer></v-spacer>
@@ -56,7 +52,7 @@
             <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
                 <v-btn slot="activator" color="primary" dark>Open Dialog</v-btn>
                 <v-card class="modal">
-                    <v-toolbar dark color="primary">                        
+                    <v-toolbar dark color="primary">
                     <v-spacer></v-spacer>
                         <v-toolbar-items>
                             <v-btn icon dark @click="dialog = false">
@@ -68,7 +64,7 @@
                     </v-list>
                     <div class="text-xs-center modal" >
                         <v-spacer></v-spacer>
-                        <v-spacer></v-spacer>                
+                        <v-spacer></v-spacer>
                         <div class="description-modal">
                             <h3 class="title mb-4">Noticia Importante</h3>
                             <h3 class="title font-weight-light mb-2">Alicorp aprovecha bajas tasas de interés y emite con exito US$ 450 millones de bonos. El monto recaudado será destinado para financiar futuras adquisiciones de empresas</h3>
@@ -100,6 +96,7 @@
 </div>
 </template>
 <script>
+import firebase from 'firebase'
 import {EventBus} from '@/plugins/EventBus.js'
 export default {
     name: 'acciones',
@@ -110,7 +107,8 @@ export default {
             dialog: true,
             notifications: false,
             sound: true,
-            widgets: false
+            widgets: false,
+            userStock: [],
         }
     },
     // falta arreglar propNoticia
@@ -119,6 +117,44 @@ export default {
             this.dialog = this.propNoticia;
             return true
         }
+    },
+    beforeCreate() {
+      let self = this;
+      firebase.auth().onAuthStateChanged((user) => {
+        let userUID = user.uid;
+        let userRef = firebase.database().ref('usuarios/' + userUID);
+        userRef.on('value', value => {
+            const keyData = value.val()
+            Object.keys(keyData).forEach(element => {
+              switch (element) {
+                case "acciones":
+                  let alternativeStock = [];
+                  self.userStock = Object.values(keyData[element])
+                  self.userStock.forEach(stock => {
+                    let alternativeMiniStock = stock;
+                    let stockRef = firebase.database().ref('sectores/' + stock.sector + '/empresas/' + stock.company);
+                    stockRef.once('value', (snapshot) => {
+                        let stockData = JSON.stringify(snapshot.val(), null, 3);
+                        stockData = JSON.parse(stockData);
+                        console.log(alternativeStock);
+                        stock.vcompra = stockData.vcompra
+                        stock.vventa = stockData.vmercado
+                        alternativeMiniStock.cantidad = Object.values(stock)[0]
+                        alternativeMiniStock.company = Object.values(stock)[1]
+                        alternativeMiniStock.inversion = Object.values(stock)[2]
+                        alternativeMiniStock.sector = Object.values(stock)[3]
+                        alternativeMiniStock.vcompra = Object.values(stock)[4]
+                        alternativeMiniStock.vventa = Object.values(stock)[5]
+                        alternativeStock.push(alternativeMiniStock)
+                    })
+                  })
+                  self.userStock = alternativeStock;
+                  break;
+                default:
+              }
+            })
+        })
+      })
     },
     methods: {
         regresarLevelThree(){
@@ -145,7 +181,7 @@ export default {
 }
 .inversion{
     color: #fff;
-    background: red;    
+    background: red;
 }
 .acciones-descr{
     background: #ee798c
@@ -157,4 +193,3 @@ export default {
     margin: 20px 10% 40px;
 }
 </style>
-

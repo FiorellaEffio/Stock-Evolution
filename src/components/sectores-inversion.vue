@@ -188,11 +188,13 @@ export default {
                          "monto": lastMonto - self.compra,
                      })
                      firebase.database().ref('usuarios/' + userUID + '/acciones').push({
+                         sector: this.sectorTitle.slice(8),
+                         inversion: this.compra,
                          company: this.changeEmpresa,
                          cantidad: this.valor,
                      })
                  })
-                 let stockRef = firebase.database().ref('sectores/' + sector + '/empresas/' + company);
+                 let stockRef = firebase.database().ref('sectores/' + this.sectorTitle.slice(8) + '/empresas/' + this.changeEmpresa);
                  stockRef.once('value', (snapshot) => {
                      let stockData = JSON.stringify(snapshot.val(), null, 3);
                      stockData = JSON.parse(stockData);
@@ -201,7 +203,8 @@ export default {
                          "cantidad": lastCantidad - this.valor,
                      })
                  })
-               })        
+                 EventBus.$emit('changeUserData', true)
+               })
                 EventBus.$emit('change-inLevelthree', false)
             }
             else{
