@@ -165,6 +165,14 @@ const moneyNivel=[
   'http://subirimagen.me/uploads/20181201220320.png',
   'http://subirimagen.me/uploads/20181201220419.png'
 ]
+
+const fishNivel=[
+  'http://subirimagen.me/uploads/20181202231821.jpg',
+  'http://subirimagen.me/uploads/20181202231952.jpg',
+  'http://subirimagen.me/uploads/20181202232036.jpg',
+  'http://subirimagen.me/uploads/20181202232116.jpg',
+  'http://subirimagen.me/uploads/20181202232214.jpg'
+]
 export default {
   datajs, 
   datainformacion, 
@@ -180,5 +188,6 @@ export default {
   dataLevelFour_3,
   dataLevelFive_1,
   dataLevelFive_2,
-  moneyNivel
+  moneyNivel,
+  fishNivel
 }

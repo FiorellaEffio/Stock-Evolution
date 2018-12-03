@@ -19,8 +19,9 @@ const routerOptions = [
   { path: '/sab', name: 'Sab', component: 'Sab', meta: {requiresAuth: true} },
   { path: '/nav', component: 'Nav', meta: { requiresAuth: true } },
   { path: '/valor-fundamental', component: 'valor-fundamental', meta: { requiresAuth: true } },
+  { path: '/valor-mercado', component: 'valor-mercado', meta: { requiresAuth: true } },
   { path: '/ejemplo', component: 'ejemplo', meta: { requiresAuth: true } },
-
+  { path: '/ejemplo2', component: 'ejemplo2', meta: {requiresAuth: true}},
 
 
   { path: '/level_zero', name: 'leve_zero', component: 'level-zero', meta: {requiresAuth: true} },

@@ -1,10 +1,10 @@
 <template>
 <v-container>
   <v-flex>
-    <h3 class="font-weight-bolder text-xs-center">Es importante que sepas cuando<br> comprar y vender</h3>
+    <h3 class="font-weight-bolder text-xs-center">Mira este otro ejemplo</h3>
   </v-flex>
   <div class="imgExample">
-      <img src="http://subirimagen.me/uploads/20181202123254.png" width="285px" alt="ejemplo">
+      <img src="http://subirimagen.me/uploads/20181202231321.png" width="285px" alt="ejemplo">
   </div>
    <div class="btnDiv">
        <v-btn
