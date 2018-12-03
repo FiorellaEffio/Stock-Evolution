@@ -128,6 +128,29 @@ const dataLevelFive_2 =[
     message: '¡Bien!'
   }
 ]
+const dataLevelSix_1 =[
+  {
+    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    message: 'No olvides todo lo aprendido  Ganaste 1000 pts. BURSEN   Canjéalos aquí'
+  }
+]
+const dataLevelSix_2=[
+  {
+    src: 'http://subirimagen.me/uploads/20181123161725.png',
+    message: 'Analiza bien la noticia, los mercado mencionados pueden ser clave para lo que viene.'
+  }
+]
+const dataLevelSix_3=[
+  {
+    src:'http://subirimagen.me/uploads/20181201235258.png',
+    message: 'Brasil y Argentina son países de alto riesgo por la inestabilidad económica. Fue una buena oportunidad de venta y tomar ganancias.'
+  },
+  {
+    src:'http://subirimagen.me/uploads/20181123161541.png',
+    message: 'Espera la llegada de una nueva noticia o sigue invirtiendo en otros sectores y empresas.'
+  }
+]
+
 const dataNivel = [
   {
     nivel: 1,
@@ -153,6 +176,11 @@ const dataNivel = [
     nivel: 5,
     description: '!Sigue avanzando en el mar de la inversión!',
     img: 'http://subirimagen.me/uploads/20181202221234.jpg'
+  },
+  {
+    nivel:6,
+    description: '¡Sigue creciendo con el mismo ritmo!',
+    img: 'http://subirimagen.me/uploads/20181203000753.jpg'
   }
 ];
 
@@ -171,7 +199,8 @@ const fishNivel=[
   'http://subirimagen.me/uploads/20181202231952.jpg',
   'http://subirimagen.me/uploads/20181202232036.jpg',
   'http://subirimagen.me/uploads/20181202232116.jpg',
-  'http://subirimagen.me/uploads/20181202232214.jpg'
+  'http://subirimagen.me/uploads/20181202232214.jpg',
+  'http://subirimagen.me/uploads/20181203001028.jpg'
 ]
 export default {
   datajs, 
@@ -188,6 +217,9 @@ export default {
   dataLevelFour_3,
   dataLevelFive_1,
   dataLevelFive_2,
+  dataLevelSix_1,
+  dataLevelSix_2,
+  dataLevelSix_3,
   moneyNivel,
   fishNivel
 }
