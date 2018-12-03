@@ -18,6 +18,10 @@ const routerOptions = [
   { path: '/nivel', name: 'nivel', component: 'nivel', meta: {requiresAuth: true} },
   { path: '/sab', name: 'Sab', component: 'Sab', meta: {requiresAuth: true} },
   { path: '/nav', component: 'Nav', meta: { requiresAuth: true } },
+  { path: '/valor-fundamental', component: 'valor-fundamental', meta: { requiresAuth: true } },
+  { path: '/ejemplo', component: 'ejemplo', meta: { requiresAuth: true } },
+
+
 
   { path: '/level_zero', name: 'leve_zero', component: 'level-zero', meta: {requiresAuth: true} },
   { path: '/level_one', name: 'level_one', component: 'level-one', meta: {requiresAuth: true} },

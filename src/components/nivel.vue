@@ -9,7 +9,7 @@
         <v-card height="300px" flat class="box-nivel-content-wapper">
         <div class="headline text-xs-center pa-5">
            {{description}}
-           <v-flex mt-2><img :src="img" alt=""></v-flex>
+           <v-flex mt-2 ><img :src="img" width="100px" alt=""></v-flex>
         </div>
 
 
