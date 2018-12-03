@@ -42,9 +42,7 @@
                                         slot="activator"
                                         tile
                                         size="60"
-
                                         >
-
                                         <img :src="item.src"  alt="">
                                         </v-avatar>
                                     </div>
@@ -75,12 +73,12 @@
                     <v-card-title primary-title>
                         <v-flex class="content-desccription">
                             <div class="description">
-                                <h4 class="headline mb-0 red--text" color="warning">Compra: $5.1</h4>
-                                <h5>Indica que las personas estan comprando acciones a $5.1</h5>
+                                <h4 class="headline mb-0 red--text" color="warning">Compra: S/.{{vcompra}}</h4>
+                                <h5>Indica que las personas estan comprando acciones a S/.{{vcompra}}</h5>
                             </div>
                             <div class="description">
-                                <h4 class="headline mb-0 green--text">Compra: $5</h4>
-                                <h5>Indica que las personas estan vendiendo sus acciones a $5</h5>
+                                <h4 class="headline mb-0 green--text">Venta: S/.{{vventa}}</h4>
+                                <h5>Indica que las personas estan vendiendo sus acciones a S/.{{vventa}}</h5>
                             </div>
                         </v-flex>
                     </v-card-title>
@@ -90,7 +88,7 @@
                     ></v-img>
                 </v-card>
                 <v-card class="content-input">
-                    <span class="input">{{acciones}}:</span>
+                    <!-- <span class="input" vmodel="countStock">{{acciones}}:</span> -->
                     <v-flex xs6 md4 class="input">
                         <v-text-field
                         v-model="valor"
@@ -141,23 +139,19 @@ export default {
             e1: 0,
             compraVenta: false,
             acciones: 'Comprar',
-            compra: 0,
             valor: 0,
-            changeEmpresa: ''
+            changeEmpresa: '',
+            sectorTitle: '',
+            vcompra: 0,
+            vventa: 0,
         }
     },
     created(){
         this.firebaseSectores()
     },
     computed: {
-        val: function () {
-            console.log(this.valor)
-            this.compra = this.valor * 5.1
-            return true
-        },
-        sectorTitle: function () {
-          let sectorName = this.changeEmpresa;
-          return this.keyData[sectorName].descripcion.titulo
+        compra: function () {
+            return this.valor * this.vventa;
         }
     },
     methods:{
@@ -170,7 +164,7 @@ export default {
         },
         elegirEmpresa(){
             if( this.state !== 'empresa'){
-                this.titulo = 'Seleccione una empresa del sector industrial'
+                this.titulo = 'Seleccione una empresa del sector ' + this.changeEmpresa
                 this.state = 'empresa'
                 this.items = Object.keys(this.empresas[0])
                 this.changeEmpresa = ''
@@ -181,7 +175,33 @@ export default {
         },
         comprar(){
             if(this.levelFour !== 'compraL4'){
+               let self = this;
                this.acciones = 'Compra'
+               firebase.auth().onAuthStateChanged((user) => {
+                 let userUID = user.uid;
+                 let userRef = firebase.database().ref('usuarios/' + userUID);
+                 userRef.once('value', (snapshot) => {
+                     let userData = JSON.stringify(snapshot.val(), null, 3);
+                     userData = JSON.parse(userData);
+                     let lastMonto = userData.monto;
+                     userRef.update({
+                         "monto": lastMonto - self.compra,
+                     })
+                     firebase.database().ref('usuarios/' + userUID + '/acciones').push({
+                         company: this.changeEmpresa,
+                         cantidad: this.valor,
+                     })
+                 })
+                 let stockRef = firebase.database().ref('sectores/' + sector + '/empresas/' + company);
+                 stockRef.once('value', (snapshot) => {
+                     let stockData = JSON.stringify(snapshot.val(), null, 3);
+                     stockData = JSON.parse(stockData);
+                     let lastCantidad = stockData.cantidad;
+                     stockRef.update({
+                         "cantidad": lastCantidad - this.valor,
+                     })
+                 })
+               })        
                 EventBus.$emit('change-inLevelthree', false)
             }
             else{
@@ -195,24 +215,24 @@ export default {
             EventBus.$emit('change-inLevelthree', false)
         },
         changeSector(correct){
-            console.log(correct)
             this.changeEmpresa = correct
             if(this.state !== 'empresa'){
-                Object.keys(this.keyData).forEach(element => {
-                    if(element === correct){
-                        this.description = this.keyData[element].descripcion.texto
-                        this.img = this.keyData[element].descripcion.src
-                        this.empresas = [this.keyData[element].empresas]
-                    }
-                })
+              let sectorName = this.changeEmpresa;
+              this.sectorTitle = this.keyData[sectorName].descripcion.titulo;
+              Object.keys(this.keyData).forEach(element => {
+                  if(element === correct){
+                      this.description = this.keyData[element].descripcion.texto
+                      this.img = this.keyData[element].descripcion.src
+                      this.empresas = [this.keyData[element].empresas]
+                  }
+              })
             } else {
-                Object.keys(this.empresas[0]).forEach(element => {
-                    console.log(element, this.changeEmpresa)
-                    if(element === this.changeEmpresa){
-                        this.description = this.empresas[0][element].texto
-                        this.img = this.empresas[0][element].src
-                    }
-                })
+              this.state = 'empresa';
+              this.sectorTitle = 'Empresa '+ correct;
+              this.description = this.empresas[0][correct].texto;
+              this.img = this.empresas[0][correct].src
+              this.vcompra = this.empresas[0][correct].vcompra
+              this.vventa = this.empresas[0][correct].vmercado
             }
         }
     }
@@ -255,5 +275,10 @@ export default {
     border: 1px solid;
     border-bottom: none;
     border-radius: .8em;
+}
+.v-menu__content {
+  margin-top: 100px !important;
+  background-color: #333 !important;
+  color: blue !important;
 }
 </style>

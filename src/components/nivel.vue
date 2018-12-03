@@ -11,9 +11,6 @@
            {{description}}
            <v-flex mt-2 ><img :src="img" width="100px" alt=""></v-flex>
         </div>
-
-
-
         <v-bottom-nav
             :active.sync="bottomNav"
             :value="true"
