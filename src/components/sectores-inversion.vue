@@ -78,7 +78,7 @@
                         </v-flex>
                     </v-card-title>
                     <v-img
-                    src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
+                    src="http://subirimagen.me/uploads/20181204135715.png"
                     aspect-ratio="2.75"
                     ></v-img>
                 </v-card>
