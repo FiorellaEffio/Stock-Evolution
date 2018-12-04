@@ -21,10 +21,10 @@
                     <v-stepper-step :complete="e1 > 1" step="1"></v-stepper-step>
                 </v-stepper-header>
                 <v-stepper-items>
-                    <v-stepper-content step="1">
+                    <v-stepper-content class="content" step="1">
                     <v-card
-                        class="mb-5 cardDescrip"
-                        height="160"
+                        class="cardDescrip"
+                        height="140"
                     >
                     <v-flex >
                     <h3 ><img :src="img" alt="" width="45px"> {{sectorTitle}}:</h3>
@@ -32,32 +32,27 @@
                     <v-card-text>{{description}}</v-card-text>
                     </v-card>
                   <!--   template lista de imagenes -->
-                    <v-flex v-if="state=='sector'">
-                            <v-btn flat large class="btnEco"
+                    <div v-if="state=='sector'">
+                            <div>
+                                    <div flat  
                             v-for="(item, key) in empresas[0]"
                             :key="key"
                             >
-                                <div>
-                                    <v-avatar
-                                        slot="activator"
-                                        tile
-                                        size="60"
-                                        >
-                                        <img :src="item.src"  alt="">
-                                        </v-avatar>
-                                    </div>
-                                </v-btn>
-                            </v-flex>
-              <div class="divConfirm">
+                                        <img :src="item.src" width="80px" height="55px" alt="">
+                                    
+                                </div>
+                            </div>
+                        
+                            </div>
                          <v-btn
-                    class="btn-leo"
+                    class="btn-inver"
                     color="red"
                     dark
                     @click="elegirEmpresa()"
                     >
                     Confirmar
                     </v-btn>
-              </div>
+              
                     </v-stepper-content>
                 </v-stepper-items>
                 </v-stepper>
@@ -254,16 +249,21 @@ export default {
 }
 
 .cardDescrip{
-    background-color: transparent
+    background-color: transparent;
+    height: 90px;
+}
+.imgDiv{
+    width: 100%;
+    float: left;
 }
 
-.divConfirm{
-    margin-top: 20px
-}
+/* .divConfirm{
+
+} */
 .content-desccription {
     display: flex;
 }
-.desccription{
+.description{
     width: 50%;
 }
 .content-input{
@@ -274,6 +274,10 @@ export default {
 .input{
     margin: auto;
 }
+.btn-inver{
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
 .input-value{
     border: 1px solid;
     border-bottom: none;
@@ -283,5 +287,8 @@ export default {
   margin-top: 100px !important;
   background-color: #333 !important;
   color: blue !important;
+}
+.content{
+    height: 350px
 }
 </style>
