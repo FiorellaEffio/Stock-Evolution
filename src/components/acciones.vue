@@ -50,7 +50,7 @@
         <v-app id="inspire">
             <v-layout row justify-center>
             <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-                <v-btn slot="activator" color="primary" dark>Open Dialog</v-btn>
+                <v-btn slot="activator" color="primary" dark>Ver Noticia</v-btn>
                 <v-card class="modal">
                     <v-toolbar dark color="primary">
                     <v-spacer></v-spacer>

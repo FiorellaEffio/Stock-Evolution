@@ -93,12 +93,14 @@
                         ></v-text-field>
                     </v-flex>
                     <strong class="input">TOTAL: {{compra}}</strong>
+                    <span v-if="alert?alert:false" class="alert">Sobrepasaste tu saldo actual, disminuya sus acciones</span>
                 </v-card>
                 <v-btn
                         class="btn-leo"
                         color="red"
                         dark
                         @click="comprar()"
+                        :disabled="alert"
                         >
                         Comprar
                 </v-btn>
@@ -147,7 +149,16 @@ export default {
     },
     computed: {
         compra: function () {
-            return this.valor * this.vventa;
+            const valorCompra = this.valor * this.vventa;
+            
+            return valorCompra
+        },
+        alert: function () {
+            if(this.compra >= 5000 || this.compra === NaN){
+                return true
+            }else{
+                return false
+            }
         }
     },
     methods:{
@@ -170,14 +181,15 @@ export default {
             }
         },
         comprar(){
-            let self = this;               
+            let self = this;
+            if(self.compra <= 5000){              
                firebase.auth().onAuthStateChanged((user) => {
                  let userUID = user.uid;
                  let userRef = firebase.database().ref('usuarios/' + userUID);
                  userRef.once('value', (snapshot) => {
                      let userData = JSON.stringify(snapshot.val(), null, 3);
                      userData = JSON.parse(userData);
-                     let lastMonto = userData.monto;
+                     let lastMonto = userData.monto?userData.monto:5000;
                      userRef.update({
                          "monto": lastMonto - self.compra,
                      })
@@ -205,6 +217,7 @@ export default {
             }
             else{
                 EventBus.$emit('change-leoFour_3', true)
+            }
             }
 
         },
@@ -292,5 +305,8 @@ export default {
 }
 .content{
     height: 350px
+}
+.alert{
+    color: red
 }
 </style>

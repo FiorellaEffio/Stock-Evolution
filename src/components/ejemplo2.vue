@@ -11,7 +11,7 @@
        class="btn-leo"
          color="red"
          dark
-         @click="nextStteper(index)"
+         @click="nextStteper()"
        >
          Continue
        </v-btn>

@@ -60,6 +60,8 @@
              const keyData = value.val()
              this.items = Object.keys(value.val())
              Object.keys(keyData).forEach(element => {
+               console.log(keyData[element]);
+               
                switch (element) {
                  case "monto":
                    self.userMonto = keyData[element]
