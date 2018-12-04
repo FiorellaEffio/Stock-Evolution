@@ -11,13 +11,29 @@
        class="btn-leo"
          color="red"
          dark
-         @click="nextStteper(index)"
+         @click="nextStteper()"
        >
          Continue
        </v-btn>
      </div>
 </v-container>
 </template>
+<script>
+import {EventBus} from '@/plugins/EventBus.js'
+export default {
+  name:'ejemplo',
+  data(){
+    return {
+
+    }
+  }, 
+  methods:{
+    nextStteper(){
+      EventBus.$emit("change-ejemplo2", true);
+    }
+  }
+}
+</script>
 
 <style scoped>
     .imgExample{

@@ -18,7 +18,22 @@
      </div>
 </v-container>
 </template>
+<script>
+import {EventBus} from '@/plugins/EventBus.js'
+export default {
+  name:'ejemplo',
+  data(){
+    return {
 
+    }
+  }, 
+  methods:{
+    nextStteper(){
+      EventBus.$emit("change-vm", true);
+    }
+  }
+}
+</script>
 <style scoped>
     .imgExample{
         margin-top: 30px;

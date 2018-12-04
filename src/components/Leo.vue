@@ -115,6 +115,12 @@
           case 'levelThFour_3':
             return dataLeo.dataLevelFour_3
             break;
+          case 'levelFive_1':
+            return dataLeo.dataLevelFive_1
+            break;
+          case 'levelFive_2':
+            return dataLeo.dataLevelFive_2
+            break;
           default:
             console.log('no funciona')
             return dataLeo.datajs
@@ -166,6 +172,7 @@
         if(this.information === 'levelThree_2'){
           EventBus.$emit('change-nivelFour', true)
         }
+        // level 4
         if(this.information === 'levelThFour_1'){
           EventBus.$emit('change-inforAcciones', false)
         }
@@ -174,6 +181,14 @@
         }
         if(this.information === 'levelThFour_3' && (index + 1) === dataLeo.dataLevelFour_3.length){
           EventBus.$emit('change-nivelFive', true)
+        }
+        // level 5
+        
+        if(this.information === 'levelFive_1' && (index + 1) === dataLeo.dataLevelFive_1.length){
+          EventBus.$emit('change-valorFundamental', true)
+        }
+        if(this.information === 'levelFive_2'){
+          EventBus.$emit('change-ejemplo', false)
         }
         else{
           console.log('no cumle la condicion')
