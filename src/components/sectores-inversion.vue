@@ -139,6 +139,7 @@ export default {
             sectorTitle: '',
             vcompra: 0,
             vventa: 0,
+            sectorName:'',
         }
     },
     created(){
@@ -183,13 +184,14 @@ export default {
                          "monto": lastMonto - self.compra,
                      })
                      firebase.database().ref('usuarios/' + userUID + '/acciones').push({
-                         sector: this.sectorTitle.slice(8),
-                         inversion: this.compra,
-                         company: this.changeEmpresa,
-                         cantidad: this.valor,
+                         sector: self.sectorName,
+                         inversion: self.compra,
+                         company: self.changeEmpresa,
+                         cantidad: self.valor,
                      })
                  })
-                 let stockRef = firebase.database().ref('sectores/' + this.sectorTitle.slice(8) + '/empresas/' + this.changeEmpresa);
+                 c
+                 let stockRef = firebase.database().ref('sectores/' + self.sectorName + '/empresas/' + this.changeEmpresa);
                  stockRef.once('value', (snapshot) => {
                      let stockData = JSON.stringify(snapshot.val(), null, 3);
                      stockData = JSON.parse(stockData);
@@ -224,6 +226,7 @@ export default {
                       this.empresas = [this.keyData[element].empresas]
                   }
               })
+              this.sectorName = sectorName;
             } else {
               this.state = 'empresa';
               this.sectorTitle = 'Empresa '+ correct;
