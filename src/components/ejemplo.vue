@@ -36,10 +36,15 @@ export default {
 </script>
 
 <style scoped>
+    img{
+      display: block;
+      margin: auto
+    }
     .imgExample{
         margin-top: 30px;
         margin-bottom: 50px;
-        margin-inline-start: 9%
+    
+        
     }
     .btn-leo{
       border-radius: .8em;
