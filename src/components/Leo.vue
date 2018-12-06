@@ -40,8 +40,11 @@
         <h2>¿Cómo te gustaria<br> que te llame?</h2>
         <v-flex my-3>
           <input type="text" placeholder="Tu nombre" v-model="name">
+        </v-flex >
+        <v-flex text-xs-center>
+            <img src="http://subirimagen.me/uploads/20181123205930.png" width="200"/>
         </v-flex>
-        <img src="http://subirimagen.me/uploads/20181123205930.png" width="200"/>
+      
         <v-btn
         class="btn-input"
          v-bind:class="{ 'color': stateName	}"

@@ -35,14 +35,16 @@
 
     </v-card>
     <v-card-actions class="text-xs-center">
-        <v-spacer></v-spacer>
-        <v-btn
+       
+        <v-flex row justify-center>
+            <v-btn
           color="red"
           dark
           @click="regresarLevelThree()"
         >
             Invertir
         </v-btn>
+        </v-flex>
       </v-card-actions>
       <!-- modal -->
   </v-app>
@@ -191,5 +193,7 @@ export default {
 }
 .modal{
     margin: 20px 10% 40px;
-}
+} 
+
+
 </style>

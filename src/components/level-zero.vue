@@ -1,6 +1,6 @@
 <template>
  <div class="fondo-color" v-bind:class="{fondo: !stateOne}">
-   <v-flex mt-4 ml-5 pl-4 v-if="stateOne">
+   <v-flex mt-4  text-xs-center v-if="stateOne">
      <img src="http://subirimagen.me/uploads/20181123143029.png" width="75%">
    </v-flex>
    <v-flex class="level-zero">
@@ -41,6 +41,7 @@ export default {
 }
 .fondo {
   background-image: url('http://subirimagen.me/uploads/20181123142846.png');
+
 }
 .level-zero {
   margin-top: -10%;

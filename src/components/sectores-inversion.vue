@@ -1,10 +1,10 @@
 <template>
-    <div class="text-xs-center">
-        <v-card-title class="headline">{{titulo}}</v-card-title>
+    <div class="text-xs-center sectInversion">
+        <v-card-title class="headline ">{{titulo}}</v-card-title>
         <v-app id="inspire" v-if="!compraVenta">
-            <v-container fluid grid-list-xl>
+            <v-container fluid grid-list-xl text-xs-center>
             <v-layout wrap align-center>
-                <v-flex xs12 sm6 d-flex>
+                <v-flex xs12 sm6 d-flex text-xs-center>
                 <v-select
                     :items="items"
                     :label="state"
@@ -21,28 +21,29 @@
                     <v-stepper-step :complete="e1 > 1" step="1"></v-stepper-step>
                 </v-stepper-header>
                 <v-stepper-items>
+                    
                     <v-stepper-content class="content" step="1">
-                    <v-card
+                        
+                             <v-card
                         class="cardDescrip"
-                        height="140"
+                        height="180"
                     >
                     <v-flex >
                     <h3 ><img :src="img" alt="" width="45px"> {{sectorTitle}}:</h3>
                      </v-flex>
-                    <v-card-text>{{description}}</v-card-text>
+                    <v-card-text class="body-2">{{description}}</v-card-text>
                     </v-card>
+                        
                   <!--   template lista de imagenes -->
-                    <div v-if="state=='sector'">
-                            <div>
+                    <v-spacer></v-spacer>
+                    <div v-if="state=='sector'" class="imgSec" >
                                     <div flat  
                             v-for="(item, key) in empresas[0]"
                             :key="key"
                             >
-                                        <img :src="item.src" width="80px" height="55px" alt="">
+                                        <img :src="item.src" width="80px" alt="">
                                     
                                 </div>
-                            </div>
-                        
                             </div>
                          <v-btn
                     class="btn-inver"
@@ -252,6 +253,9 @@ export default {
 }
 </script>
 <style scoped>
+.imgSec{
+    margin-top: 7px
+}
 .v-card{
     box-shadow: none !important
 }
@@ -266,15 +270,13 @@ export default {
 .cardDescrip{
     background-color: transparent;
     height: 90px;
+    margin-bottom: 5px
 }
 .imgDiv{
     width: 100%;
     float: left;
 }
 
-/* .divConfirm{
-
-} */
 .content-desccription {
     display: flex;
 }
@@ -285,17 +287,17 @@ export default {
     display: flex;
     flex-direction: column;
     margin: 10px 20%;
+
 }
 .input{
     margin: auto;
 }
-.btn-inver{
+/* .btn-inver{
     margin-bottom: 12px;
     margin-top: 12px;
-}
+} */
 .input-value{
-    border: 1px solid;
-    border-bottom: none;
+    border: 2px solid navy;
     border-radius: .8em;
 }
 .v-menu__content {
@@ -304,7 +306,7 @@ export default {
   color: blue !important;
 }
 .content{
-    height: 350px
+    height: 370px
 }
 .alert{
     color: red

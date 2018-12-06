@@ -6,7 +6,8 @@
         {{level}}
         </v-btn>
     </div>
-        <v-card height="300px" flat class="box-nivel-content-wapper">
+			<div class="cardInp">
+				<v-card height="300px" max-width="350px"  class="box-nivel-content-wapper ">
         <div class="headline text-xs-center pa-5">
            {{description}}
            <v-flex mt-2 ><img :src="img" width="100px" alt=""></v-flex>
@@ -58,6 +59,9 @@
 				</v-bottom-sheet>
         </v-bottom-nav>
         </v-card>
+
+			</div>
+        
     </v-app>
 
     </div>
@@ -131,6 +135,12 @@ export default {
 }
 </script>
 <style scoped>
+.cardInp{
+
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center
+}
 .box-nivel{
 	margin-top: 30% !important;
   margin: 10%;
@@ -148,6 +158,8 @@ export default {
     z-index: 1;
 		border-radius: 1em;
 		background: none;
+			display: inline-block;
+        text-align: left;
 }
 .headline{
 	background: #fff;
@@ -166,5 +178,12 @@ export default {
 	color: orange;
 	font-size: 20px;
 	font-weight: 800
+}
+
+@media only screen and (min-width: 600px){
+	.box-nivel{
+	margin-top: 20% !important;
+  margin: 10%;
+}
 }
 </style>

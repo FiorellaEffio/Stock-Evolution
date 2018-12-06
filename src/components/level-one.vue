@@ -47,11 +47,20 @@ export default {
   }
 }
 </script>
-<style media="screen">
+<style media="screen" scoped>
   .fondo-claro {
     background-image: url('http://subirimagen.me/uploads/20181129111939.png');
   }
   .fondooscuro {
     background-image: url('http://subirimagen.me/uploads/20181123142846.png') !important;
+  }
+
+  @media only screen and (min-width: 600px){
+    .fondooscuro {
+    background-image: url('http://subirimagen.me/uploads/20181123142846.png') !important;
+    width: 100vw;
+    /* height: 100vh; */
+  
+  }
   }
 </style>
