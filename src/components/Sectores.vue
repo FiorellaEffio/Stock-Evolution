@@ -69,13 +69,11 @@ export default {
         EventBus.$emit("change-nivel", true);
       } else {
         this.snackbar = true;
-        console.log("te equivocaste");
       }
     },
     changeFactor(factorOption) {
       this.factorOption = factorOption;
       this.btnActivator = true;
-      console.log(this.factorOption);
     }
   }
 };

@@ -88,7 +88,6 @@
             return dataLeo.datainformacion
             break;
           case 'levelTwo_1':
-          console.log('nivel 2')
             return dataLeo.dataLeveltwo_1
             break;
           case 'levelTwo_2':
@@ -125,7 +124,6 @@
             return dataLeo.dataLevelFive_2
             break;
           default:
-            console.log('no funciona')
             return dataLeo.datajs
         }
 
@@ -193,9 +191,7 @@
         if(this.information === 'levelFive_2'){
           EventBus.$emit('change-ejemplo', false)
         }
-        else{
-          console.log('no cumle la condicion')
-        }
+        
       },
 
     },

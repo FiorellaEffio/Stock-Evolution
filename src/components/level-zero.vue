@@ -24,8 +24,7 @@ export default {
   },
   created(){
     EventBus.$on('change-state', (value)=>{
-      this.stateOne = false;
-      console.log(this.stateOne)
+      this.stateOne = false
     })
   },
   components:{

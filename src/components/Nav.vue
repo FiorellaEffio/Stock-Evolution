@@ -51,7 +51,6 @@
    },
    created() {
      EventBus.$on('changeUserData', (value)=>{
-       console.log('estamos enviando data :D')
        let self = this;
        firebase.auth().onAuthStateChanged((user) => {
          let userUID = user.uid;
@@ -59,9 +58,7 @@
          userRef.on('value', value => {
              const keyData = value.val()
              this.items = Object.keys(value.val())
-             Object.keys(keyData).forEach(element => {
-               console.log(keyData[element]);
-               
+             Object.keys(keyData).forEach(element => {               
                switch (element) {
                  case "monto":
                    self.userMonto = keyData[element]

@@ -29,12 +29,10 @@ export default {
     created(){
       EventBus.$on('change-sab', (value)=>{
         this.stateSab = true;
-        console.log('llego')
       })
       EventBus.$on('change-state-sab', (value)=>{
         this.stateSab =false;
         this.stateOne = false
-        console.log('llego sab')
       })
     },
   computed: {

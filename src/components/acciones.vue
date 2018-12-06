@@ -138,7 +138,6 @@ export default {
                     stockRef.once('value', (snapshot) => {
                         let stockData = JSON.stringify(snapshot.val(), null, 3);
                         stockData = JSON.parse(stockData);
-                        console.log(alternativeStock);
                         stock.vcompra = stockData.vcompra
                         stock.vventa = stockData.vmercado
                         alternativeMiniStock.cantidad = Object.values(stock)[0]

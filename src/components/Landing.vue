@@ -9,11 +9,11 @@
       </blockquote>
     </v-flex>
     <v-flex xs12 text-xs-center>
-      <v-btn class="button" large round="true" href="#" @click="signFacebook()">
+      <v-btn class="button" large :round="true" href="#" @click="signFacebook()">
         <img class="button-img" src="http://subirimagen.me/uploads/20181128145504.png" > <span>acebook</span>
       </v-btn>
       <br>
-      <v-btn class="button" large round="true" href="#" @click="userSignInGoogle()">
+      <v-btn class="button" large :round="true" href="#" @click="userSignInGoogle()">
         <img class="button-img" src="http://subirimagen.me/uploads/20181128145139.png"> <span>oogle</span>
       </v-btn>
     </v-flex>

@@ -110,13 +110,11 @@ export default {
           EventBus.$emit('change-leoTwo_4', true)
         } else {
           this.snackbar = true;
-          console.log('te equivocaste')
         }
       },
       changeEconomist(ecoName) {
         this.economistName = ecoName;
         this.btnActivator = true;
-        console.log(this.economistName)
       }
   }
 }

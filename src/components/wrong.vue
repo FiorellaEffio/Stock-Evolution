@@ -31,9 +31,7 @@ import {EventBus} from '@/plugins/EventBus.js'
     },
     created() {
       EventBus.$on('wrong-answer', (value)=>{
-        console.log('hay una incorrecta')
-        this.snackbar = true;
-        console.log(this.snackbar)
+        this.snackbar = true
       })
     }
   }

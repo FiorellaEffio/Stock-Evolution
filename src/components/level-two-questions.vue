@@ -52,9 +52,7 @@ export default {
   },
   methods: {
 		nextleo(){
-      console.log(this.answer)
       if(this.answer === 0) {
-        console.log('envie leo')
         EventBus.$emit('change-leoTwo_2', true)
       } else {
         this.snackbar = true;
