@@ -6,31 +6,31 @@ const datajs = [
   },
   {
     src: 'http://subirimagen.me/uploads/20181123161838.gif',
-		message: 'Todos aquí iniciammos nuestro camino a ser unos gigantes de la inversión con $5000'
+		message: 'Todos aquí iniciamos nuestro camino a ser unos gigantes de la inversión con $5000.'
 	},
   {
 	  src: 'http://subirimagen.me/uploads/20181123161541.png',
-    message: 'Conviértete en una grande de la inversión, siguiendo mis consejos.'
+    message: 'Conviértete en un grande de la inversión, siguiendo mis consejos.'
   }
 ]
 const datainformacion = [
   { src: 'http://subirimagen.me/uploads/20181123161541.png',
-    message: '¡Bienvenido al nivel 1 pequeño huevecillo!Iras ganando puntos BURSEN que podrás canjear por descuentos en el centro de estudios de la BVL'
+    message: '¡Bienvenido al nivel 1 pequeño huevecillo! Iras ganando puntos BURSEN que podrás canjear por descuentos en el centro de estudios de la BVL.'
   },
   { src: 'http://subirimagen.me/uploads/20181123161541.png',
-  message: 'Para nacer en el mundo de la bolsa de valores, debes escoger una SAB'
+  message: 'Para nacer en el mundo de la bolsa de valores, debes escoger una SAB.'
 },
   { src: 'http://subirimagen.me/uploads/20181201233629.png',
-    message: '¿Y qué es una SAB o Sociedad Agente de bolsa?'
+    message: '¿Y qué es una SAB o Sociedad Agente de Bolsa?'
   },
   { src: 'http://subirimagen.me/uploads/20181201233854.png',
-    message: 'Es una entidad financiera intermediaria de la BVL, autorizada a la compra y venta que los inversionistas solicitan'
+    message: 'Es una entidad financiera intermediaria de la BVL, autorizada para la compra y venta de acciones que los inversionistas solicitan.'
   }
 ]
 const dataLeveltwo_1 = [
   {
     src: 'http://subirimagen.me/uploads/20181201234107.png',
-    message: '¡Mirate! ¡Estás creciendo! Ganaste 1000 pts BURSEN  Canjéalos aquí'
+    message: '¡Mírate! ¡Estás creciendo! Ganaste 1000 puntos BURSEN  Canjéalos aquí.'
   }
 ]
 const dataLeveltwo_2 = [
@@ -58,7 +58,7 @@ const dataLeveltwo_4 = [
 const dataLevelthree_1 = [
   {
     src: 'http://subirimagen.me/uploads/20181123161838.gif',
-    message: '¡Llego el momento de invertir pecesito! Ganaste 1000 pts. BURSEN  Canjéalos aquí'
+    message: '¡Llego el momento de invertir pecesito! Ganaste 1000 puntos BURSEN  Canjéalos aquí'
   },
   {
     src: 'http://subirimagen.me/uploads/20181123161725.png',
@@ -80,12 +80,12 @@ const dataLevelthree_1 = [
 const dataLevelthree_2 = [
   {
     src: 'http://subirimagen.me/uploads/20181123161725.png',
-    message: '¡Felicitaciones compraste tus primera acciones!'
+    message: '¡Felicitaciones compraste tus primeras acciones!'
   }]
 const dataLevelFour_1 = [
   {
     src: 'http://subirimagen.me/uploads/20181123161541.png',
-    message: 'Mantente atento a los acontecimientos  Ganaste 1000 pts. BURSEN'
+    message: 'Mantente atento a los acontecimientos  Ganaste 1000 puntos BURSEN'
   }
 ]
 const dataLevelFour_2 = [
@@ -115,7 +115,7 @@ const dataLevelFour_3 =[
 const dataLevelFive_1 =[
   {
     src: 'http://subirimagen.me/uploads/20181123161725.png',
-    message: 'Ten en cuenta cada noticia pez azul  Ganaste 1000 pts. BURSEN Canjéalos aquí'
+    message: 'Ten en cuenta cada noticia pez azul  Ganaste 1000 puntos BURSEN Canjéalos aquí'
   },
   {
     src: 'http://subirimagen.me/uploads/20181201235258.png',
@@ -131,7 +131,7 @@ const dataLevelFive_2 =[
 const dataLevelSix_1 =[
   {
     src: 'http://subirimagen.me/uploads/20181123161725.png',
-    message: 'No olvides todo lo aprendido  Ganaste 1000 pts. BURSEN   Canjéalos aquí'
+    message: 'No olvides todo lo aprendido  Ganaste 1000 puntos BURSEN   Canjéalos aquí'
   }
 ]
 const dataLevelSix_2=[
